@@ -6,15 +6,12 @@ import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css';
 import '../../assets/vendor/boxicons/css/boxicons.min.css';
 import '../../assets/vendor/glightbox/css/glightbox.min.css';
 import '../../assets/vendor/swiper/swiper-bundle.min.css';
-import Navbar from '../../Componentes/Navbar/navbar';
-import Footer from '../../Componentes/Footer/footer';
 import { Link } from 'react-router-dom';
 
 function Inicio() {
   return (
     
 <>
-<Navbar></Navbar>
 <section class="inner-page">
       <div class="container">
         <p>
@@ -56,7 +53,6 @@ Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayor√
         </p>
       </div>
     </section>
-<Footer></Footer>
 </>
   )
 }
