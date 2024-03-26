@@ -7,6 +7,8 @@ import '../../assets/vendor/boxicons/css/boxicons.min.css';
 import '../../assets/vendor/glightbox/css/glightbox.min.css';
 import '../../assets/vendor/swiper/swiper-bundle.min.css';
 import { Link } from 'react-router-dom';
+import { PDFDOC } from '../../Utils/pdf';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 function Inicio() {
   return (
@@ -33,6 +35,11 @@ Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayor√
       </div>
     </section>
     <Link to="/Redux"><button>Redux</button></Link>
+    <PDFDownloadLink document={<PDFDOC />} fileName="Quijote.pdf">
+      {({ blob, url, loading, error }) =>
+        loading ? 'Loading document...' : 'Descarga el pdf!'
+      }
+    </PDFDownloadLink>
     <section class="inner-page">
       <div class="container">
         <p>
