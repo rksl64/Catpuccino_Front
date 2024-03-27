@@ -7,6 +7,7 @@ import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css';
 import '../../assets/vendor/boxicons/css/boxicons.min.css';
 import '../../assets/vendor/glightbox/css/glightbox.min.css';
 import '../../assets/vendor/swiper/swiper-bundle.min.css';
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -119,8 +120,8 @@ function Navbar() {
             <MobileNavToggle className="bi bi-list mobile-nav-toggle"></MobileNavToggle>
           </Nav>
 
-          <a href="#book-a-table" className="book-a-table-btn scrollto">
-            Book a table
+          <a href="/Login" className="book-a-table-btn scrollto">
+          Inicio Sesión
           </a>
         </div>
       </Header>
