@@ -11,10 +11,24 @@ function Login() {
     password: "",
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setData({ ...data, [name]: value });
+  const handleLogin = (password) => {
+    setData((prev) => ({
+      ...prev,
+      password: password.target.value,
+    }));
   };
+
+  const handleLoginName = (nombreUsuario) => {
+    setData((prev) => ({
+      ...prev,
+      nombreUsuario: nombreUsuario.target.value,
+    }));
+  };
+
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setData({ ...data, [name]: value });
+  // };
 
   const onLogin = async () => {
     try {
@@ -31,8 +45,8 @@ function Login() {
   return (
     <Div>
       <h1>Login</h1>
-      <input type="text" placeholder="Name" onChange={handleInputChange} />
-      <input type="password" placeholder="Password" onChange={handleInputChange} />
+      <input type="text" placeholder="Name" onChange={handleLoginName} />
+      <input type="password" placeholder="Password" onChange={handleLogin} />
       <button onClick={onLogin}>Login</button>
       <button>Logout</button>
     </Div>
