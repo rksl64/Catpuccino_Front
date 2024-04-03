@@ -68,9 +68,11 @@ const Header = styled.div`
     margin: 0;
     max-height: 60px;
   }
+  .scrollto{
+    text-decoration: none;
+  }
 `;
-///Falta la animación y estilo de letra que no quiere ponerse
-//arreglar responsive con el js de la carpeta
+
 const Nav = styled.nav`
   padding: 0;
 
@@ -111,6 +113,7 @@ const Nav = styled.nav`
   .active:focus,
   li:hover > a {
     color: #ffb03b;
+    
   }
 
   .dropdown ul {
@@ -127,10 +130,12 @@ const Nav = styled.nav`
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
     border-radius: 4px;
+    text-decoration: none;
   }
 
   .dropdown ul li {
     min-width: 200px;
+    text-decoration: none;
   }
 
   .dropdown ul a {
@@ -138,28 +143,33 @@ const Nav = styled.nav`
     font-size: 14px;
     font-weight: 400;
     color: #433f39;
+    text-decoration: none;
   }
 
   .dropdown ul a i {
     font-size: 12px;
+    text-decoration: none;
   }
 
   .dropdown ul a:hover,
   .dropdown ul .active:hover,
   .dropdown ul li:hover > a {
     color: #ffb03b;
+    text-decoration: none;
   }
 
   .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
     visibility: visible;
+    text-decoration: none;
   }
 
   .dropdown .dropdown ul {
     top: 0;
     left: calc(100% - 30px);
     visibility: hidden;
+    text-decoration: none;
   }
 
   .dropdown .dropdown:hover > ul {
@@ -167,6 +177,7 @@ const Nav = styled.nav`
     top: 0;
     left: 100%;
     visibility: visible;
+    text-decoration: none;
   }
 
   /* @media (max-width: 1366px) {
@@ -176,6 +187,7 @@ const Nav = styled.nav`
 
     .dropdown .dropdown:hover > ul {
       left: -100%;
+      text-decoration: none;
     }
     position: fixed;
     overflow: hidden;
@@ -235,14 +247,17 @@ const Nav = styled.nav`
       visibility: visible;
       background: #fff;
       box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+      text-decoration: none;
     }
 
     .dropdown ul li {
       min-width: 200px;
+      text-decoration: none;
     }
 
     .dropdown ul a {
       padding: 10px 20px;
+      text-decoration: none;
     }
 
     .dropdown ul a i {

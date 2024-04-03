@@ -16,6 +16,24 @@ export async function getProductos() {
     throw error;
   }
 }
+
+async function Search(hora, fecha) {
+  try {
+    const response = await axios.get(`${BASE_HOST}/comprobarReserva`, {
+      params:{hora: hora, fecha: fecha}
+    });
+    console.log("Datos", JSON.stringify(response.data));
+    return response.data;
+  } 
+  catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
+export default {
+  Search
+};
 async function listarproductos(){
   try {
     const response = await axios.get(`${BASE_HOST}/producto`);
