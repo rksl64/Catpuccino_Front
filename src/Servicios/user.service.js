@@ -3,9 +3,9 @@ import authHeader from "./auth-header";
 
 const BASE_HOST = "http://localhost:8080";
 
-async function getProductos() {
+export async function getProductos() {
   try {
-    const response = await axios.get(`${BASE_HOST}/productos`, {
+    const response = await axios.get(`${BASE_HOST}/User/producto`, {
       headers: authHeader(),
     });
     console.log("user", JSON.stringify(response.data));

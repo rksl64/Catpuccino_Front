@@ -1,11 +1,11 @@
-import React from "react";
+import { getToken } from "./Cookies/cookies";
 
 export default function authHeader() {
-  const { loginData} = AppConsumerHook();
+  const token = getToken("token")
 
-  if (loginData && loginData.token) {
+  if (token) {
     return {
-      Authorization: "Bearer " + loginData.token,
+      Authorization: "Bearer " + token,
     };
   } else {
     return {};
