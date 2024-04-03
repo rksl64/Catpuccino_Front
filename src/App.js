@@ -7,6 +7,8 @@ import Registro from "./Paginas/Registro/registro";
 import Error from "./Paginas/Error/error";
 import Producto from "./Paginas/Productos/producto";
 import Consumiciones from "./Paginas/Consumiciones/consumiciones";
+import Adopcion from "./Paginas/Adopcion/adopcion";
+import GatoInfo from "./Paginas/GatoInfo/gatoInfo";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/Productos" element={<Producto />}></Route>
         <Route path="/Consumiciones" element={<Consumiciones />}></Route>
         <Route path="*" element={<Error />}></Route>
+        <Route path="/Adopcion" element={<Adopcion />}></Route>
+        <Route path="/Gatoinfo" element={<GatoInfo />}></Route>
       </Routes>
     </Router>
   );
