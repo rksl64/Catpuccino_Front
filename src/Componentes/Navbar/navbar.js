@@ -7,7 +7,6 @@ import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css';
 import '../../assets/vendor/boxicons/css/boxicons.min.css';
 import '../../assets/vendor/glightbox/css/glightbox.min.css';
 import '../../assets/vendor/swiper/swiper-bundle.min.css';
-import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -18,7 +17,7 @@ function Navbar() {
             <span>+1 5589 55488 55</span>
           </i>
           <i className="bi bi-clock ms-4 d-none d-lg-flex align-items-center">
-            <span>Mon-Sat: 11:00 AM - 23:00 PM</span>
+            <span>Lunes a Viernes: 09:00 AM - 15:00PM / 16:00 - 20:00 PM</span>
           </i>
         </div>
       </Topbar>
@@ -26,7 +25,7 @@ function Navbar() {
         <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
           <div className="logo me-auto">
             <h1>
-              <a href="index.html">
+              <a href="/">
                 <img src={logito} /> Delicious
               </a>
             </h1>
@@ -35,13 +34,8 @@ function Navbar() {
           <Nav id="navbar" className="navbar order-last order-lg-0">
             <ul>
               <li>
-                <a className="nav-link scrollto " href="#hero">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="#about">
-                  About
+                <a className="nav-link scrollto " href="/">
+                 Inicio
                 </a>
               </li>
               <li>
@@ -49,31 +43,14 @@ function Navbar() {
                   Menu
                 </a>
               </li>
-              <li>
-                <a className="nav-link scrollto" href="#specials">
-                  Specials
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="#events">
-                  Events
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="#chefs">
-                  Chefs
-                </a>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="#gallery">
-                  Gallery
-                </a>
-              </li>
               <li className="dropdown">
-                <a href="#">
-                  <span>Drop Down</span> <i className="bi bi-chevron-down"></i>
+                <a href="#" className="nav-link scrollto">
+                <span>Nuestros Servicios</span> <i className="bi bi-chevron-down"></i>
                 </a>
                 <ul>
+                  <li>
+                      <a href="Reserva">Reservas</a>
+                  </li>
                   <li>
                     <a href="/Productos">Productos</a>
                   </li>
@@ -113,11 +90,6 @@ function Navbar() {
                     <a href="#">Drop Down 4</a>
                   </li>
                 </ul>
-              </li>
-              <li>
-                <a className="nav-link scrollto" href="#contact">
-                  Contact
-                </a>
               </li>
             </ul>
             <MobileNavToggle className="bi bi-list mobile-nav-toggle"></MobileNavToggle>

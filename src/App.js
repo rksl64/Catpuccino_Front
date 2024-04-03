@@ -1,5 +1,6 @@
 import "./App.css";
 import Inicio from "./Paginas/Inicio/inicio";
+import Reserva from "./Paginas/Reserva/Reserva";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Login from "./Paginas/Login/login";
 import { AppConsumerHOC } from "./contexts/app.context";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Inicio />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/Registro" element={<Registro />}></Route>
+        <Route path="/Reserva" element={<Reserva />}></Route>
         <Route path="/Productos" element={<Producto />}></Route>
         <Route path="/Consumiciones" element={<Consumiciones />}></Route>
         <Route path="*" element={<Error />}></Route>
