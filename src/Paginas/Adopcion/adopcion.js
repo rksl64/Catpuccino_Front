@@ -3,26 +3,9 @@ import { Background, TopBanner, Main } from './adopcion-style';
 import MichiBanner from '../../assets/img/adopcion/MichiBannerDark.jpg'
 import gatoEj from '../../assets/img/adopcion/gato.png'
 import { Link } from 'react-router-dom';
-import adopcionService from '../../Servicios/adopcion.service';
 
 
 function Adopcion(){
-  const [gatos, setGatos] = useState([]); /* declaro variables */
-
-  useEffect( () => { /* utilizo use effect para poder utilizar la funcion cuando el componente sea renderizado */
-    getGatos();
-  }, [])
-
-
-  const getGatos = async() => {
-    const response = await adopcionService.getAll;
-    console.log(response)
-    if(response.ok){
-      const data = await response.json();
-      setGatos(data);
-    }
-  }
-
 
     return (
     <>
