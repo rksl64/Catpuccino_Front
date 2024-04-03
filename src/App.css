@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Nunito:ital@0;1&display=swap');
+
 .App {
   text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Quicksand', sans-serif !important; 
+}
+
+p, li{
+  font-family: "Manrope", sans-serif;
 }
 
 .App-logo {
