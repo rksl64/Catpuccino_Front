@@ -16,3 +16,29 @@ export async function getProductos() {
     throw error;
   }
 }
+async function listarproductos(){
+  try {
+    const response = await axios.get(`${BASE_HOST}/producto`);
+  //CONSOLE LOG PARA COMPROBAR
+    console.log('Datos recibidos del backend:', response.data); 
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener los productos:', error);
+    throw error;
+  }
+}
+async function listarconsumiciones(){
+  try {
+    const response = await axios.get(`${BASE_HOST}/consumiciones`);
+  //CONSOLE LOG PARA COMPROBAR
+    console.log('Datos recibidos del backend:', response.data); 
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener las consumiciones:', error);
+    throw error;
+  }
+}
+export{
+  listarproductos,
+  listarconsumiciones,
+}
