@@ -75,7 +75,10 @@ function Navbar() {
                 </a>
                 <ul>
                   <li>
-                    <a href="#">Drop Down 1</a>
+                    <a href="/Productos">Productos</a>
+                  </li>
+                  <li>
+                    <a href="/Consumiciones">Consumiciones</a>
                   </li>
                   <li className="dropdown">
                     <a href="#">

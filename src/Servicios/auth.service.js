@@ -51,6 +51,7 @@ async function register(
   }
 }
 
+
 export default {
   login,
   register,
