@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Div } from "./login-style";
 import authService from "../../Servicios/auth.service";
-import { AppConsumerHook } from "../../contexts/app.context";
+import { deleteCookie, getCookieValue } from "../../Servicios/Cookies/cookies";
 
 function Login() {
-  const { setLoginData } = AppConsumerHook();
 
   const [data, setData] = useState({
-    nombreUsuario:"",
+    nombreUsuario: "",
     password: "",
   });
 
@@ -32,15 +31,20 @@ function Login() {
 
   const onLogin = async () => {
     try {
-      const response = await authService.login(data.nombreUsuario, data.password);
+      const response = await authService.login(
+        data.nombreUsuario,
+        data.password
+      );
       console.log(response);
-      setLoginData({ token: response.token });
+      getCookieValue(response.token);
     } catch (error) {
       console.error("Error:", error);
       throw error;
     }
   };
-
+  const onLogout= ()=>{
+    deleteCookie("token")
+  }
 
   return (
     <Div>
@@ -48,7 +52,7 @@ function Login() {
       <input type="text" placeholder="Name" onChange={handleLoginName} />
       <input type="password" placeholder="Password" onChange={handleLogin} />
       <button onClick={onLogin}>Login</button>
-      <button>Logout</button>
+      <button onClick={onLogout}>Logout</button>
     </Div>
   );
 }

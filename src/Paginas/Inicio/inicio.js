@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles.css';
 import '../../assets/vendor/animate.css/animate.min.css';
 import '../../assets/vendor/bootstrap/css/bootstrap.min.css';
@@ -9,8 +9,21 @@ import '../../assets/vendor/swiper/swiper-bundle.min.css';
 import { Link } from 'react-router-dom';
 import { PDFDOC } from '../../Utils/pdf';
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import { getProductos } from '../../Servicios/user.service';
 
 function Inicio() {
+
+  // const [productos, setProductos] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchProductos = async () => {
+  //     const data = await getProductos();
+  //     setProductos(data);
+  //   };
+
+  //   fetchProductos();
+  // }, []);
+
   return (
     
 <>
@@ -40,6 +53,17 @@ Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayor√
         loading ? 'Loading document...' : 'Descarga el pdf!'
       }
     </PDFDownloadLink>
+{/* 
+    {productos.map((producto) => (
+        <div key={producto.id}>
+          <p>{producto.id}</p>
+          <p>{producto.nombre}</p>
+          <p>{producto.descripcion}</p>
+          <p>{producto.precio}</p>
+          <p>{producto.tipo}</p>
+        </div>
+      ))} */}
+
     <section class="inner-page">
       <div class="container">
         <p>
