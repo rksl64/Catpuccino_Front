@@ -5,10 +5,6 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
-.fin{
-    margin-top: 2.5rem;
-}
 @media print {
     .table{
      overflow: visible;
@@ -57,10 +53,8 @@ tbody tr:nth-child(even) {
     background-color: #0000000b;
 }
 
-button{
-    margin-right: 2%;
-    margin-left: 2%;
-    border: none;
+tbody tr {
+    
 }
 
 
