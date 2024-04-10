@@ -10,6 +10,8 @@ import Producto from "./Paginas/Productos/producto";
 import Consumiciones from "./Paginas/Consumiciones/consumiciones";
 import Adopcion from "./Paginas/Adopcion/adopcion";
 import GatoInfo from "./Paginas/GatoInfo/gatoInfo";
+import CarruselGatos from "./Componentes/CarruselGatos/carruselGatos";
+import Formulario from "./Componentes/Formulario/formulario";
 
 function App() {
   return (
@@ -23,7 +25,11 @@ function App() {
         <Route path="/Consumiciones" element={<Consumiciones />}></Route>
         <Route path="*" element={<Error />}></Route>
         <Route path="/Adopcion" element={<Adopcion />}></Route>
-        <Route path="/Gatoinfo" element={<GatoInfo />}></Route>
+        <Route path="/Gatoinfo/:id" element={<GatoInfo />}></Route>
+        <Route path="/Formulario" element={<Formulario />}></Route>
+
+        <Route path="/carrusel" element={<CarruselGatos />}></Route>
+
       </Routes>
     </Router>
   );

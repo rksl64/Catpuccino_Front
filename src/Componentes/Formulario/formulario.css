@@ -1,0 +1,88 @@
+.formulario-general{
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Altura completa de la ventana */
+    position: relative;
+    background-image: linear-gradient(60deg, #c7d8e8, #fde6e7);
+    
+    
+
+    .container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
+        border-radius: 1%;
+        box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+        background-color: rgba(228, 196, 255, 0.67);
+            /* ---- AQUI EMPIEZA TOD0 LO RELACIONADO CON LA SCROLLBAR ---- */
+        overflow-y: scroll
+    }
+    
+    .container::-webkit-scrollbar { /* width de tod0 el scrolllbar. ESTO ES DE PRIMERO, SI NO NO LO AGARRA*/
+        width: 12px;
+    }
+    
+    .container::-webkit-scrollbar-track{ /* Carril de la barra*/
+        border-radius: 10px;
+    }
+    
+    .container::-webkit-scrollbar-thumb{ /* Barra*/
+        background-color: rgb(42, 3, 94);
+        border-radius: 40px;
+        border: 1px solid rgba(241, 242, 243, 0.6);
+    }
+    
+    .container::-webkit-scrollbar-track-piece{ /* Parte interna del carril de la barra*/
+        background-color: rgba(255, 255, 255, 0.55);
+        border-radius: 20px;
+    }
+
+    .img{
+        background-image: url(../../assets/img/adopcion/catSurprised.jpg);
+        height: auto;
+    }
+
+
+
+
+    .line{
+        display: flex;
+        justify-content: space-evenly; 
+        align-items: center; 
+
+        flex-wrap: wrap; 
+    }
+
+
+
+    .radio-container {
+        background: #fff;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        display: inline-block;
+        padding: 5px;
+    }
+
+    .radio-container label {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        transition: .2s all ease-in-out;
+        width: 80px;
+    }
+    .radio-container input[type="radio"] {
+        display: none;
+    }
+    .radio-container input[type="radio"]:checked + label {
+        background: #e7ad99;
+        border: 1px solid #000000;
+    }
+
+}

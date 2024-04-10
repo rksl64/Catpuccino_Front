@@ -92,3 +92,48 @@ export{
   agregarProductoAlCarrito,
   listaCarrito
 }
+
+
+
+//---------------------- GATOS --------------------------
+export async function getAllGatos(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/gato/getAll`);
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error', error);
+    throw error;
+  }
+}
+
+export async function getGatosDisponibles(){ //este tbm lo uso para el carrusel
+  try{
+    const response = await axios.get(`${BASE_HOST}/gato/getAll`);
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error', error);
+    throw error;
+  }
+}
+
+export async function getGatoOneByOne(id){
+  try{
+    const response = await axios.get(`${BASE_HOST}/gato/${id}`);
+      console.log('Datos recibidos del backend:', response.data);
+    return response.data;
+  } catch (error) {
+      console.error('Ops, un error', error);
+    throw error;
+  }
+}
+
+//---------------------- CARRUSEL ADOPCION --------------------------
+export async function getNumGatosAdoptados(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/adopcion/numTotal`);
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error', error);
+    throw error;
+  }
+}
