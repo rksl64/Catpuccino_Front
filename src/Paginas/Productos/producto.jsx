@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import { listarproductos } from '../../Servicios/user.service';
+import { agregarProductoAlCarrito } from '../../Servicios/user.service';
+import{listaCarrito}  from '../../Servicios/user.service';
 
 function Producto() {
     const [productos, setProductos] = useState([]);
@@ -30,6 +32,29 @@ function Producto() {
             [id]: Math.max((prevContadores[id] || 0) - 1, 0)
         }));
     };
+
+    //PARA EL CARRITO
+    const addToCart = async (id, cantidad) => { 
+        try {
+            await agregarProductoAlCarrito(id, cantidad); // HAY QUE VER COMO LE METEMOS LA ID DEL USUARIO
+            alert('Producto añadido al carrito');
+        } catch (error) {
+            console.error('Error al añadir el producto al carrito:', error);
+            alert('Error al añadir el producto al carrito');
+        }
+    };
+
+    //INSERTAR CARRITO EN BBDD
+    const finalizarPedido = async () => {
+        try {
+            await listaCarrito(); 
+            alert('Pedido finalizado');
+        } catch (error) {
+            console.error('Error al finalizar el pedido:', error);
+            alert('Error al finalizar el pedido');
+        }
+    };
+
 
     return (
         <section>
@@ -65,7 +90,7 @@ function Producto() {
                         ))}
                     </tbody>
                 </table>
-                <button className='fin'>Finalizar pedido</button>
+                <button className='fin' onClick={finalizarPedido}>Finalizar pedido</button>
             </div>
            
         </section>

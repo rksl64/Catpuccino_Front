@@ -56,7 +56,39 @@ async function listarconsumiciones(){
     throw error;
   }
 }
+//AGREGAMOS AL CARRITO
+async function agregarProductoAlCarrito(idProducto, cantidad, idUsuario) {
+  try {
+    const response = await axios.post(`${BASE_HOST}consumiciones/carrito/agregar`, {
+      idProducto: idProducto,
+      cantidad: cantidad,
+      //MIRAR LO DEL USUARIO LOGEADO
+      idUsuario: idUsuario
+    });
+    console.log('Producto agregado al carrito:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error al agregar el producto al carrito:', error);
+    throw error;
+  }
+}
+
+async function listaCarrito() {
+  try {
+    const response = await axios.post(`${BASE_HOST}/consumiciones/pedido`);
+    console.log('Productos en el carrito guardados:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error al listar los productos en el carrito:', error);
+    throw error;
+  }
+}
+
+
+
 export{
   listarproductos,
   listarconsumiciones,
+  agregarProductoAlCarrito,
+  listaCarrito
 }
