@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Header, Nav, MobileNavToggle, Topbar } from "../Navbar/navbar-style";
 import logito from "../../assets/logito.png";
-import '../../assets/vendor/animate.css/animate.min.css';
-import '../../assets/vendor/bootstrap/css/bootstrap.min.css';
-import '../../assets/vendor/bootstrap-icons/bootstrap-icons.css';
-import '../../assets/vendor/boxicons/css/boxicons.min.css';
-import '../../assets/vendor/glightbox/css/glightbox.min.css';
-import '../../assets/vendor/swiper/swiper-bundle.min.css';
 
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <Topbar id="topbar" className="d-flex align-items-center fixed-top">
+      <Topbar id="topbar" className={`d-flex align-items-center fixed-top ${scrolled ? 'topbar-scrolled' : ''}`}>
         <div className="container-fluid container-xl d-flex align-items-center justify-content-center justify-content-lg-start">
           <i className="bi bi-phone d-flex align-items-center">
             <span>+1 5589 55488 55</span>
@@ -21,18 +34,18 @@ function Navbar() {
           </i>
         </div>
       </Topbar>
-      <Header id="header" className="fixed-top d-flex align-items-center">
+      <Header id="header" className={`fixed-top d-flex align-items-center ${scrolled ? 'header-scrolled' : ''}`}>
         <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
           <div className="logo me-auto">
             <h1>
               <a href="/">
-                <img src={logito} /> Delicious
+                <img src={logito} alt="logo" /> Delicious
               </a>
             </h1>
           </div>
 
           <Nav id="navbar" className="navbar order-last order-lg-0">
-            <ul>
+          <ul>
               <li>
                 <a className="nav-link scrollto " href="/">
                  Inicio
@@ -96,7 +109,7 @@ function Navbar() {
           </Nav>
 
           <a href="/Login" className="book-a-table-btn scrollto">
-          Inicio Sesión
+            Inicio Sesión
           </a>
         </div>
       </Header>

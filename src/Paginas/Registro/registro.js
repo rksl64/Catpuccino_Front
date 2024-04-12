@@ -32,6 +32,9 @@ function Registro() {
         registro.password
       );
       console.log(response);
+      ///IDEA
+      //PONER UN POP UP QUE DIGA QUE SE HA REALIZADO CORRECTAMENTE EL REGISTRO Y 
+      //PONER UNA ESPERA DE UNOS SEGUNDOS Y SE REDIRIGE A lOGIN
     } catch (error) {
       console.error("Error:", error);
       throw error;
