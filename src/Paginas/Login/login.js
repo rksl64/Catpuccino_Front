@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Div } from "./login-style";
 import authService from "../../Servicios/auth.service";
-import { deleteCookie, getCookieValue } from "../../Servicios/Cookies/cookies";
+import { deleteCookie, getCookieValue, getIDValue } from "../../Servicios/Cookies/cookies";
 
 function Login() {
 
@@ -37,6 +37,7 @@ function Login() {
       );
       console.log(response);
       getCookieValue(response.token);
+      getIDValue(response.id);
     } catch (error) {
       console.error("Error:", error);
       throw error;
@@ -44,6 +45,8 @@ function Login() {
   };
   const onLogout= ()=>{
     deleteCookie("token")
+    deleteCookie("ID")
+    window.location.reload();
   }
 
   return (
