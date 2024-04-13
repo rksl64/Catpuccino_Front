@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Header, Nav, MobileNavToggle, Topbar } from "../Navbar/navbar-style";
+import { Header, Nav, MobileNavToggle, Topbar } from "./navbar-style";
 import logito from "../../assets/logito.png";
 
 function Navbar() {
@@ -39,7 +39,7 @@ function Navbar() {
           <div className="logo me-auto">
             <h1>
               <a href="/">
-                <img src={logito} alt="logo" /> Delicious
+                <img src={logito} alt="logo" /> Catpuccino
               </a>
             </h1>
           </div>
@@ -57,7 +57,7 @@ function Navbar() {
                 </a>
               </li>
               <li className="dropdown">
-                <a href="#" className="nav-link scrollto">
+                <a href="/" className="nav-link scrollto">
                 <span>Nuestros Servicios</span> <i className="bi bi-chevron-down"></i>
                 </a>
                 <ul>
@@ -70,37 +70,14 @@ function Navbar() {
                   <li>
                     <a href="/Consumiciones">Consumiciones</a>
                   </li>
-                  <li className="dropdown">
-                    <a href="#">
-                      <span>Deep Drop Down</span>{" "}
-                      <i className="bi bi-chevron-right"></i>
-                    </a>
-                    <ul>
-                      <li>
-                        <a href="#">Deep Drop Down 1</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 2</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 3</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 4</a>
-                      </li>
-                      <li>
-                        <a href="#">Deep Drop Down 5</a>
-                      </li>
-                    </ul>
+                  <li>
+                    <a href="/">Drop Down 2</a>
                   </li>
                   <li>
-                    <a href="#">Drop Down 2</a>
+                    <a href="/">Drop Down 3</a>
                   </li>
                   <li>
-                    <a href="#">Drop Down 3</a>
-                  </li>
-                  <li>
-                    <a href="#">Drop Down 4</a>
+                    <a href="/">Drop Down 4</a>
                   </li>
                 </ul>
               </li>

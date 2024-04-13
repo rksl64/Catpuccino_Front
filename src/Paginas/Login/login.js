@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Div } from "./login-style";
 import authService from "../../Servicios/auth.service";
-import { deleteCookie, getCookieValue, getIDValue } from "../../Servicios/Cookies/cookies";
+import { deleteCookie, setCookieValue, setIDValue } from "../../Servicios/Cookies/cookies";
 
 function Login() {
 
@@ -36,8 +36,8 @@ function Login() {
         data.password
       );
       console.log(response);
-      getCookieValue(response.token);
-      getIDValue(response.id);
+      setCookieValue(response.token);
+      setIDValue(response.id);
     } catch (error) {
       console.error("Error:", error);
       throw error;

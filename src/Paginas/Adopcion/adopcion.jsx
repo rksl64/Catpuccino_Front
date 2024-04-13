@@ -23,7 +23,7 @@ function Adopcion(){
     return (
     <>
 
-    <body className='adopcion'>
+    <section className='adopcion'>
         <section className='TopBanner' style={{backgroundImage: `url(${MichiBanner})`}}>
             <h1>Adopción</h1>
         </section>
@@ -41,7 +41,7 @@ function Adopcion(){
                     <div className='adopt-card col-md-6 col-xl-3 res-margin'>
                         <div className='card'>
                             <div className='thumbnail text-center'>
-                            <img className='border-irregular1 img-fluid' src={gato.imagen}></img>
+                            <img className='border-irregular1 img-fluid' src={gato.imagen} alt=""></img>
                             <div className='card-info'>
                                 <h3>{gato.nombre}</h3>
                                 <ul className='list-unstyled'>
@@ -57,7 +57,7 @@ function Adopcion(){
                 ))}
             </section>
         </main>
-    </body>
+    </section>
 
 
     </>
