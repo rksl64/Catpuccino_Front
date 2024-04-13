@@ -6,7 +6,7 @@ function Footer() {
     <>
       <FooterWrapper id="footer">
         <Container>
-          <Heading>Delicious</Heading>
+          <Heading>Catpuccino</Heading>
           <Paragraph>
             Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni
             eligendi fuga maxime saepe commodi placeat.
