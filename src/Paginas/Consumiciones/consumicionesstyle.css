@@ -1,73 +1,82 @@
-* {
-    margin: 0;
-    padding: 0;
-
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
-@media print {
-    .table{
-     overflow: visible;
-     height: auto !important;
-     width: auto !important;
-    }
-   }
-
-   section {
+.body{
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.contenedor>h2{
-    margin-bottom: 2rem;
-}
-table {
-    width: 82vw;
-    height: 40vh;
-    background-color: #fff5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    backdrop-filter: blur(7px);
-    box-shadow: 0 .4rem .8rem #0005;
-    border-radius: .8rem;
 
-    overflow: hidden;
-}
-
-table, th, td {
-    border-collapse: collapse;
-    padding: 1rem;
-    text-align: left;
-}
-
-thead th {
-    position: sticky;
-    top: 0;
-    left: 0;
-    background-color: #d5d1defe;
-    cursor: pointer;
-    text-transform: capitalize;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #0000000b;
-}
-
-tbody tr {
+    * {
+        margin: 0;
+        padding: 0;
+    
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    
+    .fin{
+        margin-top: 2.5rem;
+    }
+    @media print {
+        .table{
+         overflow: visible;
+         height: auto !important;
+         width: auto !important;
+        }
+       }
+    .contenedor>h2{
+        margin-bottom: 2rem;
+    }
+    table {
+        width: 82vw;
+        height: 40vh;
+        background-color: #fff5;
+    
+        backdrop-filter: blur(7px);
+        box-shadow: 0 .4rem .8rem #0005;
+        border-radius: .8rem;
+    
+        overflow: hidden;
+    }
+    
+    table, th, td {
+        border-collapse: collapse;
+        padding: 1rem;
+        text-align: left;
+    }
+    
+    thead th {
+        position: sticky;
+        top: 0;
+        left: 0;
+        background-color: #d5d1defe;
+        cursor: pointer;
+        text-transform: capitalize;
+    }
+    
+    tbody tr:nth-child(even) {
+        background-color: #0000000b;
+    }
+    
+    button{
+        margin-right: 2%;
+        margin-left: 2%;
+        border: none;
+    }
+    
+    
+    tbody tr.hide {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    
+    tbody tr:hover {
+        background-color: #fff6 !important;
+    }
+    
+    
+    
+    
+    
     
 }
-
-
-tbody tr.hide {
-    opacity: 0;
-    transform: translateX(100%);
-}
-
-tbody tr:hover {
-    background-color: #fff6 !important;
-}
-
-
-
-
 

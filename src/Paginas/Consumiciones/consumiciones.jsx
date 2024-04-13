@@ -16,7 +16,7 @@ function Consumiciones(){
     }, []); 
   
     return (
-      <section>
+      <section className='body'>
             <div className='contenedor'>
                 <h2>Listado de Reservas</h2>
                 <table>
