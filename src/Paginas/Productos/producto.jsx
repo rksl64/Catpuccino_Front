@@ -57,7 +57,7 @@ function Producto() {
 
 
     return (
-        <section>
+        <section className='body'>
             <div className='contenedor'>
                 <h2>Listado de Productos</h2>
                 <table>
