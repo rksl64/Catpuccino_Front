@@ -59,11 +59,15 @@ async function listarconsumiciones(){
 //AGREGAMOS AL CARRITO
 async function agregarProductoAlCarrito(idProducto, cantidad, idUsuario) {
   try {
-    const response = await axios.post(`${BASE_HOST}consumiciones/carrito/agregar`, {
-      idProducto: idProducto,
-      cantidad: cantidad,
-      //MIRAR LO DEL USUARIO LOGEADO
-      idUsuario: idUsuario
+    //const token = getToken("token"); // Obtener el token de autenticación
+    const response = await axios.post(`${BASE_HOST}/consumiciones/carrito/agregar`,null, {
+      params:{
+      idProducto:idProducto,
+      cantidad:cantidad,
+      idUsuario:idUsuario}
+    }, {
+      headers: authHeader()
+
     });
     console.log('Producto agregado al carrito:', response.data);
     return response.data;
@@ -71,6 +75,7 @@ async function agregarProductoAlCarrito(idProducto, cantidad, idUsuario) {
     console.error('Error al agregar el producto al carrito:', error);
     throw error;
   }
+
 }
 
 async function listaCarrito() {
@@ -83,14 +88,26 @@ async function listaCarrito() {
     throw error;
   }
 }
-
+//TE MUESTRA LO QUE HAY DENTRO DEL CARRITO
+async function verCarrito(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/consumiciones/verCarro`);
+    console.log('Lo que hay en el carrito', response.data); //AQUI HAY UN CONSOLE LOG
+    return response.data;
+  }catch(error){
+    console.error('Error al listar los productos en el carrito:', error);
+    throw error;
+  }
+  
+}
 
 
 export{
   listarproductos,
   listarconsumiciones,
   agregarProductoAlCarrito,
-  listaCarrito
+  listaCarrito,
+  verCarrito
 }
 
 
