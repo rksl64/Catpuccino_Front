@@ -49,6 +49,10 @@ function Login() {
   return (
     <Div>
       <h1>Login</h1>
+      <input type="text" placeholder="Name" onChange={handleLoginName} />
+      <input type="password" placeholder="Password" onChange={handleLogin} />
+      <button onClick={onLogin}>Login</button>
+      //----------------------------------------------
       <FloatLabel>
         <Password
           className="input"
