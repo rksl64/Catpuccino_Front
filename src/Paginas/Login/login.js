@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { Div } from "./login-style";
+import { Div, Input } from "./login-style";
 import authService from "../../Servicios/auth.service";
-import { deleteCookie, setCookieValue, setIDValue } from "../../Servicios/Cookies/cookies";
+import { setIDValue, setCookieValue } from "../../Servicios/Cookies/cookies";
+import { Password } from "primereact/password";
+import { FloatLabel } from "primereact/floatlabel";
+import "./login.css";
 
 function Login() {
-
   const [data, setData] = useState({
     nombreUsuario: "",
     password: "",
   });
+  const [value, setValue] = useState();
 
   const handleLogin = (password) => {
     setData((prev) => ({
@@ -43,19 +46,20 @@ function Login() {
       throw error;
     }
   };
-  const onLogout= ()=>{
-    deleteCookie("token")
-    deleteCookie("ID")
-    window.location.reload();
-  }
-
   return (
     <Div>
       <h1>Login</h1>
-      <input type="text" placeholder="Name" onChange={handleLoginName} />
-      <input type="password" placeholder="Password" onChange={handleLogin} />
-      <button onClick={onLogin}>Login</button>
-      <button onClick={onLogout}>Logout</button>
+      <FloatLabel>
+        <Password
+          className="input"
+          inputId="password"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          toggleMask
+        />
+        <label htmlFor="password">Password</label>
+      </FloatLabel>
+      <button onClick={onLogin}>Iniciar Sesión</button>
     </Div>
   );
 }
