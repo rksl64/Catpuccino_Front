@@ -46,7 +46,7 @@ function Adopcion(){
                                 <h3>{gato.nombre}</h3>
                                 <ul className='list-unstyled'>
                                 <li><strong>Género:</strong> {gato.sexo.toLowerCase()}</li>
-                                <li><strong>Raza:</strong> {gato.raza.replace('_', ' ').toLowerCase()}</li>
+                                <li><strong>Raza:</strong> {gato.raza ? gato.raza.replace('_', ' ').toLowerCase() : 'No especificada'}</li>
                                 <li><strong>Tamaño:</strong> {gato.tamanyo.toLowerCase()}</li>
                                 </ul>
                             </div>

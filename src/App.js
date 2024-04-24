@@ -12,12 +12,19 @@ import Adopcion from "./Paginas/Adopcion/adopcion";
 import GatoInfo from "./Paginas/GatoInfo/gatoInfo";
 import CarruselGatos from "./Componentes/CarruselGatos/carruselGatos";
 import Formulario from "./Componentes/Formulario/formulario";
+import GestionGatos from "./Paginas/GestionGatos/gestionGatos";
+import { useRef } from "react";
+
+import { Toast } from 'primereact/toast';
 
 function App() {
+  const toast = useRef(null);
+
   return (
     <Router>
+       <Toast ref={toast} />
       <Routes>
-        <Route path="/" element={<Inicio />}></Route>
+        <Route path="/" element={<Inicio toast={toast} />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/Registro" element={<Registro />}></Route>
         <Route path="/Reserva" element={<Reserva />}></Route>
@@ -26,7 +33,8 @@ function App() {
         <Route path="*" element={<Error />}></Route>
         <Route path="/Adopcion" element={<Adopcion />}></Route>
         <Route path="/Gatoinfo/:id" element={<GatoInfo />}></Route>
-        <Route path="/Formulario" element={<Formulario />}></Route>
+        <Route path="/Formulario" element={<Formulario toast={toast}/>}></Route>
+        <Route path="/GestionGatos" element={<GestionGatos toast={toast}/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
 
