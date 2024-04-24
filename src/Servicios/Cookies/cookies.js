@@ -1,4 +1,4 @@
-export function getCookieValue(token) {
+export function setCookieValue(token) {
   document.cookie = `token=${token}; path=/;`;
 }
 export function getToken(nombre){
@@ -14,7 +14,7 @@ export function getToken(nombre){
 export function deleteCookie(token) {
     document.cookie = token + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 }
-export function getIDValue(ID) {
+export function setIDValue(ID) {
     document.cookie = `ID=${ID}; path=/;`;
   }
   export function getID(ID){

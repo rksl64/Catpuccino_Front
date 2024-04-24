@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Inicio from "./Paginas/Inicio/inicio";
 import Reserva from "./Paginas/Reserva/Reserva";
@@ -12,18 +13,27 @@ import Adopcion from "./Paginas/Adopcion/adopcion";
 import GatoInfo from "./Paginas/GatoInfo/gatoInfo";
 import CarruselGatos from "./Componentes/CarruselGatos/carruselGatos";
 import Formulario from "./Componentes/Formulario/formulario";
+import Navbar from "./Componentes/Navbar/navbar";
+import Footer from "./Componentes/Footer/footer";
 import GestionGatos from "./Paginas/GestionGatos/gestionGatos";
 import { useRef } from "react";
 
 import { Toast } from 'primereact/toast';
 
 function App() {
+
+  const[activo,setActivo]=useState(true)
   const toast = useRef(null);
 
   return (
+    <>
+    {activo && <Navbar />}
     <Router>
        <Toast ref={toast} />
       <Routes>
+        <Route path="/" element={<Inicio />}></Route>
+        <Route path="/Login" element={<Login setActivo={setActivo}/>}></Route>
+        <Route path="/Registro" element={<Registro setActivo={setActivo}/>}></Route>
         <Route path="/" element={<Inicio toast={toast} />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/Registro" element={<Registro />}></Route>
@@ -37,9 +47,10 @@ function App() {
         <Route path="/GestionGatos" element={<GestionGatos toast={toast}/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
-
       </Routes>
     </Router>
+    {activo && <Footer />}
+    </>
   );
 }
 

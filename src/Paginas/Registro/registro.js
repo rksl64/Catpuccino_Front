@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Div } from "./registro-style";
 import authService from "../../Servicios/auth.service";
 
-function Registro() {
+function Registro({ setActivo }) {
   const [registro, setRegistro] = useState({
     nombre: "",
     apellidos: "",
     telefono: "",
     email: "",
     dni: "",
-    rol: "",
+    rol: 0,
     nombreUsuario: "",
     password: "",
   });
+
+  useEffect(() => {
+    setActivo(false);
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -33,7 +37,7 @@ function Registro() {
       );
       console.log(response);
       ///IDEA
-      //PONER UN POP UP QUE DIGA QUE SE HA REALIZADO CORRECTAMENTE EL REGISTRO Y 
+      //PONER UN POP UP QUE DIGA QUE SE HA REALIZADO CORRECTAMENTE EL REGISTRO Y
       //PONER UNA ESPERA DE UNOS SEGUNDOS Y SE REDIRIGE A lOGIN
     } catch (error) {
       console.error("Error:", error);
@@ -72,12 +76,6 @@ function Registro() {
         type="text"
         name="dni"
         placeholder="DNI"
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
-        name="rol"
-        placeholder="Rol"
         onChange={handleInputChange}
       />
       <input
