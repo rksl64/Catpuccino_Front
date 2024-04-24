@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Inicio from "./Paginas/Inicio/inicio";
 import Reserva from "./Paginas/Reserva/Reserva";
@@ -12,14 +13,20 @@ import Adopcion from "./Paginas/Adopcion/adopcion";
 import GatoInfo from "./Paginas/GatoInfo/gatoInfo";
 import CarruselGatos from "./Componentes/CarruselGatos/carruselGatos";
 import Formulario from "./Componentes/Formulario/formulario";
+import Navbar from "./Componentes/Navbar/navbar";
+import Footer from "./Componentes/Footer/footer";
 
 function App() {
+
+  const[activo,setActivo]=useState(true)
   return (
+    <>
+    {activo && <Navbar />}
     <Router>
       <Routes>
         <Route path="/" element={<Inicio />}></Route>
-        <Route path="/Login" element={<Login />}></Route>
-        <Route path="/Registro" element={<Registro />}></Route>
+        <Route path="/Login" element={<Login setActivo={setActivo}/>}></Route>
+        <Route path="/Registro" element={<Registro setActivo={setActivo}/>}></Route>
         <Route path="/Reserva" element={<Reserva />}></Route>
         <Route path="/Productos" element={<Producto />}></Route>
         <Route path="/Consumiciones" element={<Consumiciones />}></Route>
@@ -29,9 +36,10 @@ function App() {
         <Route path="/Formulario" element={<Formulario />}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
-
       </Routes>
     </Router>
+    {activo && <Footer />}
+    </>
   );
 }
 

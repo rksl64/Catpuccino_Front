@@ -1,17 +1,43 @@
-import React, { useState } from "react";
-import { Div, Input } from "./login-style";
+import React, { useEffect, useState } from "react";
+import {
+  BackgroundOverlay,
+  Div,
+  FormContainer,
+  Title,
+  Form,
+  PageLink,
+  FormBtn,
+  PageLinkLabel,
+  SignUpLabel,
+  SignUpLink,
+  Titulo,
+  CardContainer,
+  Header,
+  DivImage,
+  Content,
+  Message,
+  Imagen,
+  DivImageError,
+  A,
+} from "./login-style";
 import authService from "../../Servicios/auth.service";
 import { setIDValue, setCookieValue } from "../../Servicios/Cookies/cookies";
 import { Password } from "primereact/password";
 import { FloatLabel } from "primereact/floatlabel";
 import "./login.css";
+import { InputText } from "primereact/inputtext";
+import logito from "../../assets/logito.png";
 
-function Login() {
+function Login({ setActivo }) {
   const [data, setData] = useState({
     nombreUsuario: "",
     password: "",
   });
-  const [value, setValue] = useState();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(null);
+
+  useEffect(() => {
+    setActivo(false);
+  }, []);
 
   const handleLogin = (password) => {
     setData((prev) => ({
@@ -27,11 +53,6 @@ function Login() {
     }));
   };
 
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setData({ ...data, [name]: value });
-  // };
-
   const onLogin = async () => {
     try {
       const response = await authService.login(
@@ -39,32 +60,101 @@ function Login() {
         data.password
       );
       console.log(response);
-      setCookieValue(response.token);
-      setIDValue(response.id);
+      if (response.token) {
+        setShowSuccessMessage(true);
+        setCookieValue(response.token);
+        setIDValue(response.id);
+        setTimeout(() => {
+          window.location.href = "../";
+        }, 2000);
+      } else {
+        setShowSuccessMessage(false);
+        setTimeout(() => {
+          setShowSuccessMessage(null);
+          setData(() => ({
+            nombreUsuario: "",
+            password: "",
+          }));
+        }, 2000);
+      }
     } catch (error) {
       console.error("Error:", error);
       throw error;
     }
   };
+
   return (
-    <Div>
-      <h1>Login</h1>
-      <input type="text" placeholder="Name" onChange={handleLoginName} />
-      <input type="password" placeholder="Password" onChange={handleLogin} />
-      <button onClick={onLogin}>Login</button>
-      //----------------------------------------------
-      <FloatLabel>
-        <Password
-          className="input"
-          inputId="password"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          toggleMask
-        />
-        <label htmlFor="password">Password</label>
-      </FloatLabel>
-      <button onClick={onLogin}>Iniciar Sesión</button>
-    </Div>
+    <BackgroundOverlay>
+      <Div>
+        <FormContainer className="form-container">
+          <Title className="title">Catpuccino</Title>
+          <Form className="form">
+            <FloatLabel className="Margin">
+              <InputText
+                value={data.nombreUsuario}
+                className="Input"
+                id="username"
+                onChange={handleLoginName}
+              />
+              <label htmlFor="username">Usuario</label>
+            </FloatLabel>
+            <FloatLabel>
+              <Password
+                value={data.password}
+                onChange={handleLogin}
+                feedback={false}
+                tabIndex={1}
+                toggleMask
+              />
+              <label htmlFor="password">Contraseña</label>
+            </FloatLabel>
+            <FormBtn className="form-btn" onClick={onLogin}>
+              Iniciar Sesión
+            </FormBtn>
+          </Form>
+          <SignUpLabel className="sign-up-label">
+            No tienes Cuenta?
+            <SignUpLink className="sign-up-link">
+              <A href="../Registro">Registrate</A>
+            </SignUpLink>
+          </SignUpLabel>
+          <PageLink className="page-link">
+            <PageLinkLabel className="page-link-label">
+              <A href="">Olvidaste la contraseña?</A>
+            </PageLinkLabel>
+          </PageLink>
+        </FormContainer>
+
+        {showSuccessMessage == true ? (
+          <CardContainer>
+            <Header>
+              <DivImage>
+                <Imagen src={logito} />
+              </DivImage>
+              <Content>
+                <Titulo>Login exitoso</Titulo>
+                <Message>Se te enviará a Inicio.</Message>
+              </Content>
+            </Header>
+          </CardContainer>
+        ) : showSuccessMessage == false ? (
+          <CardContainer>
+            <Header>
+              <DivImageError>
+                <Imagen src={logito} />
+              </DivImageError>
+              <Content>
+                <Titulo>Login fallido</Titulo>
+                <Message>
+                  Las Credenciales Incorrectas, comprueba el Usuario o
+                  contraseña.
+                </Message>
+              </Content>
+            </Header>
+          </CardContainer>
+        ) : null}
+      </Div>
+    </BackgroundOverlay>
   );
 }
 
