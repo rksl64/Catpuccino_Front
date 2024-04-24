@@ -15,25 +15,36 @@ import CarruselGatos from "./Componentes/CarruselGatos/carruselGatos";
 import Formulario from "./Componentes/Formulario/formulario";
 import Navbar from "./Componentes/Navbar/navbar";
 import Footer from "./Componentes/Footer/footer";
+import GestionGatos from "./Paginas/GestionGatos/gestionGatos";
+import { useRef } from "react";
+
+import { Toast } from 'primereact/toast';
 
 function App() {
 
   const[activo,setActivo]=useState(true)
+  const toast = useRef(null);
+
   return (
     <>
     {activo && <Navbar />}
     <Router>
+       <Toast ref={toast} />
       <Routes>
         <Route path="/" element={<Inicio />}></Route>
         <Route path="/Login" element={<Login setActivo={setActivo}/>}></Route>
         <Route path="/Registro" element={<Registro setActivo={setActivo}/>}></Route>
+        <Route path="/" element={<Inicio toast={toast} />}></Route>
+        <Route path="/Login" element={<Login />}></Route>
+        <Route path="/Registro" element={<Registro />}></Route>
         <Route path="/Reserva" element={<Reserva />}></Route>
         <Route path="/Productos" element={<Producto />}></Route>
         <Route path="/Consumiciones" element={<Consumiciones />}></Route>
         <Route path="*" element={<Error />}></Route>
         <Route path="/Adopcion" element={<Adopcion />}></Route>
         <Route path="/Gatoinfo/:id" element={<GatoInfo />}></Route>
-        <Route path="/Formulario" element={<Formulario />}></Route>
+        <Route path="/Formulario" element={<Formulario toast={toast}/>}></Route>
+        <Route path="/GestionGatos" element={<GestionGatos toast={toast}/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
       </Routes>

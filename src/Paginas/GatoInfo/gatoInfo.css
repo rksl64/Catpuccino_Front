@@ -9,17 +9,20 @@
         height: 13rem;
         width: auto;
         color: #fff;
+        display: flex;
+        justify-content: center; 
+        align-items: center;  
     
         h1{
             font-family: 'Quicksand', sans-serif;
             font-weight: bold;
-            text-align: center;
             font-size: 3.8em;
         }
     }
     
     .Main{
         background-color: #FAF9F6;
+        padding: 6rem 0;
     
         .border-irregular1{
             border-radius: 155px 45px 225px 75px/15px 125px 15px 155px;
@@ -79,6 +82,7 @@
     
         .about-cat{
           color: #808080;
+          margin-top: 6rem;
     
           h3{
             font-size: 2.3rem;
@@ -95,6 +99,7 @@
             padding: 1rem;
             color: #fff;
             border-radius: 1rem;
+            margin: 4rem 0;
             
             h6{
               font-size: 1.4em;

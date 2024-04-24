@@ -144,6 +144,29 @@ export async function getGatoOneByOne(id){
   }
 }
 
+export async function addGatos(gatoData){
+  try{
+    const response = await axios.post(`${BASE_HOST}/gato/crear`, gatoData);
+    console.log('Michi añadido', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error', error);
+    console.log(error)
+    throw error;
+  }
+}
+
+export async function getRazas(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/gato/getRazas`);
+    return response.data;
+  } catch (error){
+    console.error('Ops, un error', error);
+  
+    throw error;
+  }
+}
+
 //---------------------- CARRUSEL ADOPCION --------------------------
 export async function getNumGatosAdoptados(){
   try{
