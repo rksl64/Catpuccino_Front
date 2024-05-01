@@ -21,7 +21,7 @@ import {
   A,
 } from "./login-style";
 import authService from "../../Servicios/auth.service";
-import { setIDValue, setCookieValue } from "../../Servicios/Cookies/cookies";
+import { setIDValue, setCookieValue, setRolValue } from "../../Servicios/Cookies/cookies";
 import { Password } from "primereact/password";
 import { FloatLabel } from "primereact/floatlabel";
 import "./login.css";
@@ -64,6 +64,7 @@ function Login({ setActivo }) {
         setShowSuccessMessage(true);
         setCookieValue(response.token);
         setIDValue(response.id);
+        setRolValue(response.rol);
         setTimeout(() => {
           window.location.href = "../";
         }, 2000);
