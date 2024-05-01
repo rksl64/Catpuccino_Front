@@ -30,3 +30,21 @@ export function setIDValue(ID) {
   export function deleteID(ID) {
       document.cookie = ID+ '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   }
+
+  
+  export function setRolValue(Rol) {
+    document.cookie = `Rol=${Rol}; path=/;`;
+  }
+  export function getRol(Rol){
+      var cookies = document.cookie.split(";");
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          if (cookie.startsWith(Rol + "=")) {
+              return cookie.substring(Rol.length + 1);
+          }
+      }
+      return null;
+  }
+  export function deleteRol(Rol) {
+      document.cookie = Rol+ '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
