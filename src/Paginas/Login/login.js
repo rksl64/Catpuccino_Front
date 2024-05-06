@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   BackgroundOverlay,
   Div,
@@ -10,30 +10,28 @@ import {
   PageLinkLabel,
   SignUpLabel,
   SignUpLink,
-  Titulo,
-  CardContainer,
-  Header,
-  DivImage,
-  Content,
-  Message,
   Imagen,
-  DivImageError,
+  ToastDiv,
   A,
 } from "./login-style";
 import authService from "../../Servicios/auth.service";
-import { setIDValue, setCookieValue, setRolValue } from "../../Servicios/Cookies/cookies";
+import {
+  setIDValue,
+  setCookieValue,
+  setRolValue,
+} from "../../Servicios/Cookies/cookies";
 import { Password } from "primereact/password";
 import { FloatLabel } from "primereact/floatlabel";
 import "./login.css";
 import { InputText } from "primereact/inputtext";
 import logito from "../../assets/logito.png";
+import { Toast } from "primereact/toast";
 
 function Login({ setActivo }) {
   const [data, setData] = useState({
     nombreUsuario: "",
     password: "",
   });
-  const [showSuccessMessage, setShowSuccessMessage] = useState(null);
 
   useEffect(() => {
     setActivo(false);
@@ -61,17 +59,21 @@ function Login({ setActivo }) {
       );
       console.log(response);
       if (response.token) {
-        setShowSuccessMessage(true);
+        showSuccessMessage(
+          "Inicio de sesión exitoso. Redirigiendo a Inicio..."
+        );
         setCookieValue(response.token);
         setIDValue(response.id);
         setRolValue(response.rol);
+        setUserNameValue(response.username);
         setTimeout(() => {
           window.location.href = "../";
         }, 2000);
       } else {
-        setShowSuccessMessage(false);
+        showErrorMessage(
+          "Las credenciales son incorrectas. Por favor, verifica el nombre de usuario y la contraseña."
+        );
         setTimeout(() => {
-          setShowSuccessMessage(null);
           setData(() => ({
             nombreUsuario: "",
             password: "",
@@ -82,6 +84,38 @@ function Login({ setActivo }) {
       console.error("Error:", error);
       throw error;
     }
+  };
+
+  const toast = useRef(null);
+
+  // Función para mostrar el mensaje de éxito
+  const showSuccessMessage = (message) => {
+    toast.current.show({
+      severity: "success",
+      content: () => (
+        <ToastDiv style={{ flex: "1" }}>
+          <div>
+            <Imagen src={logito} shape="circle" />
+          </div>
+          <div className="font-medium text-lg my-3 text-900">{message}</div>
+        </ToastDiv>
+      ),
+    });
+  };
+
+  // Función para mostrar el mensaje de error
+  const showErrorMessage = (message) => {
+    toast.current.show({
+      severity: "error",
+      content: () => (
+        <ToastDiv style={{ flex: "1" }}>
+          <div>
+            <Imagen src={logito} shape="circle" />
+          </div>
+          <div className="font-medium text-lg my-3 text-900">{message}</div>
+        </ToastDiv>
+      ),
+    });
   };
 
   return (
@@ -126,34 +160,7 @@ function Login({ setActivo }) {
           </PageLink>
         </FormContainer>
 
-        {showSuccessMessage == true ? (
-          <CardContainer>
-            <Header>
-              <DivImage>
-                <Imagen src={logito} />
-              </DivImage>
-              <Content>
-                <Titulo>Login exitoso</Titulo>
-                <Message>Se te enviará a Inicio.</Message>
-              </Content>
-            </Header>
-          </CardContainer>
-        ) : showSuccessMessage == false ? (
-          <CardContainer>
-            <Header>
-              <DivImageError>
-                <Imagen src={logito} />
-              </DivImageError>
-              <Content>
-                <Titulo>Login fallido</Titulo>
-                <Message>
-                  Las Credenciales Incorrectas, comprueba el Usuario o
-                  contraseña.
-                </Message>
-              </Content>
-            </Header>
-          </CardContainer>
-        ) : null}
+        <Toast ref={toast} />
       </Div>
     </BackgroundOverlay>
   );

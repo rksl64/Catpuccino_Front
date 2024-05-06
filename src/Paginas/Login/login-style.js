@@ -133,61 +133,14 @@ const slideDown = keyframes`
     transform: translateY(0);
   }
 `;
-
-// Estilos para el CardContainer
-export const CardContainer = styled.div`
-  position: fixed;
-  width: 40vw;
-  height: 40vh;
-  background-color: #35322d;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  animation: ${slideDown} 0.5s ease;
-`;
-
-export const Header = styled.div`
-  padding: 1.25rem 1rem 1rem 1rem;
-`;
-
-export const Content = styled.div`
-  margin-top: 0.75rem;
-  text-align: center;
-`;
-
-export const Titulo = styled.span`
-  color: #ffb036;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-`;
-
-export const Message = styled.p`
-  margin-top: 0.5rem;
-  color: white;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-`;
-
-export const DivImage = styled.div`
-  background: #ffb036;
-  border-bottom: none;
-  position: relative;
-  text-align: center;
-  margin: -20px -20px 0;
-  border-radius: 5px 5px 0 0;
-  padding: 35px;
-`;
-export const DivImageError = styled.div`
-  background: #7b241c;
-  border-bottom: none;
-  position: relative;
-  text-align: center;
-  margin: -20px -20px 0;
-  border-radius: 5px 5px 0 0;
-  padding: 35px;
-`;
 export const Imagen = styled.img`
-  height: 13vh;
-  width: 8vw;
+  height: 6.5vh;
+  width: 3.5vw;
+  margin-right:0.5em;
+`;
+export const ToastDiv = styled.div`
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-items:center;
 `;
