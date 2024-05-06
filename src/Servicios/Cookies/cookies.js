@@ -48,3 +48,19 @@ export function setIDValue(ID) {
   export function deleteRol(Rol) {
       document.cookie = Rol+ '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   }
+  export function setUserNameValue(UserName) {
+    document.cookie = `UserName=${UserName}; path=/;`;
+  }
+  export function getUserName(UserName){
+      var cookies = document.cookie.split(";");
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          if (cookie.startsWith(UserName + "=")) {
+              return cookie.substring(UserName.length + 1);
+          }
+      }
+      return null;
+  }
+  export function deleteUserName(UserName) {
+      document.cookie = UserName+ '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  }
