@@ -3,6 +3,8 @@ import "./formulario.css";
 import { useNavigate } from "react-router-dom";
 import { addGatos } from "../../Servicios/user.service";
 import { getRazas } from "../../Servicios/user.service";
+import pawsBanner from '../../assets/img/adopcion/pawsBanner.jpg';
+
 
 import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
@@ -91,9 +93,11 @@ function Formulario(){
 
     return(
     <>
-    <main className="formulario-general">
-    <Toast ref={toast} />
-        <div className="container">
+    <body className="formulario-general">
+        <section className='TopBanner' style={{backgroundImage: `url(${pawsBanner})`}}></section>
+
+        <Toast ref={toast} />
+        <main className="container">
             <div className="row">
                 <section className="img slide d-none d-lg-block  ">
                      {/* IMAGEN */}
@@ -194,8 +198,8 @@ function Formulario(){
                     </form>
                 </section>
             </div>
-        </div>
-    </main>
+        </main>
+    </body>
     
     </>
     )

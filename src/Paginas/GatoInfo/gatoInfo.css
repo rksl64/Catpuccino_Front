@@ -128,66 +128,7 @@
     
     
     
-        .like-button {
-          border: none;
-          background-color: #ce796b;
-          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
-          color: #fff;
-          text-transform: uppercase;
-          cursor: pointer;
-          transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-          position: relative;
-          overflow: hidden;
-    
-          border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
-          border: none;
-          padding: 0.3rem 2.5rem;
-          margin-top: 1rem;
-          color: white;
-          width: auto !important;
-    
-          p{
-            margin-left: 3rem;
-            margin-top: 1rem;
-            font-family: 'Quicksand', sans-serif;
-          }
-        }
-        
-        .like-button:before {
-          content: "\2764"; /* Heart Icon */
-          font-size: 50px;
-          color: #fff;
-          position: absolute;
-          top: 50%;
-          left: 20%;
-          transform: translate(-50%, -50%) scale(0);
-          transition: transform 0.3s ease-in-out;
-        }
-        
-        .like-button:hover {
-          animation: heartBeat 2.3s infinite;
-        }
-        
-        .like-button:hover:before {
-          transform: translate(-50%, -50%) scale(1);
-        }
-        
-        .like-button:active:after {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 1;
-        }
-        
-        @keyframes heartBeat {
-          from {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.1);
-          }
-          to {
-            transform: scale(1);
-          }
-        }
+
     }
 }
 

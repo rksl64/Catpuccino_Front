@@ -16,6 +16,8 @@ import Formulario from "./Componentes/Formulario/formulario";
 import Navbar from "./Componentes/Navbar/navbar";
 import Footer from "./Componentes/Footer/footer";
 import GestionGatos from "./Paginas/GestionGatos/gestionGatos";
+import DashboardGestorGatos from "./Paginas/DashboardGestorGatos/dashboardGestorGatos";
+import SolicitudAdopciones from "./Paginas/SolicitudesAdopcion/solicitudesAdopcion";
 import { useRef } from "react";
 
 import { Toast } from 'primereact/toast';
@@ -43,10 +45,12 @@ function App() {
         <Route path="/Consumiciones" element={<Consumiciones />}></Route>
         <Route path="*" element={<Error />}></Route>
         <Route path="/Adopcion" element={<Adopcion />}></Route>
-        <Route path="/Gatoinfo/:id" element={<GatoInfo />}></Route>
-        <Route path="/Formulario" element={<Formulario toast={toast}/>}></Route>
+        <Route path="/Gatoinfo/:id" element={<GatoInfo toast={toast}/>}></Route>
+        <Route path="/FormularioGatos" element={<Formulario toast={toast}/>}></Route>
         <Route path="/GestionGatos" element={<GestionGatos toast={toast}/>}></Route>
         <Route path="/spinner" element={<Spinner />}></Route>
+        <Route path="/DashboardGatos" element={<DashboardGestorGatos/>}></Route>
+        <Route path="/SolicitudesAdopcion" element={<SolicitudAdopciones/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
       </Routes>
