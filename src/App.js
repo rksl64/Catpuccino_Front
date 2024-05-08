@@ -19,6 +19,7 @@ import GestionGatos from "./Paginas/GestionGatos/gestionGatos";
 import { useRef } from "react";
 
 import { Toast } from 'primereact/toast';
+import Spinner from "./Componentes/Spinner/spinner";
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/Gatoinfo/:id" element={<GatoInfo />}></Route>
         <Route path="/Formulario" element={<Formulario toast={toast}/>}></Route>
         <Route path="/GestionGatos" element={<GestionGatos toast={toast}/>}></Route>
+        <Route path="/spinner" element={<Spinner />}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
       </Routes>
