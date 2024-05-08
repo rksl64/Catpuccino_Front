@@ -118,7 +118,7 @@ export async function getAllGatos(){
     const response = await axios.get(`${BASE_HOST}/gato/getAll`);
     return response.data;
   } catch (error) {
-    console.error('Ops, un error', error);
+    console.error('Ops, un error getAllGatos', error);
     throw error;
   }
 }
@@ -128,7 +128,7 @@ export async function getGatosDisponibles(){ //este tbm lo uso para el carrusel
     const response = await axios.get(`${BASE_HOST}/gato/getAll`);
     return response.data;
   } catch (error) {
-    console.error('Ops, un error', error);
+    console.error('Ops, un error getGatosDisponibles', error);
     throw error;
   }
 }
@@ -136,32 +136,42 @@ export async function getGatosDisponibles(){ //este tbm lo uso para el carrusel
 export async function getGatoOneByOne(id){
   try{
     const response = await axios.get(`${BASE_HOST}/gato/${id}`);
-      console.log('Datos recibidos del backend:', response.data);
     return response.data;
   } catch (error) {
-      console.error('Ops, un error', error);
+      console.error('Ops, un error getGatoOneByOne', error);
     throw error;
   }
 }
 
-export async function addGatos(gatoData){
+export async function addGatos(gatoData){ //FUNCION ADMIN
   try{
     const response = await axios.post(`${BASE_HOST}/gato/crear`, gatoData);
     console.log('Michi añadido', response.data);
     return response.data;
   } catch (error) {
-    console.error('Ops, un error', error);
+    console.error('Ops, un error addGatos', error);
     console.log(error)
     throw error;
   }
 }
 
-export async function getRazas(){
+export async function getRazas(){ //FUNCION ADMIN
   try{
     const response = await axios.get(`${BASE_HOST}/gato/getRazas`);
     return response.data;
   } catch (error){
-    console.error('Ops, un error', error);
+    console.error('Ops, un error getRazas', error);
+  
+    throw error;
+  }
+}
+
+export async function getNumSolicitudByIdGato(idGato){ //FUNCION ADMIN
+  try{
+    const response = await axios.get(`${BASE_HOST}/solicitud/${idGato}/numSolicitudes`);
+    return response.data;
+  } catch (error){
+    console.error('Ops, un error getNumSolicitudByIdGato', error);
   
     throw error;
   }
@@ -173,7 +183,19 @@ export async function getNumGatosAdoptados(){
     const response = await axios.get(`${BASE_HOST}/adopcion/numTotal`);
     return response.data;
   } catch (error) {
-    console.error('Ops, un error', error);
+    console.error('Ops, un error getNumGatosAdoptados', error);
+    throw error;
+  }
+}
+
+//---------------------- ADOPCION --------------------------
+export async function hacerSolicitud(solicitudData){
+  try{
+    const response = await axios.post(`${BASE_HOST}/solicitud/newSolicitud`, solicitudData);
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error hacerSolicitud', error);
+    console.log(error)
     throw error;
   }
 }

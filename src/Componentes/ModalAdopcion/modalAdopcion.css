@@ -1,0 +1,116 @@
+.card{
+    background-color: #ecc8af;
+    border: none;
+
+    .like-button {
+        border: none;
+        background-color: #ce796b;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+        color: #fff;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+    
+        border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+        border: none;
+        /* padding: 0.3rem 2.5rem; */
+        margin-top: 1rem;
+        color: white;
+        width: auto !important;
+    
+        p{
+          margin-left: 3rem;
+          margin-top: 1rem;
+          font-family: 'Quicksand', sans-serif;
+        }
+      }
+      
+      .like-button:before {
+        content: "\2764"; /* Heart Icon */
+        font-size: 50px;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      .like-button:hover {
+        animation: heartBeat 2.3s infinite;
+      }
+      
+      .like-button:hover:before {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      
+      .like-button:active:after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      
+      @keyframes heartBeat {
+        from {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+}
+
+.contenido-modal{
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    flex-direction: column;  
+
+    input, textarea{
+        line-height: 30px;
+        padding: .5rem;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        outline: none;
+        background-color: #f3f3f3;
+        color: #0d0c22;
+        transition: .5s ease;
+        box-shadow: 0px 0px 5px 5px rgba(113, 113, 113, 0.171);
+        font-family: "Manrope", sans-serif;
+    }
+
+    textarea{
+        width: 100%;
+        height: 85px;
+    }
+
+    input{
+        width: 60%;
+    }
+
+    input:focus, input:hover,
+    textarea:focus, textarea:hover {
+        outline: none;
+        border-color: #e7ad99;
+        background-color: #fff;
+        box-shadow: 0 0 0 5px rgb(206 121 107 / 30%);
+      }
+}
+
+.button-send{
+    border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+    background-color: #ce796b;
+    border: none;
+    padding: 0.7rem 2.5rem;
+    margin-top: 1rem;
+    color: white;
+    transition: background-color 1s ease;
+}
+
+
+
+

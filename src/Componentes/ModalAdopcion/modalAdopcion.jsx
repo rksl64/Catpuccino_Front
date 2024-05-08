@@ -1,39 +1,91 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef  } from 'react';
+import "./modalAdopcion.css";
+import logito from "../../assets/logito.png";
+import { hacerSolicitud } from '../../Servicios/user.service';
+import { getID } from '../../Servicios/Cookies/cookies';
+import { useNavigate } from "react-router-dom";
+
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
 
-function ModalAdopcion(){
+function ModalAdopcion({ gatoId }){
+
+    /*--------- PARA LOS MENSAJES EMERGENTES ---------*/ 
+    const toast = useRef(null);
+    const navigate = useNavigate();
+    const showSuccess = () => {
+        toast.current.show({severity:'success', summary: 'Éxito', detail:'¡Solicitud enviada!', life: 3000});
+    }
+    const showError = () => {
+        toast.current.show({severity:'error', summary: 'Error', detail:'Ops, sucedió un error,', life: 3000});
+    }
+    const showWarn = () => {
+        toast.current.show({severity:'warn', summary: 'Aviso', detail:'Faltan campos por rellenar', life: 3000});
+    }
+    /*--------------------------------------------*/ 
+
+
+    /*--------- SOLICITUD LOGICA  ---------*/ 
+    const [titulo, setTitulo] = useState('');
+    const [mensaje, setMensaje] = useState('');
+    const [estadoSolicitud] = useState('PENDIENTE');
+    const usuarioID = getID('ID');
+
+    const newSolicitud = async (event) => {
+        event.preventDefault();
+        if (!titulo || !mensaje ) {
+            showWarn();
+            return;
+        }
+
+        try{
+            await hacerSolicitud({
+                titulo,
+                mensaje,
+                estadoSolicitud,
+                gatoDTO : {
+                    id: parseInt(gatoId)},
+                usuarioDTO : {
+                    id: parseInt(usuarioID)
+                }
+            });
+            showSuccess();
+            setTimeout(() => {
+                navigate("/");
+            }, 3000);
+        }catch (error) {
+            showError();
+            console.error('Ops, un error', error);
+        }
+    }
+
+    /*--------- SOLICITUD LOGICA  ---------*/ 
 
     const [visible, setVisible] = useState(false);
-
     const headerElement = (
         <div className="inline-flex align-items-center justify-content-center gap-2">
-            {/* <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" shape="circle" /> */}
-            <span className="font-bold white-space-nowrap">Solicitud de adopción</span>
+            <img src={logito} style={{ height: "4rem", width: "auto" }}></img>
+            <span className="font-bold white-space-nowrap"><h3>Solicitud de adopción</h3></span>
         </div>
     );
-
-    const footerContent = (
-        <div>
-            <Button label="Ok" icon="pi pi-check" onClick={() => setVisible(false)} autoFocus />
-        </div>
-    );
-
 
     return(
         <>
         <div className="card flex justify-content-center">
-            <Button label="Show" icon="pi pi-external-link" onClick={() => setVisible(true)} />
-            <Dialog visible={visible} modal header={headerElement} footer={footerContent} style={{ width: '50rem' }} onHide={() => setVisible(false)}>
-                <p className="m-0"> ¡Cuentanos por qué te gustaría añadir un nuevo miembro felino a tu familia! </p>
-                <input placeholder='Titulo para tu solicitud'></input>
-                <textarea placeholder='Explicacion de adopción'></textarea>
+        <Toast ref={toast} />
+            <button class="like-button" icon="pi pi-external-link" onClick={() => setVisible(true)}><p>¡Quiero adoptar!</p></button>
+            <Dialog visible={visible} modal header={headerElement} style={{ width: '50rem' }} onHide={() => setVisible(false)}>
+                <p className="mb-4"> ¡Cuentanos por qué te gustaría añadir un nuevo miembro felino a tu familia! </p>
+                <form onSubmit={newSolicitud}>
+                    <div className='contenido-modal'>
+                        <input className='mb-3' value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder='Título para tu solicitud'></input>
+                        <textarea value={mensaje} onChange={(e) => setMensaje(e.target.value)} placeholder='Cuentanos más a detalle por qué quieres adoptar a este gato'></textarea>
+                        <Button className='button-send' label="Enviar solicitud" icon="pi pi-check" type="submit" onClick={() => setVisible(false)} autoFocus />
+                    </div>
+                </form>
             </Dialog>
         </div>
-        
-        
-        
-        
         </>
     )
 }
