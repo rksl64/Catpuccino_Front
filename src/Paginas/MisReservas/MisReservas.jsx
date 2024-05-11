@@ -111,6 +111,7 @@ function MisReservas() {
                   <td className="fila1"> 
                     {reserva.estadoReserva !== "CANCELADO" && 
                       reserva.estadoReserva !== "AUSENTE" && 
+                      reserva.estadoReserva !== "PAGADO" &&
                       new Date(reserva.fecha + ' ' + reserva.hora) - currentTime > 24 * 60 * 60 * 1000 && 
                       <button className="hola" onClick={() => cancelarReserva(reserva.id)}>Cancelar reserva</button>
                     }
