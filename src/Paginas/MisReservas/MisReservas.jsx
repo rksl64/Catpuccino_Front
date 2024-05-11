@@ -3,11 +3,16 @@ import { getToken, getUserName } from "../../Servicios/Cookies/cookies";
 import {
   obtenerReservasUsuario,
   actualizarEstadosReserva,
-  cancelarReserva1
-} from "../../Servicios/user.service"; 
+  cancelarReserva1,
+  editarReserva1,
+} from "../../Servicios/user.service";
 import { TabMenu } from "primereact/tabmenu";
 import "./MisReservas.css";
 import userService from "../../Servicios/user.service";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import 'primeicons/primeicons.css';
+import { Calendar } from 'primereact/calendar';
 
 // Función para ejecutar un efecto repetidamente con un intervalo de tiempo especificado
 function useInterval(callback, delay) {
@@ -28,12 +33,124 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
+function MyVerticallyCenteredModal(props) {
+  const [hora, setHora] = useState("null");
+  const [fecha, setFecha] = useState("");
+  const handleHoraChange = (e) => {
+    setHora(e.target.value);
+  };
+
+  const handleFechaChange = (e) => {
+    const nuevaFecha = new Date(e.target.value);
+    const year = nuevaFecha.getFullYear();
+    const month = String(nuevaFecha.getMonth() + 1).padStart(2, '0');
+    const day = String(nuevaFecha.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`; // Utiliza comillas invertidas (`) para el template literal
+    setFecha(formattedDate);
+};
+const [reserva, setReserva] = useState({
+  nombre_reserva: "",
+  telefono: 0,
+  numeroPersonas: 1,
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setReserva({ ...reserva, [name]: value });
+  };
+  const reservaId = parseInt(getToken("ID"));
+  const onSubmitReserva = async () => {
+    console.log(reserva);
+    try {
+      const response = await editarReserva1(
+        reservaId,
+        reserva.nombre_reserva,
+        reserva.telefono,
+        fecha,
+        hora,
+        parseInt(reserva.numeroPersonas)
+      );
+      console.log(response);
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  };
+
+  return (
+    //AQUI ESTA EL MODAL
+
+    <Modal 
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Editar reserva
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Edita tu reserva</h4>
+        <p>
+          <form>
+            <input
+              type="text"
+              name="nombre_reserva"
+              onChange={handleInputChange}
+              className="form-control"
+              placeholder="Nombre de la persona reservante"
+            />
+            <input
+              type="number"
+              name="telefono"
+              onChange={handleInputChange}
+              className="form-control"
+              placeholder="telefono"
+            />
+            <input type="date" value={fecha} onChange={handleFechaChange}/>
+            <select
+              value={hora}
+              onChange={handleHoraChange}
+              className="search-input holi"
+            >
+              <option value="null">Selecciona hora</option>
+              <option value="09:00:00">09:00</option>
+              <option value="10:00:00">10:00</option>
+              <option value="11:00:00">11:00</option>
+              <option value="12:00:00">12:00</option>
+              <option value="13:00:00">13:00</option>
+              <option value="14:00:00">14:00</option>
+              <option value="16:00:00">16:00</option>
+              <option value="17:00:00">17:00</option>
+              <option value="18:00:00">18:00</option>
+              <option value="19:00:00">19:00</option>
+            </select>
+            <input
+              type="number"
+              name="numeroPersonas"
+              onChange={handleInputChange}
+              className="form-control"
+              placeholder="Número personas"
+            />
+            <button onClick={onSubmitReserva}>Enviar</button>
+          </form>
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal> //AQUI TERMINA
+  );
+}
+
 function MisReservas() {
   const [reservas, setReservas] = useState([]);
   const [idUsuario, setIdUsuario] = useState(0);
   const [activeItem, setActiveItem] = useState("reservas");
   const [username, setUsername] = useState(getUserName("UserName"));
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     const id = getToken("ID");
@@ -64,17 +181,19 @@ function MisReservas() {
     setActiveItem(e.value);
   };
 
-  const cancelarReserva = async (reservaId) => {
-    try {
-      await cancelarReserva1(reservaId)
-      console.log('Reserva cancelada con éxito');
-      window.location.reload();
-    } catch (error) {
-      console.error('Error al cancelar la reserva:', error);
-    }
+  const handleEditarReserva = () => {
+    setModalShow(true);
   };
 
-  
+  const cancelarReserva = async (reservaId) => {
+    try {
+      await cancelarReserva1(reservaId);
+      console.log("Reserva cancelada con éxito");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error al cancelar la reserva:", error);
+    }
+  };
 
   return (
     <section className="patata">
@@ -98,27 +217,50 @@ function MisReservas() {
             <tbody>
               {reservas.map((reserva) => (
                 <tr key={reserva.id} className="reserva-item">
-                  <td className="fila">Reserva a nombre de: {reserva.nombre_reserva}</td>
+                  <td className="fila">
+                    Reserva a nombre de: {reserva.nombre_reserva}
+                  </td>
                   <td className="fila1">
-                    Fecha de la reserva: {reserva.fecha}<br />
+                    Fecha de la reserva: {reserva.fecha}
+                    <br />
                     Hora de la reserva: {reserva.hora}
                   </td>
                   <td className="fila2">
-                    <div className={`btn ${getButtonColor(reserva.estadoReserva)}`}>
+                    <div
+                      className={`btn ${getButtonColor(reserva.estadoReserva)}`}
+                    >
                       {reserva.estadoReserva}
                     </div>
                   </td>
-                  <td className="fila1"> 
-                    {reserva.estadoReserva !== "CANCELADO" && 
-                      reserva.estadoReserva !== "AUSENTE" && 
+                  <td className="fila1">
+                    {reserva.estadoReserva !== "CANCELADO" &&
+                      reserva.estadoReserva !== "AUSENTE" &&
                       reserva.estadoReserva !== "PAGADO" &&
-                      new Date(reserva.fecha + ' ' + reserva.hora) - currentTime > 24 * 60 * 60 * 1000 && 
-                      <button className="hola" onClick={() => cancelarReserva(reserva.id)}>Cancelar reserva</button>
-                    }
-                     {reserva.estadoReserva === "PAGADO" && !reserva.reservaActiva && reserva.total !== null && 
-                      <button className="imprimir" >Imprimir ticket</button>
-                    }
-                    {/* Otros botones */}
+                      new Date(reserva.fecha + " " + reserva.hora) -
+                        currentTime >
+                        24 * 60 * 60 * 1000 && (
+                        <button
+                          className="hola"
+                          onClick={() => cancelarReserva(reserva.id)}
+                        >
+                          Cancelar reserva
+                        </button>
+                      )}
+                    {reserva.estadoReserva === "PAGADO" &&
+                      !reserva.reservaActiva &&
+                      reserva.total !== null && (
+                        <button className="imprimir">Imprimir ticket</button>
+                      )}
+                    {reserva.estadoReserva !== "CANCELADO" &&
+                      reserva.estadoReserva !== "AUSENTE" &&
+                      reserva.estadoReserva !== "PAGADO" &&
+                      new Date(reserva.fecha + " " + reserva.hora) -
+                        currentTime >
+                        24 * 60 * 60 * 1000 && (
+                        <button className="hola" onClick={handleEditarReserva}>
+                          Editar reserva
+                        </button>
+                      )}
                   </td>
                 </tr>
               ))}
@@ -132,6 +274,10 @@ function MisReservas() {
       {activeItem === "adopcion" && (
         <div>{/* Aquí iría el contenido de Solicitudes de Adopción */}</div>
       )}
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </section>
   );
 }
@@ -155,8 +301,8 @@ function getButtonColor(estadoReserva) {
       return "btn-warning";
     default:
       return "btn-success";
-      case "CANCELADO":
-        return "btn-secondary";
+    case "CANCELADO":
+      return "btn-secondary";
   }
 }
 
