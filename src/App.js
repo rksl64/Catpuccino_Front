@@ -21,6 +21,7 @@ import SolicitudAdopciones from "./Paginas/SolicitudesAdopcion/solicitudesAdopci
 import { useRef } from "react";
 
 import { Toast } from 'primereact/toast';
+import MisReservas from "./Paginas/MisReservas/MisReservas";
 import Spinner from "./Componentes/Spinner/spinner";
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/Gatoinfo/:id" element={<GatoInfo toast={toast}/>}></Route>
         <Route path="/FormularioGatos" element={<Formulario toast={toast}/>}></Route>
         <Route path="/GestionGatos" element={<GestionGatos toast={toast}/>}></Route>
+        <Route path="/MisReservas" element={<MisReservas/>}></Route>
         <Route path="/spinner" element={<Spinner />}></Route>
         <Route path="/DashboardGatos" element={<DashboardGestorGatos/>}></Route>
         <Route path="/SolicitudesAdopcion" element={<SolicitudAdopciones/>}></Route>
