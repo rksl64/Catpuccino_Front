@@ -36,9 +36,7 @@ export default {
 };
 async function listarproductos(){
   try {
-    const response = await axios.get(`${BASE_HOST}/producto`);
-  //CONSOLE LOG PARA COMPROBAR
-    console.log('Datos recibidos del backend:', response.data); 
+    const response = await axios.get(`${BASE_HOST}/producto`); 
     return response.data;
   } catch (error) {
     console.error('Error al obtener los productos:', error);
@@ -222,6 +220,40 @@ export async function getNumSolicitudByIdGato(idGato){ //FUNCION ADMIN
   } catch (error){
     console.error('Ops, un error getNumSolicitudByIdGato', error);
   
+    throw error;
+  }
+}
+
+//---------------------- HACER RESERVA --------------------------
+export async function HacerReserva(
+  nombre_reserva,
+  telefono,
+  fecha,
+  hora,
+  numeroPersonas,
+  estadoReserva,
+  reserva_activa,
+  pagado,
+  total,
+  usuarioDTO
+){
+  try {
+    const response = await axios.post(`${BASE_HOST}/reserva/crear`, {
+    nombre_reserva,
+    telefono,
+    fecha,
+    hora,
+    numeroPersonas,
+    estadoReserva,
+    reserva_activa,
+    pagado,
+    total,
+    usuarioDTO
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
     throw error;
   }
 }

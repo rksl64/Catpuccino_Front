@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Topbar = styled.div`
   padding: 0;
@@ -45,7 +45,7 @@ const Header = styled.div`
 
   &.header-scrolled {
     top: 0;
-    background: rgba(26, 24, 22, 0.85);
+   background: transparent;
   }
 
   .logo h1 {

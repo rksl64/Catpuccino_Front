@@ -6,10 +6,14 @@ import { deleteCookie, getToken } from "../../Servicios/Cookies/cookies";
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [token, setToken] = useState(false);
+  const [Id, setId] = useState(false);
+  const [rol, setrol] = useState('');
 
   useEffect(() => {
-    if (getToken("token") != null) {
+    if (getToken("token") != null ) {
       setToken(true);
+      setId(true);
+      setrol(getToken("Rol"));
     } else {
     }
     const handleScroll = () => {
@@ -28,10 +32,13 @@ function Navbar() {
     };
   }, []);
   const onLogout = () => {
-    deleteCookie("token");
-    deleteCookie("ID");
-    setToken(false);
-    window.location.reload();
+    
+    setTimeout(() => {
+      deleteCookie("token");
+      deleteCookie("ID");
+      setToken(false);
+      window.location.reload();
+    }, 300);
   };
 
   return (
@@ -76,10 +83,11 @@ function Navbar() {
                 </a>
               </li>
               <li>
-                <a className="nav-link scrollto" href="#menu">
+                <a className="nav-link scrollto" href="/#menu">
                   Menu
                 </a>
               </li>
+              {rol !== '' && rol === 'USUARIO' && (
               <li className="dropdown">
                 <a href="/" className="nav-link scrollto">
                   <span>Nuestros Servicios</span>{" "}
@@ -87,25 +95,70 @@ function Navbar() {
                 </a>
                 <ul>
                   <li>
-                    <a href="Reserva">Reservas</a>
+                    <a href="Reserva">Hacer reserva</a>
                   </li>
                   <li>
-                    <a href="/Productos">Productos</a>
+                    <a href="/Productos">Hacer consumición</a>
                   </li>
                   <li>
-                    <a href="/Consumiciones">Consumiciones</a>
+                    <a href="/Adopcion">Hacer Adopcion</a>
                   </li>
                   <li>
-                    <a href="/">Drop Down 2</a>
+                    <a href="/">Mis Reservas</a>
                   </li>
                   <li>
-                    <a href="/">Drop Down 3</a>
-                  </li>
-                  <li>
-                    <a href="/">Drop Down 4</a>
+                    <a href="/">Mis Adopciones</a>
                   </li>
                 </ul>
-              </li>
+              </li>)}
+              {rol !== '' && rol === 'CAMARERO' && (
+              <li className="dropdown">
+                <a href="/" className="nav-link scrollto">
+                  <span>Nuestros Servicios</span>{" "}
+                  <i className="bi bi-chevron-down"></i>
+                </a>
+                <ul>
+                  <li>
+                    <a href="Reserva">Hacer reserva</a>
+                  </li>
+                  <li>
+                    <a href="/Productos">Hacer consumición</a>
+                  </li>
+                  <li>
+                    <a href="/Adopcion">Hacer Adopcion</a>
+                  </li>
+                  <li>
+                    <a href="/">Mis Reservas</a>
+                  </li>
+                  <li>
+                    <a href="/">Mis Adopciones</a>
+                  </li>
+                </ul>
+              </li>)}
+              {rol !== '' && rol === 'ADOPCION' && (
+              <li className="dropdown">
+                <a href="/" className="nav-link scrollto">
+                  <span>Nuestros Servicios</span>{" "}
+                  <i className="bi bi-chevron-down"></i>
+                </a>
+                <ul>
+                  <li>
+                    <a href="Reserva">Hacer reserva</a>
+                  </li>
+                  <li>
+                    <a href="/Productos">Hacer consumición</a>
+                  </li>
+                  <li>
+                    <a href="/Adopcion">Hacer Adopcion</a>
+                  </li>
+                  <li>
+                    <a href="/">Mis Reservas</a>
+                  </li>
+                  <li>
+                    <a href="/">Mis Adopciones</a>
+                  </li>
+                </ul>
+              </li>)}
             </ul>
             <MobileNavToggle className="bi bi-list mobile-nav-toggle"></MobileNavToggle>
           </Nav>

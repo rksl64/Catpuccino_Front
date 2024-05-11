@@ -6,7 +6,7 @@
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
   background: rgb(255, 218, 185);
-  background: linear-gradient(0deg, rgba(255, 218, 185, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  background: linear-gradient(to bottom, #ecc8af, #ebc0a6, #e9b79d, #e7ad99, #dfa693, #d69e8d, #ce9377, #c57d65, #bd7260, #b4685b, #ac5d56, #a45351, #9c494c, #943f47, #8c3443, #84303f, #7c2b3b, #742737, #6c2233, #641d2f, #5c192b, #541426, #4c0f22, #440b1e, #3c061a, #340216, #35322d);
   flex-direction: column;
 }
 
@@ -20,6 +20,7 @@
   background-color: #ffdab9; /* Color naranja claro */
   padding: 20px; /* Espaciado interno */
   border-radius: 10px; /* Border radius */
+  
 }
 
 /* Estilos de los campos de búsqueda */
@@ -31,11 +32,13 @@
 .search-input,
 .search-btn {
   width: calc(100% - 0px); /* Ajuste para compensar el padding */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 8.5px;
+  border-radius: 3px;
 }
 
+.holi{
+  border: 1px lightgray solid;
+}
 /* Estilos del desplegable */
 .search-input {
   font-size: 16px; /* Tamaño de fuente más grande para mejorar la legibilidad */
@@ -53,7 +56,7 @@
 }
 
 .search-btn:disabled {
-  background-color: #fff; /* Cambio de color al pasar el puntero */
+  background-color: #fff !important; /* Cambio de color al pasar el puntero */
 }
 
 .search-btn:active {
@@ -63,7 +66,7 @@
 
 
 .search-btn  {
-  background-color: white;
+  background-color: white !important;
   color: black;
   border-radius: 10em;
   font-size: 17px;
@@ -158,8 +161,54 @@
   }
 }
 
+/*Acordeon de informacion en Reserva*/
 
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  font-family: sans-serif;
+}
 
+.tabs__label {
+  padding: 10px 16px;
+  cursor: pointer;
+  background: #fff;
+}
 
+.tabs__radio {
+  display: none;
+}
 
+.tabs__content {
+  order: 1;
+  line-height: 1.5;
+  font-size: 0.9em;
+  display: none;
+  background: #fff;
+  text-align: justify;
+  width: 100%;
+  box-shadow: 10px 5px 5px rgb(106, 106, 106);
+}
+
+.tabs__content p {
+  width: 100% !important;
+  padding: 0 80px;
+}
+.tabs__content p span {
+  font-weight: bold;
+  color: #ffb03b;
+}
+
+.tabs__radio:checked + .tabs__label {
+  font-weight: bold;
+  color: #ffb03b;
+  border-top: 3px solid #dddddd;
+  border-right: 3px solid #dddddd;
+  border-left: 3px solid #dddddd;
+}
+
+.tabs__radio:checked + .tabs__label + .tabs__content {
+  display: initial;
+}

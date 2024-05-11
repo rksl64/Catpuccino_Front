@@ -7,10 +7,7 @@ function Footer() {
       <FooterWrapper id="footer">
         <Container>
           <Heading>Catpuccino</Heading>
-          <Paragraph>
-            Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni
-            eligendi fuga maxime saepe commodi placeat.
-          </Paragraph>
+
           <SocialLinks className="social-links">
             <Link href="#" className="twitter">
               <i className="bx bxl-twitter"></i>
@@ -31,13 +28,10 @@ function Footer() {
           <Copyright>
             &copy; Copyright{" "}
             <strong>
-              <span>Delicious</span>
+              <span>Catpuccino</span>
             </strong>
             . All Rights Reserved
           </Copyright>
-          <Credits>
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </Credits>
         </Container>
       </FooterWrapper>
     </>
