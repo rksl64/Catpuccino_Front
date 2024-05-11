@@ -109,7 +109,7 @@ function MisReservas() {
                     </div>
                   </td>
                   <td className="fila1"> 
-                    {reserva.estadoReserva !== "CANCELADA" && 
+                    {reserva.estadoReserva !== "CANCELADO" && 
                       reserva.estadoReserva !== "AUSENTE" && 
                       new Date(reserva.fecha + ' ' + reserva.hora) - currentTime > 24 * 60 * 60 * 1000 && 
                       <button className="hola" onClick={() => cancelarReserva(reserva.id)}>Cancelar reserva</button>
@@ -154,6 +154,8 @@ function getButtonColor(estadoReserva) {
       return "btn-warning";
     default:
       return "btn-success";
+      case "CANCELADO":
+        return "btn-secondary";
   }
 }
 
