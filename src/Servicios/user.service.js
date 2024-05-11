@@ -98,17 +98,66 @@ async function verCarrito(){
     console.error('Error al listar los productos en el carrito:', error);
     throw error;
   }
-  
+}
+// -----------------------METODOS PARA LAS RESERVAS -------------------------------
+//LAS RESERVAS DEL USUARIO
+export async function obtenerReservasUsuario(idUsuario) {
+  try {
+    const response = await axios.get(`${BASE_HOST}/reserva/reservas/${idUsuario}`, {
+      headers: authHeader(),
+    });
+    console.log("Reservas del usuario:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener reservas del usuario:", error);
+    throw error;
+  }
 }
 
+//LLAMO AL METODO QUE ME ACTUALIZA EL ESTADO DE LAS RESERVAS
+export async function actualizarEstadosReserva(){
+  try {
+    const response = await axios.post (`${BASE_HOST}/reserva/actualizar`);
+    console.log("funciono"); //AQUI HAY UN CONSOLE LOG
+    return response.data;
+  }catch (error){
+    console.log("ALGO ME PASA", error); //AQUI HAY UN CONSOLE LOG
+    throw error;
+  }
+}
+//CANCELO RESERVA
+ async function cancelarReserva1 (reservaId) {
+  try{
+    const response = await axios.post(`${BASE_HOST}/reserva/cancelar/${reservaId}`);
+    console.log("He entrado");//AQUI HAY UN CONSOLE LOG
+    return response.data;
+  }catch(error){
+    console.log("No funciono", error); //AQUI HAY UN CONSOLE LOG
+    throw error;
+  }
+}
+//EDITAR RESERVA
+export async function editarReserva1(reservaId){
+try{
+  const response = await axios.post(`${BASE_HOST}/reserva/modificar/${reservaId}`);
+  console.log("funciono"); //AQUI HAY UN CONSOLE LOG
+  return response.data;
+}catch(error){
+  console.log("No va", error); //AQUI HAY UN CONSOLE LOG
+  throw error;
+}
+}
 
-export{
+export {
   listarproductos,
   listarconsumiciones,
   agregarProductoAlCarrito,
   listaCarrito,
-  verCarrito
-}
+  verCarrito,
+  cancelarReserva1
+
+};
+
 
 
 
