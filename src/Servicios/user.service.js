@@ -134,17 +134,6 @@ export async function actualizarEstadosReserva(){
     throw error;
   }
 }
-//EDITAR RESERVA
-export async function editarReserva1(reservaId){
-try{
-  const response = await axios.post(`${BASE_HOST}/reserva/modificar/${reservaId}`);
-  console.log("funciono"); //AQUI HAY UN CONSOLE LOG
-  return response.data;
-}catch(error){
-  console.log("No va", error); //AQUI HAY UN CONSOLE LOG
-  throw error;
-}
-}
 
 export {
   listarproductos,
@@ -249,6 +238,31 @@ export async function HacerReserva(
     pagado,
     total,
     usuarioDTO
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
+//Editar reserva
+export async function editarReserva1(
+  reservaId,
+  nombre_reserva,
+  telefono,
+  fecha,
+  hora,
+  numeroPersonas
+){
+  try {
+    const response = await axios.post(`${BASE_HOST}/reserva/modificar/${reservaId}`, {
+    nombre_reserva,
+    telefono,
+    fecha,
+    hora,
+    numeroPersonas,
     });
     console.log(response.data);
     return response.data;
