@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MichiBanner from '../../assets/img/adopcion/MichiBannerDark.jpg'
+import MichiBanner from '../../assets/img/adopcion/MichiBannerDark.jpg';
 import { Link } from 'react-router-dom';
 import "./adopcion.css";
 

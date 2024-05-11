@@ -1,9 +1,8 @@
 .body{
-    min-height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-
 
     * {
         margin: 0;
@@ -73,10 +72,43 @@
         background-color: #fff6 !important;
     }
     
-    
-    
-    
-    
-    
+}
+.body1{
+    background: linear-gradient(to bottom, #ecc8af, #ebc0a6, #e9b79d, #e7ad99, #dfa693, #d69e8d, #ce9377, #c57d65, #bd7260, #b4685b, #ac5d56, #a45351, #9c494c, #943f47, #8c3443, #84303f, #7c2b3b, #742737, #6c2233, #641d2f, #5c192b, #541426, #4c0f22, #440b1e, #3c061a, #340216, #35322d);
 }
 
+.p-button-rounded{
+    border-radius: 2rem;
+}
+
+.boton{
+    border-radius: 2rem;
+    margin: 0 10rem;
+    padding: 0.5rem 0 ;
+    background-color: #e7ad99 !important;
+}
+.pruebita button{
+    background: none;
+}
+
+.p-button{
+    background-color: #e7ad99 !important;
+    border: 1px solid white;
+
+}
+
+.imagen1{
+    width: 9rem !important;
+}
+.texto{
+    font-size: 14px;
+    text-align: center;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.book-a-table-btn{
+    font-family: 'Quicksand', sans-serif !important;
+}
