@@ -57,6 +57,8 @@ export const Form = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-top: -2em;
+
+
 `;
 
 export const PageLink = styled.p`

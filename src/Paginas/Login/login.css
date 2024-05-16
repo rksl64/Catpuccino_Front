@@ -2,8 +2,16 @@
   width: 14.9vw;
 }
 .Margin {
-  margin-bottom: -0.5em;
+ 
 }
-/* :focus+ label {
+.Margin input {
+  background-color:#262626 !important;
   color: #fff;
-} */
+}
+:focus-within > .label {
+  color: #FFB03B;
+  
+}
+.label{
+  color: #e99072;
+}

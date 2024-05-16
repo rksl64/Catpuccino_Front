@@ -17,16 +17,20 @@ import {
   ImagenFondo,
   DivFormu,
   DivImagen,
+  ImagenCat,
+  TEXT,
+  Logito,
+  DivScroll,
 } from "./registro-style";
 import { Password } from "primereact/password";
 import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
-import logito from "../../assets/logito.png";
 import fondito from "../../assets/img/Fondito.png";
+import gatocafe from "../../assets/img/gatocafe.png";
 import { Toast } from "primereact/toast";
-import { Stepper } from "primereact/stepper";
-import { StepperPanel } from "primereact/stepperpanel";
 import "./registro.css";
+import { showSuccessMessage, showErrorMessage } from "../../Componentes/Toast/toast"; // Ajusta la ruta si es necesario
+
 
 function Registro({ setActivo }) {
   const [registro, setRegistro] = useState({
@@ -54,6 +58,7 @@ function Registro({ setActivo }) {
 
   const onSubmit = async () => {
     try {
+      // Verificar campos vacíos
       const camposRequeridos = [
         "nombre",
         "apellidos",
@@ -62,6 +67,7 @@ function Registro({ setActivo }) {
         "dni",
         "nombreUsuario",
         "password",
+        "password2",
       ];
       const camposFaltantes = camposRequeridos.filter(
         (campo) => !registro[campo]
@@ -72,17 +78,28 @@ function Registro({ setActivo }) {
         const mensajeError = `Los campos ${camposFaltantes.join(
           ", "
         )} son obligatorios.`;
-        showErrorMessage(mensajeError);
+        showErrorMessage(toast,mensajeError);
         return;
       }
+
+      // Verificar formato de email
       if (!validateEmail(registro.email)) {
-        showErrorMessage("El formato del correo electrónico es inválido.");
+        showErrorMessage(toast,"El formato del correo electrónico es inválido.");
         return;
       }
+
+      // Verificar longitud de contraseña
       if (registro.password.length < 6) {
-        showErrorMessage("La contraseña debe tener al menos 6 caracteres.");
+        showErrorMessage(toast,"La contraseña debe tener al menos 6 caracteres.");
         return;
       }
+
+      // Verificar que las contraseñas coincidan
+      if (registro.password !== registro.password2) {
+        showErrorMessage(toast,"Las contraseñas no coinciden.");
+        return;
+      }
+
       const response = await authService.register(
         registro.nombre,
         registro.apellidos,
@@ -93,137 +110,136 @@ function Registro({ setActivo }) {
         registro.nombreUsuario,
         registro.password
       );
+
       console.log(response);
       if (response.token) {
-        showSuccessMessage(
+        // Mostrar mensaje de éxito si el registro es exitoso
+        showSuccessMessage(toast,
           "Inicio de sesión exitoso. Redirigiendo a Inicio..."
         );
       } else {
-        showErrorMessage(
+        showErrorMessage(toast,
           "Las credenciales son incorrectas. Por favor, verifica el nombre de usuario y la contraseña."
         );
       }
+      ///IDEA
+      //PONER UN POP UP QUE DIGA QUE SE HA REALIZADO CORRECTAMENTE EL REGISTRO Y
+      //PONER UNA ESPERA DE UNOS SEGUNDOS Y SE REDIRIGE A lOGIN
     } catch (error) {
       console.error("Error:", error);
       throw error;
     }
   };
-
   const validateEmail = (email) => {
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
   };
 
-  // Función para mostrar el mensaje de éxito
-  const showSuccessMessage = (message) => {
-    toast.current.show({
-      severity: "success",
-      content: () => (
-        <ToastDiv style={{ flex: "1" }}>
-          <div>
-            <Imagen src={logito} shape="circle" />
-          </div>
-          <div className="font-medium text-lg my-3 text-900">{message}</div>
-        </ToastDiv>
-      ),
-    });
-  };
-
-  // Función para mostrar el mensaje de error
-  const showErrorMessage = (message) => {
-    toast.current.show({
-      severity: "error",
-      content: () => (
-        <ToastDiv style={{ flex: "1" }}>
-          <div>
-            <Imagen src={logito} shape="circle" />
-          </div>
-          <div className="font-medium text-lg my-3 text-900">{message}</div>
-        </ToastDiv>
-      ),
-    });
-  };
 
   return (
     <>
       <BackgroundOverlay>
         <Div>
           <FormContainer className="form-container">
-            <Title className="title">Catpuccino</Title>
             <Form className="form">
               <DivImagen>
                 <ImagenFondo src={fondito}></ImagenFondo>
+                <ImagenCat src={gatocafe}></ImagenCat>
+                <TEXT>holi a la cafeteria donde los sueños no se hacen realidad</TEXT>
               </DivImagen>
               <DivFormu>
-                <FloatLabel className="Margin">
-                  <InputText
-                    name="nombre"
-                    className="Input"
-                    id="nombre"
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor="nombre">Nombre</label>
-                </FloatLabel>
+                <Logito src={gatocafe} href></Logito>
+                <DivScroll>
+                  <FloatLabel className="Margin">
+                    <InputText
+                      name="nombre"
+                      placeholder="Nombre"
+                      className="Input"
+                      id="nombre"
+                      onChange={handleInputChange}
+                    />
+                    <label className="label" htmlFor="nombre">Nombre</label>
+                  </FloatLabel>
 
-                <FloatLabel className="Margin">
-                  <InputText
-                    name="apellidos"
-                    className="Input"
-                    id="username"
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor="apellidos">Apellidos</label>
-                </FloatLabel>
-                <FloatLabel className="Margin">
-                  <InputText
-                    name="telefono"
-                    className="Input"
-                    id="telefono"
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor="telefono">Teléfono</label>
-                </FloatLabel>
+                  <FloatLabel className="Margin">
+                    <InputText
+                      name="apellidos"
+                      placeholder="Apellidos"
+                      className="Input"
+                      id="username"
+                      onChange={handleInputChange}
+                    />
+                    <label className="label" htmlFor="apellidos">Apellidos</label>
+                  </FloatLabel>
+                  <FloatLabel className="Margin">
+                    <InputText
+                      name="telefono"
+                      placeholder="Telefono"
+                      className="Input"
+                      id="telefono"
+                      onChange={handleInputChange}
+                    />
+                    <label className="label" htmlFor="telefono">Teléfono</label>
+                  </FloatLabel>
 
-                <FloatLabel className="Margin">
-                  <InputText
-                    name="email"
-                    className="Input"
-                    id="email"
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor="email">Email</label>
-                </FloatLabel>
+                  <FloatLabel className="Margin">
+                    <InputText
+                      name="email"
+                      placeholder="Email"
+                      className="Input"
+                      id="email"
+                      onChange={handleInputChange}
+                    />
+                    <label className="label" htmlFor="email">Email</label>
+                  </FloatLabel>
 
-                <FloatLabel className="Margin">
-                  <InputText
-                    name="dni"
-                    className="Input"
-                    id="dni"
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor="dni">Dni</label>
-                </FloatLabel>
-                <FloatLabel className="Margin">
-                  <InputText
-                    name="nombreUsuario"
-                    className="Input"
-                    id="nombreUsuario"
-                    onChange={handleInputChange}
-                  />
-                  <label htmlFor="nombreUsuario">Nombre de Usuario</label>
-                </FloatLabel>
+                  <FloatLabel className="Margin">
+                    <InputText
+                      name="dni"
+                      placeholder="Dni"
+                      className="Input"
+                      id="dni"
+                      onChange={handleInputChange}
+                    />
+                    <label className="label" htmlFor="dni">Dni</label>
+                  </FloatLabel>
+                  <FloatLabel className="Margin">
+                    <InputText
+                      name="nombreUsuario"
+                      placeholder="Nombre de Usuario"
+                      className="Input"
+                      id="nombreUsuario"
+                      onChange={handleInputChange}
+                    />
+                    <label className="label" htmlFor="nombreUsuario">Nombre de Usuario</label>
+                  </FloatLabel>
+                  <FloatLabel className="Margin">
+                  
+                    <Password
+                      name="password"
+                      placeholder="Contraseña"
+                      onChange={handleInputChange}
+                      feedback={false}
+                      tabIndex={1}
+                      className="Input"
+                      toggleMask
+                    />
+                    <label className="label" htmlFor="password">Contraseña</label>
+                  </FloatLabel>
 
-                <FloatLabel>
-                  <Password
-                    name="password"
-                    onChange={handleInputChange}
-                    feedback={false}
-                    tabIndex={1}
-                    toggleMask
-                  />
-                  <label htmlFor="password">Contraseña</label>
-                </FloatLabel>
-
+                  <FloatLabel className="Margin">
+                    <Password
+                      name="password2"
+                      placeholder="Repetir Contraseña"
+                      onChange={handleInputChange}
+                      feedback={false}
+                      tabIndex={1}
+                      className="Input"
+                      toggleMask
+                    />
+                    <label className="label" htmlFor="password">Repetir Contraseña</label>
+                  </FloatLabel>
+                </DivScroll>
                 <FormBtn className="form-btn" onClick={onSubmit}>
                   Iniciar Sesión
                 </FormBtn>
