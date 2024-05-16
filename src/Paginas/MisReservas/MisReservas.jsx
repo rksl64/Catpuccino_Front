@@ -8,13 +8,11 @@ import {
 } from "../../Servicios/user.service";
 import { TabMenu } from "primereact/tabmenu";
 import "./MisReservas.css";
-import userService from "../../Servicios/user.service";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import 'primeicons/primeicons.css';
 import { Calendar } from 'primereact/calendar';
 
-// Función para ejecutar un efecto repetidamente con un intervalo de tiempo especificado
 function useInterval(callback, delay) {
   const savedCallback = React.useRef();
 
@@ -45,18 +43,21 @@ function MyVerticallyCenteredModal(props) {
     const year = nuevaFecha.getFullYear();
     const month = String(nuevaFecha.getMonth() + 1).padStart(2, '0');
     const day = String(nuevaFecha.getDate()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`; // Utiliza comillas invertidas (`) para el template literal
+    const formattedDate = `${year}-${month}-${day}`;
     setFecha(formattedDate);
-};
-const [reserva, setReserva] = useState({
-  nombre_reserva: "",
-  telefono: 0,
-  numeroPersonas: 1,
+  };
+
+  const [reserva, setReserva] = useState({
+    nombre_reserva: "",
+    telefono: 0,
+    numeroPersonas: 1,
   });
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setReserva({ ...reserva, [name]: value });
   };
+
   const reservaId = parseInt(getToken("ID"));
   const onSubmitReserva = async () => {
     console.log(reserva);
@@ -77,8 +78,6 @@ const [reserva, setReserva] = useState({
   };
 
   return (
-    //AQUI ESTA EL MODAL
-
     <Modal 
       {...props}
       size="lg"
@@ -108,7 +107,7 @@ const [reserva, setReserva] = useState({
               className="form-control"
               placeholder="telefono"
             />
-            <input type="date" value={fecha} onChange={handleFechaChange}/>
+            <input type="date" value={fecha} onChange={handleFechaChange} />
             <select
               value={hora}
               onChange={handleHoraChange}
@@ -133,14 +132,31 @@ const [reserva, setReserva] = useState({
               className="form-control"
               placeholder="Número personas"
             />
-            <button onClick={onSubmitReserva}>Enviar</button>
+            <button type="button" onClick={onSubmitReserva}>Enviar</button>
           </form>
         </p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
-    </Modal> //AQUI TERMINA
+    </Modal>
+  );
+}
+
+function ConfirmationModal({ show, onHide, onConfirm }) {
+  return (
+    <Modal show={show} onHide={onHide}>
+      <Modal.Header closeButton>
+        <Modal.Title>Confirmación</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        ¿Estás seguro de que deseas cancelar esta reserva?
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onHide}>Cerrar</Button>
+        <Button variant="primary" onClick={onConfirm}>Cancelar reserva</Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
 
@@ -151,6 +167,8 @@ function MisReservas() {
   const [username, setUsername] = useState(getUserName("UserName"));
   const [currentTime, setCurrentTime] = useState(new Date());
   const [modalShow, setModalShow] = useState(false);
+  const [confirmationModalShow, setConfirmationModalShow] = useState(false);
+  const [reservaIdToCancel, setReservaIdToCancel] = useState(null);
 
   useEffect(() => {
     const id = getToken("ID");
@@ -174,7 +192,7 @@ function MisReservas() {
 
   useInterval(() => {
     actualizarEstadosReserva();
-    setCurrentTime(new Date()); // Actualizar la hora actual
+    setCurrentTime(new Date());
   }, 3600000);
 
   const handleTabChange = (e) => {
@@ -185,13 +203,21 @@ function MisReservas() {
     setModalShow(true);
   };
 
-  const cancelarReserva = async (reservaId) => {
-    try {
-      await cancelarReserva1(reservaId);
-      console.log("Reserva cancelada con éxito");
-      window.location.reload();
-    } catch (error) {
-      console.error("Error al cancelar la reserva:", error);
+  const handleCancelarReserva = (reservaId) => {
+    setReservaIdToCancel(reservaId);
+    setConfirmationModalShow(true);
+  };
+
+  const confirmarCancelacion = async () => {
+    if (reservaIdToCancel !== null) {
+      try {
+        await cancelarReserva1(reservaIdToCancel);
+        console.log("Reserva cancelada con éxito");
+        setConfirmationModalShow(false);
+        window.location.reload();
+      } catch (error) {
+        console.error("Error al cancelar la reserva:", error);
+      }
     }
   };
 
@@ -241,7 +267,7 @@ function MisReservas() {
                         24 * 60 * 60 * 1000 && (
                         <button
                           className="hola"
-                          onClick={() => cancelarReserva(reserva.id)}
+                          onClick={() => handleCancelarReserva(reserva.id)}
                         >
                           Cancelar reserva
                         </button>
@@ -278,6 +304,11 @@ function MisReservas() {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
+      <ConfirmationModal
+        show={confirmationModalShow}
+        onHide={() => setConfirmationModalShow(false)}
+        onConfirm={confirmarCancelacion}
+      />
     </section>
   );
 }
@@ -292,7 +323,6 @@ const tabItems = [
   { label: "Solicitudes de Adopción", icon: "pi pi-users", value: "adopcion" },
 ];
 
-// Función para obtener el color del botón según el estado de reserva
 function getButtonColor(estadoReserva) {
   switch (estadoReserva) {
     case "AUSENTE":
