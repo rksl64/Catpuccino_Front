@@ -25,8 +25,8 @@ import { Password } from "primereact/password";
 import { FloatLabel } from "primereact/floatlabel";
 import "./login.css";
 import { InputText } from "primereact/inputtext";
-import logito from "../../assets/logito.png";
 import { Toast } from "primereact/toast";
+import { showSuccessMessage, showErrorMessage } from "../../Componentes/Toast/toast"; // Ajusta la ruta si es necesario
 
 function Login({ setActivo }) {
   const [data, setData] = useState({
@@ -60,9 +60,7 @@ function Login({ setActivo }) {
       );
       console.log(response);
       if (response.token) {
-        showSuccessMessage(
-          "Inicio de sesión exitoso. Redirigiendo a Inicio..."
-        );
+        showSuccessMessage(toast, "Inicio de sesión exitoso. Redirigiendo a Inicio...");
         setCookieValue(response.token);
         setIDValue(response.id);
         setRolValue(response.rol);
@@ -71,9 +69,7 @@ function Login({ setActivo }) {
           window.location.href = "../";
         }, 2000);
       } else {
-        showErrorMessage(
-          "Las credenciales son incorrectas. Por favor, verifica el nombre de usuario y la contraseña."
-        );
+        showErrorMessage(toast, "Las credenciales son incorrectas. Por favor, verifica el nombre de usuario y la contraseña.");
         setTimeout(() => {
           setData(() => ({
             nombreUsuario: "",
@@ -89,36 +85,6 @@ function Login({ setActivo }) {
 
   const toast = useRef(null);
 
-  // Función para mostrar el mensaje de éxito
-  const showSuccessMessage = (message) => {
-    toast.current.show({
-      severity: "success",
-      content: () => (
-        <ToastDiv style={{ flex: "1" }}>
-          <div>
-            <Imagen src={logito} shape="circle" />
-          </div>
-          <div className="font-medium text-lg my-3 text-900">{message}</div>
-        </ToastDiv>
-      ),
-    });
-  };
-
-  // Función para mostrar el mensaje de error
-  const showErrorMessage = (message) => {
-    toast.current.show({
-      severity: "error",
-      content: () => (
-        <ToastDiv style={{ flex: "1" }}>
-          <div>
-            <Imagen src={logito} shape="circle" />
-          </div>
-          <div className="font-medium text-lg my-3 text-900">{message}</div>
-        </ToastDiv>
-      ),
-    });
-  };
-
   return (
     <BackgroundOverlay>
       <Div>
@@ -132,17 +98,17 @@ function Login({ setActivo }) {
                 id="username"
                 onChange={handleLoginName}
               />
-              <label htmlFor="username">Usuario</label>
+              <label className="label" htmlFor="username">Usuario</label>
             </FloatLabel>
-            <FloatLabel>
-              <Password
+            <FloatLabel className="Margin">
+              <Password 
                 value={data.password}
                 onChange={handleLogin}
                 feedback={false}
                 tabIndex={1}
                 toggleMask
               />
-              <label htmlFor="password">Contraseña</label>
+              <label className="label" htmlFor="password">Contraseña</label>
             </FloatLabel>
             <FormBtn className="form-btn" onClick={onLogin}>
               Iniciar Sesión

@@ -38,17 +38,6 @@ export const FormContainer = styled.div`
   padding: 20px 30px;
 `;
 
-export const Title = styled.p`
-  text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 10px 0 30px 0;
-  font-size: 40px;
-  font-weight: 800;
-  color: white;
-  z-index: 4;
-`;
-
 export const Form = styled.div`
   width: 100%;
   height: 70%;
@@ -56,7 +45,6 @@ export const Form = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: -6em;
 `;
 
 export const PageLink = styled.p`
@@ -133,23 +121,13 @@ const slideDown = keyframes`
     transform: translateY(0);
   }
 `;
-export const Imagen = styled.img`
-  height: 6.5vh;
-  width: 3.5vw;
-  margin-right: 0.5em;
-`;
-export const ToastDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-`;
+
 export const ImagenFondo = styled.img`
   height: 85vh;
   width: 45vw;
 `;
 export const DivFormu = styled.div`
-  background-color: #252525;
+  background-color: #262626;
   height: 85vh;
   width: 55vw;
   display: flex;
@@ -158,11 +136,39 @@ export const DivFormu = styled.div`
   flex-direction: column;
 `;
 export const DivImagen = styled.div`
-  background-color: #252525;
+  background-color: #262626;
   height: 85vh;
   width: 50vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+`;
+
+export const ImagenCat = styled.img`
+  height: 30vh;
+  width: 15vw;
+  margin-left:-3em;
+  position: absolute;
+`;
+export const TEXT = styled.h2`
+  width: 20vw;
+  font-size:20px;
+  position: absolute;
+  bottom:0;
+  margin-bottom: 4em;
+`;
+export const Logito = styled.img`
+  height: 10vh;
+  width: 7vw;
+  border-radius:40%;
+`;
+export const DivScroll = styled.div`
+  height: 50vh;
+  width: 25vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: scroll;
 `;
