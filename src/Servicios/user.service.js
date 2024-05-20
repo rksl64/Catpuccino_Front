@@ -264,13 +264,25 @@ export async function editarReserva1(
     hora,
     numeroPersonas,
     });
-    console.log(response.data);
+    console.log("el que te de mas coraje", response.data);
     return response.data;
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
 }
+export async function obtenerConsumicionReserva(idReserva) {
+  try {
+    const response = await axios.get(`${BASE_HOST}/consumiciones/consumicionReserva/${idReserva}`);
+    console.log("Datos del backend:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Algo salio mal:", error);
+    throw error;
+  }
+}
+
+
 
 //---------------------- CARRUSEL ADOPCION --------------------------
 export async function getNumGatosAdoptados(){

@@ -1,17 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getToken, getUserName } from "../../Servicios/Cookies/cookies";
 import {
   obtenerReservasUsuario,
   actualizarEstadosReserva,
   cancelarReserva1,
   editarReserva1,
+  obtenerConsumicionReserva,
 } from "../../Servicios/user.service";
 import { TabMenu } from "primereact/tabmenu";
 import "./MisReservas.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import 'primeicons/primeicons.css';
-import { Calendar } from 'primereact/calendar';
+import "primeicons/primeicons.css";
+import { Calendar } from "primereact/calendar";
+import { Toast } from "primereact/toast";
+import {
+  showSuccessMessage,
+  showErrorMessage,
+} from "../../Componentes/Toast/toast";
+import { PDFDOC } from "../../Utils/pdf";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
 function useInterval(callback, delay) {
   const savedCallback = React.useRef();
@@ -41,8 +49,8 @@ function MyVerticallyCenteredModal(props) {
   const handleFechaChange = (e) => {
     const nuevaFecha = new Date(e.target.value);
     const year = nuevaFecha.getFullYear();
-    const month = String(nuevaFecha.getMonth() + 1).padStart(2, '0');
-    const day = String(nuevaFecha.getDate()).padStart(2, '0');
+    const month = String(nuevaFecha.getMonth() + 1).padStart(2, "0");
+    const day = String(nuevaFecha.getDate()).padStart(2, "0");
     const formattedDate = `${year}-${month}-${day}`;
     setFecha(formattedDate);
   };
@@ -57,12 +65,14 @@ function MyVerticallyCenteredModal(props) {
     const { name, value } = event.target;
     setReserva({ ...reserva, [name]: value });
   };
+  const toast = useRef(null);
 
   const reservaId = parseInt(getToken("ID"));
   const onSubmitReserva = async () => {
     console.log(reserva);
     try {
       const response = await editarReserva1(
+        //EDITAR RESERVA
         reservaId,
         reserva.nombre_reserva,
         reserva.telefono,
@@ -70,7 +80,15 @@ function MyVerticallyCenteredModal(props) {
         hora,
         parseInt(reserva.numeroPersonas)
       );
-      console.log(response);
+      console.log(response, "hola soy un mensaje");
+      if (response == true) {
+        showSuccessMessage(toast, "Se ha modificado la reserva");
+      } else {
+        showErrorMessage(
+          toast,
+          "No hay disponibilidad horaria, se han modificado los demás campos"
+        );
+      }
     } catch (error) {
       console.error("Error:", error);
       throw error;
@@ -78,7 +96,7 @@ function MyVerticallyCenteredModal(props) {
   };
 
   return (
-    <Modal 
+    <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
@@ -132,13 +150,16 @@ function MyVerticallyCenteredModal(props) {
               className="form-control"
               placeholder="Número personas"
             />
-            <button type="button" onClick={onSubmitReserva}>Enviar</button>
+            <button type="button" onClick={onSubmitReserva}>
+              Enviar
+            </button>
           </form>
         </p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
+      <Toast ref={toast} />
     </Modal>
   );
 }
@@ -153,8 +174,12 @@ function ConfirmationModal({ show, onHide, onConfirm }) {
         ¿Estás seguro de que deseas cancelar esta reserva?
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onHide}>Cerrar</Button>
-        <Button variant="primary" onClick={onConfirm}>Cancelar reserva</Button>
+        <Button variant="secondary" onClick={onHide}>
+          Cerrar
+        </Button>
+        <Button variant="primary" onClick={onConfirm}>
+          Cancelar reserva
+        </Button>
       </Modal.Footer>
     </Modal>
   );
@@ -169,6 +194,11 @@ function MisReservas() {
   const [modalShow, setModalShow] = useState(false);
   const [confirmationModalShow, setConfirmationModalShow] = useState(false);
   const [reservaIdToCancel, setReservaIdToCancel] = useState(null);
+  const [data, setData] = useState([
+    {
+      
+    },
+  ]);
 
   useEffect(() => {
     const id = getToken("ID");
@@ -218,6 +248,15 @@ function MisReservas() {
       } catch (error) {
         console.error("Error al cancelar la reserva:", error);
       }
+    }
+  };
+
+  const consumicionData = async (id, reserva) => {
+    try {
+      const response = await obtenerConsumicionReserva(id);
+      setData(response);
+    } catch (error) {
+      console.error("Error al pillar la reserva:", error);
     }
   };
 
@@ -275,7 +314,11 @@ function MisReservas() {
                     {reserva.estadoReserva === "PAGADO" &&
                       !reserva.reservaActiva &&
                       reserva.total !== null && (
-                        <button className="imprimir">Imprimir ticket</button>
+                        <>
+                          <button onClick={() => consumicionData(reserva.id, reserva)}>
+                           Imprimir ticket
+                          </button>
+                        </>
                       )}
                     {reserva.estadoReserva !== "CANCELADO" &&
                       reserva.estadoReserva !== "AUSENTE" &&
