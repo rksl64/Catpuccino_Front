@@ -23,6 +23,7 @@ import { useRef } from "react";
 import { Toast } from 'primereact/toast';
 import MisReservas from "./Paginas/MisReservas/MisReservas";
 import Spinner from "./Componentes/Spinner/spinner";
+import VisualizarPdf from "./Utils/visualizar-pdf";
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/spinner" element={<Spinner />}></Route>
         <Route path="/DashboardGatos" element={<DashboardGestorGatos/>}></Route>
         <Route path="/SolicitudesAdopcion" element={<SolicitudAdopciones/>}></Route>
+        <Route path="/VisualizarPdf" element={<VisualizarPdf/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
       </Routes>

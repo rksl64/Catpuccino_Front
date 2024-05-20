@@ -8,13 +8,12 @@ export const Styles = StyleSheet.create({
     },
     title: {
       fontSize: 24,
-      textAlign: 'center',
-      fontFamily: 'Oswald'
+      fontFamily: 'Oswald',
+      color: '#FF3131',
     },
     author: {
       fontSize: 12,
-      textAlign: 'center',
-      marginBottom: 40,
+      marginBottom: 4,
     },
     subtitle: {
       fontSize: 18,
@@ -25,17 +24,20 @@ export const Styles = StyleSheet.create({
       margin: 12,
       fontSize: 14,
       textAlign: 'justify',
-      fontFamily: 'Times-Roman'
+      fontFamily: 'Oswald'
     },
     image: {
-      marginVertical: 15,
-      marginHorizontal: 100,
+      width: 45,
     },
     header: {
       fontSize: 12,
       marginBottom: 20,
       textAlign: 'center',
-      color: 'grey',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexDirection: 'row',
+
     },
     pageNumber: {
       position: 'absolute',
@@ -46,4 +48,40 @@ export const Styles = StyleSheet.create({
       textAlign: 'center',
       color: 'grey',
     },
+    caja1:{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 132,
+    },
+    caja2:{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 132,
+    },
+    caja3:{
+      display: 'flex',
+
+    },
+    data: {
+      fontSize: 24,
+      fontFamily: 'Oswald',
+    },
+    contacto:{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: 450,
+      marginRight: 40
+    
+    },
+    footer:{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+
+
+    }
   });
