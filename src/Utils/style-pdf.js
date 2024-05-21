@@ -6,11 +6,12 @@ export const Styles = StyleSheet.create({
       paddingTop: 35,
       paddingBottom: 65,
       paddingHorizontal: 35,
+      backgroundColor: '#FBE8EB',
     },
     title: {
       fontSize: 24,
       fontFamily: 'Oswald',
-      color: '#FF3131',
+      color: '#FD8595',
     },
     author: {
       fontSize: 12,
@@ -71,6 +72,7 @@ export const Styles = StyleSheet.create({
     data: {
       fontSize: 24,
       fontFamily: 'Oswald',
+      color: '#FD8595',
     },
     contacto:{
       display: 'flex',
@@ -88,58 +90,52 @@ export const Styles = StyleSheet.create({
       bottom: 0,
 
     },
-     table: {
-    display: 'table',
-    width: 'auto',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderRightWidth: 0,
-    borderBottomWidth: 0,
-    marginTop: 40,
-
-  },
-  tableRow: {
-    flexDirection: 'row',
-  },
-  tableColHeader: {
-    width: '20%',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderLeftWidth: 0,
-    borderTopWidth: 0,
-    backgroundColor: '#D3D3D3',
-  },
-  tableCol: {
-    width: '20%',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderLeftWidth: 0,
-    borderTopWidth: 0,
-  },
-  tableCellHeader: {
-    margin: 5,
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  tableCell: {
-    margin: 5,
-    fontSize: 10,
-  },
-  cuenta:{
-    display: 'flex',
-    alignItems: 'flex-end',
-    justifyContent: "center",
-    flexDirection: 'column',
-
-  },
-  total: {
-    fontSize: 24,
-    fontFamily: 'Oswald',
-    color: '#FF3131',
-    marginTop: 10,
-
-  },
-
+    table: {
+      display: 'table',
+      width: 'auto',
+      marginTop: 40,
+      borderRadius: 5, 
+      overflow: 'hidden', 
+      textAlign: 'center',
+    },
+  
+    tableRow: {
+      flexDirection: 'row',
+    },
+  
+    tableColHeader: {
+      width: '20%',
+      backgroundColor: '#FD8595',
+    },
+  
+    tableCol: {
+      width: '20%',
+    },
+  
+    tableCellHeader: {
+      margin: 5,
+      fontSize: 12,
+      fontWeight: 'bold',
+    },
+  
+    tableCell: {
+      margin: 5,
+      fontSize: 10,
+    },
+  
+    cuenta:{
+      display: 'flex',
+      alignItems: 'flex-end',
+      justifyContent: "center",
+      flexDirection: 'column',
+    },
+  
+    total: {
+      fontSize: 24,
+      fontFamily: 'Oswald',
+      color: '#FD8595',
+      marginTop: 25,
+    },
   
   });
 

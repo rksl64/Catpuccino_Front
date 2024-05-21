@@ -53,19 +53,19 @@ export const PDFDOC = ({ reserva, data, activo }) => {
             {/* Table Header */}
             <View style={styles.tableRow}>
               <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Producto</Text>
+                <Text style={styles.tableCellHeader}>PRODUCTO</Text>
               </View>
               <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Tipo</Text>
+                <Text style={styles.tableCellHeader}>TIPO PROD.</Text>
               </View>
               <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Precio</Text>
+                <Text style={styles.tableCellHeader}>PRECIO UD.</Text>
               </View>
               <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Cantidad</Text>
+                <Text style={styles.tableCellHeader}>UDS.</Text>
               </View>
               <View style={styles.tableColHeader}>
-                <Text style={styles.tableCellHeader}>Total</Text>
+                <Text style={styles.tableCellHeader}>TOTAL</Text>
               </View>
             </View>
             {/* Table Content */}
