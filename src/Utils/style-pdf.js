@@ -1,4 +1,5 @@
 import { StyleSheet } from "@react-pdf/renderer";
+import styled from "styled-components";
 
 export const Styles = StyleSheet.create({
     body: {
@@ -62,7 +63,10 @@ export const Styles = StyleSheet.create({
     },
     caja3:{
       display: 'flex',
-
+    },
+    caja4:{
+      display: 'flex',
+      height:415,
     },
     data: {
       fontSize: 24,
@@ -74,14 +78,23 @@ export const Styles = StyleSheet.create({
       justifyContent: 'space-between',
       alignItems: 'center',
       width: 450,
-      marginRight: 40
+      marginRight: 40,
     
     },
     footer:{
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-
+      bottom: 0,
 
     }
   });
+
+  export const Div = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+`;

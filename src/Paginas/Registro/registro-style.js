@@ -8,12 +8,19 @@ export const Div = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 20px;
+  }
 `;
 
 export const BackgroundOverlay = styled.div`
   background-image: url(${testimonials});
   background-size: cover;
   z-index: -2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   &:before {
     content: "";
     position: absolute;
@@ -24,6 +31,7 @@ export const BackgroundOverlay = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
   }
 `;
+
 export const FormContainer = styled.div`
   display: flex;
   align-items: center;
@@ -36,6 +44,11 @@ export const FormContainer = styled.div`
   border-radius: 10px;
   box-sizing: border-box;
   padding: 20px 30px;
+  @media (max-width: 768px) {
+    width: 90vw;
+    height: auto;
+    padding: 15px;
+  }
 `;
 
 export const Form = styled.div`
@@ -45,6 +58,10 @@ export const Form = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 export const PageLink = styled.p`
@@ -53,6 +70,9 @@ export const PageLink = styled.p`
   text-align: end;
   color: #747474;
   text-decoration-color: #747474;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const PageLinkLabel = styled.span`
@@ -106,6 +126,7 @@ export const SignUpLink = styled.span`
     color: white;
   }
 `;
+
 export const A = styled.a`
   color: #ffb03b;
 
@@ -113,6 +134,7 @@ export const A = styled.a`
     color: white;
   }
 `;
+
 const slideDown = keyframes`
   from {
     transform: translateY(-100%);
@@ -125,7 +147,11 @@ const slideDown = keyframes`
 export const ImagenFondo = styled.img`
   height: 85vh;
   width: 45vw;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
+
 export const DivFormu = styled.div`
   background-color: #262626;
   height: 85vh;
@@ -134,7 +160,12 @@ export const DivFormu = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 90vw;
+    height: auto;
+  }
 `;
+
 export const DivImagen = styled.div`
   background-color: #262626;
   height: 85vh;
@@ -143,26 +174,43 @@ export const DivImagen = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const ImagenCat = styled.img`
-  height: 30vh;
-  width: 15vw;
-  margin-left:-3em;
+  height: 40vh;
+  width: 25vw;
+  margin-left: -5em;
   position: absolute;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
+
 export const TEXT = styled.h2`
   width: 20vw;
-  font-size:20px;
+  font-size: 20px;
   position: absolute;
-  bottom:0;
+  bottom: 0;
   margin-bottom: 4em;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
+
 export const Logito = styled.img`
-  height: 10vh;
-  width: 7vw;
-  border-radius:40%;
+  height: 12vh;
+  width: 8vw;
+  margin-left: -1em;
+  @media (max-width: 768px) {
+    width: 20vw;
+    height: auto;
+    margin-left: 0;
+  }
 `;
+
 export const DivScroll = styled.div`
   height: 50vh;
   width: 25vw;
@@ -171,4 +219,7 @@ export const DivScroll = styled.div`
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
+  @media (max-width: 768px) {
+    width: 80vw;
+  }
 `;
