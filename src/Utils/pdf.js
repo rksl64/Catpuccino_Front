@@ -36,20 +36,68 @@ export const PDFDOC = ({ reserva, data, activo }) => {
         <View style={styles.caja3}>
           <Text style={styles.data}>Datos del cliente</Text>
           <Text style={styles.author}>
-           Nombre del Usuario: {reserva.usuarioDTO.nombre} {reserva.usuarioDTO.apellidos}
+            Nombre del Usuario: {reserva.usuarioDTO.nombre}{" "}
+            {reserva.usuarioDTO.apellidos}
           </Text>
-          <Text style={styles.author}>Nombre de la Reserva: {reserva.nombre_reserva}</Text>
+          <Text style={styles.author}>
+            Nombre de la Reserva: {reserva.nombre_reserva}
+          </Text>
           <Text style={styles.author}>Email: {reserva.usuarioDTO.email}</Text>
-          <Text style={styles.author}>Telefono: {reserva.usuarioDTO.telefono}</Text>
+          <Text style={styles.author}>
+            Telefono: {reserva.usuarioDTO.telefono}
+          </Text>
           <Text style={styles.author}>Hora: {reserva.hora}</Text>
         </View>
         <View style={styles.caja4}>
-          {data.map((item, index) => (
-            <Text key={index} style={styles.text}>
-              {item.productoDTO.nombre} {item.productoDTO.tipo} {item.productoDTO.precio} {item.cantidad} {item.productoDTO.precio * item.cantidad}
-            </Text>
-          ))}
-          <Text style={styles.title}>Total : {reserva.total}€</Text>
+          <View style={styles.table}>
+            {/* Table Header */}
+            <View style={styles.tableRow}>
+              <View style={styles.tableColHeader}>
+                <Text style={styles.tableCellHeader}>Producto</Text>
+              </View>
+              <View style={styles.tableColHeader}>
+                <Text style={styles.tableCellHeader}>Tipo</Text>
+              </View>
+              <View style={styles.tableColHeader}>
+                <Text style={styles.tableCellHeader}>Precio</Text>
+              </View>
+              <View style={styles.tableColHeader}>
+                <Text style={styles.tableCellHeader}>Cantidad</Text>
+              </View>
+              <View style={styles.tableColHeader}>
+                <Text style={styles.tableCellHeader}>Total</Text>
+              </View>
+            </View>
+            {/* Table Content */}
+            {data.map((item, index) => (
+              <View key={index} style={styles.tableRow}>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>
+                    {item.productoDTO.nombre}
+                  </Text>
+                </View>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>{item.productoDTO.tipo}</Text>
+                </View>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>
+                    {item.productoDTO.precio.toFixed(2)}
+                  </Text>
+                </View>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>{item.cantidad}</Text>
+                </View>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>
+                    {(item.productoDTO.precio * item.cantidad).toFixed(2)}
+                  </Text>
+                </View>
+              </View>
+            ))}
+          </View>
+          <View style={styles.cuenta}>
+            <Text style={styles.total}>Total : {(reserva.total).toFixed(2)}€</Text>
+          </View>
         </View>
         <View style={styles.footer}>
           <Image src={barrita}></Image>

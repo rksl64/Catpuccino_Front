@@ -87,7 +87,60 @@ export const Styles = StyleSheet.create({
       alignItems: 'center',
       bottom: 0,
 
-    }
+    },
+     table: {
+    display: 'table',
+    width: 'auto',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRightWidth: 0,
+    borderBottomWidth: 0,
+    marginTop: 40,
+
+  },
+  tableRow: {
+    flexDirection: 'row',
+  },
+  tableColHeader: {
+    width: '20%',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderTopWidth: 0,
+    backgroundColor: '#D3D3D3',
+  },
+  tableCol: {
+    width: '20%',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderTopWidth: 0,
+  },
+  tableCellHeader: {
+    margin: 5,
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  tableCell: {
+    margin: 5,
+    fontSize: 10,
+  },
+  cuenta:{
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: "center",
+    flexDirection: 'column',
+
+  },
+  total: {
+    fontSize: 24,
+    fontFamily: 'Oswald',
+    color: '#FF3131',
+    marginTop: 10,
+
+  },
+
+  
   });
 
   export const Div = styled.div`
