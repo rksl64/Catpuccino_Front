@@ -26,7 +26,8 @@ import { Password } from "primereact/password";
 import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
 import fondito from "../../assets/img/Fondito.png";
-import gatocafe from "../../assets/img/gatocafe.png";
+import gatocafe from "../../assets/img/icono.png";
+import fondolateral from "../../assets/img/fondo_lateral.png";
 import { Toast } from "primereact/toast";
 import "./registro.css";
 import { showSuccessMessage, showErrorMessage } from "../../Componentes/Toast/toast"; // Ajusta la ruta si es necesario
@@ -144,7 +145,7 @@ function Registro({ setActivo }) {
             <Form className="form">
               <DivImagen>
                 <ImagenFondo src={fondito}></ImagenFondo>
-                <ImagenCat src={gatocafe}></ImagenCat>
+                <ImagenCat src={fondolateral}></ImagenCat>
                 <TEXT>holi a la cafeteria donde los sueños no se hacen realidad</TEXT>
               </DivImagen>
               <DivFormu>
@@ -244,7 +245,7 @@ function Registro({ setActivo }) {
                   Iniciar Sesión
                 </FormBtn>
                 <SignUpLabel className="sign-up-label">
-                  Tienes Cuenta?
+                  ¿Tienes Cuenta?
                   <SignUpLink className="sign-up-link">
                     <A href="../Login">Inicia Sesión</A>
                   </SignUpLink>

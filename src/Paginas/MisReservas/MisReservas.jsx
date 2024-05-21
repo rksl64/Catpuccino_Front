@@ -20,6 +20,7 @@ import {
 } from "../../Componentes/Toast/toast";
 import { PDFDOC } from "../../Utils/pdf";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { useNavigate } from "react-router-dom";
 
 function useInterval(callback, delay) {
   const savedCallback = React.useRef();
@@ -250,13 +251,22 @@ function MisReservas() {
       }
     }
   };
-
+  const navigate = useNavigate();
   const consumicionData = async (id, reserva) => {
     try {
       const response = await obtenerConsumicionReserva(id);
       setData(response);
+
+      // Guardar los datos en el localStorage
+      localStorage.setItem('reserva', JSON.stringify(reserva));
+      localStorage.setItem('data', JSON.stringify(response));
+
+      // Abrir una nueva pestaña
+      const url = `${window.location.origin}/visualizarpdf`;
+      window.open(url, '_blank');
+
     } catch (error) {
-      console.error("Error al pillar la reserva:", error);
+      console.error("Error al obtener la reserva:", error);
     }
   };
 

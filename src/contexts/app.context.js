@@ -12,18 +12,28 @@ const AppProvider = ({ children }) => {
      const [loginData, setLoginData] = useState({
         token: null,
      });
+     const [reservas, setReserva] = useState();
+   const [data, setData] = useState();
     // const [nuevasReservas, setNuevasReservas] = useState();
   
     const memorizedValues = useMemo(
       () => ({
         //datos utilizados
         loginData,
-        setLoginData
+        setLoginData,
+        reservas,
+        setReserva,
+        data,
+        setData,
       }),
       [
         //datos utilizados
         loginData,
-        setLoginData
+        setLoginData,
+        reservas,
+        setReserva,
+        data,
+        setData
       ]
     );
   

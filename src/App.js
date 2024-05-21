@@ -54,7 +54,7 @@ function App() {
         <Route path="/spinner" element={<Spinner />}></Route>
         <Route path="/DashboardGatos" element={<DashboardGestorGatos/>}></Route>
         <Route path="/SolicitudesAdopcion" element={<SolicitudAdopciones/>}></Route>
-        <Route path="/VisualizarPdf" element={<VisualizarPdf/>}></Route>
+        <Route path="/VisualizarPdf" element={<VisualizarPdf setActivo={setActivo} activo={activo}/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
       </Routes>
