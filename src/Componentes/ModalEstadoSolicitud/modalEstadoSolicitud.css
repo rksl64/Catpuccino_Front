@@ -1,0 +1,48 @@
+.card{
+    background-color: #ecc8af;
+    border: none;
+
+
+}
+
+.contenido-modal-estadoSolicitud{
+    .italic {
+        font-style: italic; 
+    }
+
+    h5{
+        margin-bottom: 2rem;
+    }
+}
+
+.button-aceppt-decline{
+    display: flex;
+    justify-content: flex-end; 
+    align-items: flex-end;  
+
+    .decline{
+        border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+        background-color: #575757;
+        border: none;
+        padding: 0.7rem 2.5rem;
+        margin-top: 1rem;
+        color: white;
+        transition: background-color 1s ease;
+    }
+
+    .acept{
+        border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+        background-color: #ce796b;
+        border: none;
+        padding: 0.7rem 2.5rem;
+        margin-top: 1rem;
+        color: white;
+        transition: background-color 1s ease;
+    }
+
+
+}
+
+
+
+

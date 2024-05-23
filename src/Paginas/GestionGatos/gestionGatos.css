@@ -35,6 +35,10 @@
             color: #808080
         }
 
+        .card{
+            padding: 0;
+        }
+
          .tarjeta{
             height: 8.5rem;
             display: flex;

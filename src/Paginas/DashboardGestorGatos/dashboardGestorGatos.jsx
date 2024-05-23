@@ -77,7 +77,22 @@ function DashboardGestorGatos(){
                                     </svg>
                                 </Link>
 
-                                <Link to="/FormularioGatos" class="animated-button" style={{ textDecoration: 'none' }}>
+                                <Link to="/HistorialSolicitudes" class="animated-button" style={{ textDecoration: 'none' }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                                        <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                    <span class="text"> <i class='pi pi-address-book' ></i> H I S T O R I A L <br></br>  S O L I C I T U D E S</span>
+                                    <span class="circle"></span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                                        <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                        ></path>
+                                    </svg>
+                                </Link>
+
+                                <Link to="/HistorialAdopciones" class="animated-button" style={{ textDecoration: 'none' }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                                         <path
                                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
