@@ -306,3 +306,64 @@ export async function hacerSolicitud(solicitudData){
     throw error;
   }
 }
+
+//---------------------- SOLICITUDES --------------------------
+export async function getSolicitudesPendientes(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/solicitud/estadoSolicitud?enumEstadoSolicitud=2`)
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error getSolicitudesPendientes', error);
+    throw error;
+  }
+}
+
+export async function getSolicitudesAceptadas(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/solicitud/estadoSolicitud?enumEstadoSolicitud=1`)
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error getSolicitudesAceptadas', error);
+    throw error;
+  }
+}
+
+export async function getSolicitudesRechazadas(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/solicitud/estadoSolicitud?enumEstadoSolicitud=0`)
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error getSolicitudesRechazadas', error);
+    throw error;
+  }
+}
+
+export async function getSolicitudOneByOne(id){
+  try{
+    const response = await axios.get(`${BASE_HOST}/solicitud/${id}`);
+    return response.data;
+  } catch (error) {
+      console.error('Ops, un error getGatoOneByOne', error);
+    throw error;
+  }
+}
+
+export async function aceptarSolicitud(id){
+  try{
+    const response = await axios.patch(`${BASE_HOST}/solicitud/${id}/aceptar`);
+    return response.data;
+  } catch (error) {
+      console.error('Ops, un error aceptarSolicitud', error);
+    throw error;
+  }
+}
+
+export async function rechazarSolicitud(id){
+  try{
+    const response = await axios.patch(`${BASE_HOST}/solicitud/${id}/rechazar`);
+    return response.data;
+  } catch (error) {
+      console.error('Ops, un error rechazarSolicitud', error);
+    throw error;
+  }
+}
