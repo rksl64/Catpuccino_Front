@@ -3,11 +3,13 @@ import "./solicitudesRechazadas.css";
 import pawsBanner from '../../assets/img/adopcion/pawsBanner.jpg';
 import { Link } from 'react-router-dom';
 import { getSolicitudesRechazadas } from "../../Servicios/user.service";
+import { Paginator } from 'primereact/paginator';
         
 
 function SolicitudRechazadas(){
-
     const [listaSolicitudes, setSolicitudes] = useState([]);
+    const [first, setFirst] = useState(0);
+    const [rows, setRows] = useState(10);
 
     useEffect(() => {
         getSolicitudesRechazadas()
@@ -19,9 +21,21 @@ function SolicitudRechazadas(){
         });
     }, []);
 
+    const onPageChange = (event) => {
+        setFirst(event.first);
+        setRows(event.rows);
+    };
+    
+    const paginatedSolicitudes = listaSolicitudes.slice(first, first + rows);
+
     return(
     <>
-        {listaSolicitudes.map(solicitud => (
+        {listaSolicitudes.length === 0 ? (
+            <div style={{ textAlign: "center" }} className="no-solicitudes mb-5">
+                <h3>No hay solicitudes pendientes.</h3>
+            </div>
+        ) : (
+        paginatedSolicitudes.map(solicitud => (
         <section className="solicitudes-container">
             <div className="tarjeta">
                 <div className="img-data">
@@ -38,7 +52,11 @@ function SolicitudRechazadas(){
                 </div>
             </div>
         </section>
-        ))}
+        )))}
+
+        <div>
+            <Paginator first={first} rows={rows} totalRecords={listaSolicitudes.length} rowsPerPageOptions={[10, 20, 30]} onPageChange={onPageChange} />
+        </div>
     </>
     )
 }

@@ -79,8 +79,8 @@ function ModalAdopcion({ gatoId }){
                 <p className="mb-4"> ¡Cuentanos por qué te gustaría añadir un nuevo miembro felino a tu familia! </p>
                 <form onSubmit={newSolicitud}>
                     <div className='contenido-modal'>
-                        <input className='mb-3' value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder='Título para tu solicitud'></input>
-                        <textarea value={mensaje} onChange={(e) => setMensaje(e.target.value)} placeholder='Cuentanos más a detalle por qué quieres adoptar a este gato'></textarea>
+                        <input className='mb-3' value={titulo} onChange={(e) => setTitulo(e.target.value)} placeholder='Título para tu solicitud' maxLength={20}></input>
+                        <textarea value={mensaje} onChange={(e) => setMensaje(e.target.value)} placeholder='Cuentanos más a detalle por qué quieres adoptar a este gato' maxLength={100}></textarea>
                         <Button className='button-send' label="Enviar solicitud" icon="pi pi-check" type="submit" onClick={() => setVisible(false)} autoFocus />
                     </div>
                 </form>

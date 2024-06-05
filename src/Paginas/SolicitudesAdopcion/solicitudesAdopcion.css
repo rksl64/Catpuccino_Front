@@ -36,6 +36,7 @@
     .solicitudes-card{
         margin-top: 4rem;
         margin-bottom: 1rem;
+        padding: 0;
 
         .tabmenu{
             ul{

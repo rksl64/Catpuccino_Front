@@ -3,10 +3,14 @@ import "./gestionGatos.css";
 import pawsBanner from '../../assets/img/adopcion/pawsBanner.jpg';
 import { Link } from 'react-router-dom';
 import { getGatosDisponibles, getNumSolicitudByIdGato } from '../../Servicios/user.service';
-        
+import { Paginator } from 'primereact/paginator';
+
+import ModalEditarGato from "../../Componentes/ModalEditarGato/modalEditarGato";
 
 function GestionGatos(){
     const [listaGatos, setGatos] = useState([]);
+    const [first, setFirst] = useState(0);
+    const [rows, setRows] = useState(10);
 
     useEffect(() => {
         async function fetchData() {
@@ -24,6 +28,13 @@ function GestionGatos(){
         fetchData();
     }, []);
 
+    const onPageChange = (event) => {
+        setFirst(event.first);
+        setRows(event.rows);
+    };
+    
+    const paginatedSolicitudes = listaGatos.slice(first, first + rows);
+
     return(
     <>
     <body className="gestion-gatos">
@@ -33,7 +44,7 @@ function GestionGatos(){
             <h1>Gestión administrativa de los gatos</h1>
             <p>Estos son todos los gatos que actualmente residen en Catpuccino</p>
 
-            {listaGatos.map(gato => (
+            {paginatedSolicitudes.map(gato => (
                 <section className="card mb-4">
                     <div className="tarjeta">
                         <div className="img-data">
@@ -50,13 +61,16 @@ function GestionGatos(){
                             </div>
                         </div>
                         
-                        <div className="options">
-                            <Link className="button-link" to="/GestionGatos" style={{ textDecoration: 'none' }}><i class='bx bxs-pencil' ></i>Editar</Link>
-                        </div>
+                        <ModalEditarGato gatoId={gato.id}></ModalEditarGato>
+                        {/* <Link className="button-link" to="/GestionGatos" style={{ textDecoration: 'none' }}><i class='bx bxs-pencil' ></i>Editar</Link> */}
+
                     </div>
                 </section>
             ))}
 
+        <div>
+            <Paginator first={first} rows={rows} totalRecords={listaGatos.length} rowsPerPageOptions={[10, 20, 30]} onPageChange={onPageChange} />
+        </div>
 
         </main>
 

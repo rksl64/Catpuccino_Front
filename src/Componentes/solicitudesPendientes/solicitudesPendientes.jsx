@@ -4,13 +4,14 @@ import pawsBanner from '../../assets/img/adopcion/pawsBanner.jpg';
 import { Link } from 'react-router-dom';
 import { getSolicitudesPendientes } from "../../Servicios/user.service";
 import ModalEstadoSolicitud from "../ModalEstadoSolicitud/modalEstadoSolicitud";
-        
+import { Paginator } from 'primereact/paginator';
 
 function SolicitudPendientes(){
-
     const [listaSolicitudes, setSolicitudes] = useState([]);
     const [selectedSolicitudId, setSelectedSolicitudId] = useState(null);
     const [isModalVisible, setModalVisible] = useState(false);
+    const [first, setFirst] = useState(0);
+    const [rows, setRows] = useState(10);
 
     useEffect(() => {
         getSolicitudesPendientes()
@@ -32,9 +33,21 @@ function SolicitudPendientes(){
         setSelectedSolicitudId(null);
     };
 
+    const onPageChange = (event) => {
+        setFirst(event.first);
+        setRows(event.rows);
+    };
+    
+    const paginatedSolicitudes = listaSolicitudes.slice(first, first + rows);
+
     return(
     <>
-        {listaSolicitudes.map((solicitud, index) => (
+        {listaSolicitudes.length === 0 ? (
+            <div style={{ textAlign: "center" }} className="no-solicitudes mb-5">
+                <h3>No hay solicitudes pendientes.</h3>
+            </div>
+        ) : (
+        paginatedSolicitudes.map((solicitud, index) => (
         <section 
             key={index}
             onDoubleClick={() => handleDoubleClick((solicitud.id))}
@@ -54,7 +67,8 @@ function SolicitudPendientes(){
                 </div>
             </div>
         </section>
-        ))}
+            ))
+        )}
 
         {selectedSolicitudId && (
                         <ModalEstadoSolicitud
@@ -63,6 +77,10 @@ function SolicitudPendientes(){
                             onClose={closeModal}
                         />
                     )}
+
+        <div>
+            <Paginator first={first} rows={rows} totalRecords={listaSolicitudes.length} rowsPerPageOptions={[10, 20, 30]} onPageChange={onPageChange} />
+        </div>
     </>
     )
 }

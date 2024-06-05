@@ -81,7 +81,7 @@ function Formulario(){
             });
             showSuccess();
             setTimeout(() => {
-                navigate("/");
+                navigate("/DashboardGatos");
             }, 3000);
         } catch (error) {
             showError();
