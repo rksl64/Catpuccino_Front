@@ -2,16 +2,19 @@
   width: 14.9vw;
 }
 .Margin {
- 
 }
 .Margin input {
-  background-color:#262626 !important;
+  background-color: #262626 !important;
   color: #fff;
+  padding: 1rem;
 }
 :focus-within > .label {
-  color: #FFB03B;
-  
+  color: #ffb03b;
 }
-.label{
+.label {
   color: #e99072;
+  font-family: "Manrope", sans-serif;
+}
+.p-input-icon {
+  margin-top: -0.7em;
 }

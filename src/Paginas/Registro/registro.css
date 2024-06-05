@@ -1,16 +1,76 @@
 .Margin input {
-    background-color:#262626 !important;
-    color: #fff;
+  background-color: #262626 !important;
+  color: #fff;
+  width: 20vw;
+}
+.Margin2 input {
+  background-color: #262626 !important;
+  color: #fff;
+  width: 20vw;
+  margin-left: -2.5em;
 }
 
-.Margin{
-    margin:1em;
+.Margin {
+  margin: 1em;
+}
+.Margin2 {
+  margin: 1em;
 }
 
 :focus-within > .label {
-    color: #FFB03B;
-    
+  color: #ffb03b;
 }
-.label{
+.label {
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+}
+.Margin2 label {
+  margin-left: -2.5em;
+  font-family: "Manrope", sans-serif;
+}
+.scroll::-webkit-scrollbar {
+  /* width de tod0 el scrolllbar. ESTO ES DE PRIMERO, SI NO NO LO AGARRA*/
+  width: 12px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  /* Carril de la barra*/
+  border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  /* Barra*/
+  background-color: #feeeca;
+  border-radius: 40px;
+  border: 1px solid rgba(2, 2, 2, 0.6);
+}
+
+.scroll::-webkit-scrollbar-track-piece {
+  /* Parte interna del carril de la barra*/
+  background-color: rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+}
+.p-input-icon {
+  margin-top: -0.7em;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .Margin input {
+    background-color: #262626 !important;
     color: #fff;
+    width: 30vw;
+  }
+  .Margin2 input {
+    background-color: #262626 !important;
+    color: #fff;
+    width: 30vw;
+    margin-left: -3.6em;
+  }
+  .Margin2 {
+    margin: 1em;
+  }
+  .Margin2 label {
+    margin-left: -3.5em;
+  }
 }

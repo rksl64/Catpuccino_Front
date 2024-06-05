@@ -30,8 +30,10 @@ import gatocafe from "../../assets/img/icono.png";
 import fondolateral from "../../assets/img/fondo_lateral.png";
 import { Toast } from "primereact/toast";
 import "./registro.css";
-import { showSuccessMessage, showErrorMessage } from "../../Componentes/Toast/toast"; // Ajusta la ruta si es necesario
-
+import {
+  showSuccessMessage,
+  showErrorMessage,
+} from "../../Componentes/Toast/toast"; // Ajusta la ruta si es necesario
 
 function Registro({ setActivo }) {
   const [registro, setRegistro] = useState({
@@ -79,25 +81,31 @@ function Registro({ setActivo }) {
         const mensajeError = `Los campos ${camposFaltantes.join(
           ", "
         )} son obligatorios.`;
-        showErrorMessage(toast,mensajeError);
+        showErrorMessage(toast, mensajeError);
         return;
       }
 
       // Verificar formato de email
       if (!validateEmail(registro.email)) {
-        showErrorMessage(toast,"El formato del correo electrónico es inválido.");
+        showErrorMessage(
+          toast,
+          "El formato del correo electrónico es inválido."
+        );
         return;
       }
 
       // Verificar longitud de contraseña
       if (registro.password.length < 6) {
-        showErrorMessage(toast,"La contraseña debe tener al menos 6 caracteres.");
+        showErrorMessage(
+          toast,
+          "La contraseña debe tener al menos 6 caracteres."
+        );
         return;
       }
 
       // Verificar que las contraseñas coincidan
       if (registro.password !== registro.password2) {
-        showErrorMessage(toast,"Las contraseñas no coinciden.");
+        showErrorMessage(toast, "Las contraseñas no coinciden.");
         return;
       }
 
@@ -113,19 +121,22 @@ function Registro({ setActivo }) {
       );
 
       console.log(response);
+      if (response.username == "error 1") {
+        showErrorMessage(toast, response.message);
+      }
+      if (response.username == "error 2") {
+        showErrorMessage(toast, response.message);
+      }
       if (response.token) {
         // Mostrar mensaje de éxito si el registro es exitoso
-        showSuccessMessage(toast,
-          "Inicio de sesión exitoso. Redirigiendo a Inicio..."
+        showSuccessMessage(
+          toast,
+          "Registro exitoso. Redirigiendo al Iniciar Sesión..."
         );
-      } else {
-        showErrorMessage(toast,
-          "Las credenciales son incorrectas. Por favor, verifica el nombre de usuario y la contraseña."
-        );
+        setTimeout(() => {
+          window.location.href = "../Login";
+        }, 2000);
       }
-      ///IDEA
-      //PONER UN POP UP QUE DIGA QUE SE HA REALIZADO CORRECTAMENTE EL REGISTRO Y
-      //PONER UNA ESPERA DE UNOS SEGUNDOS Y SE REDIRIGE A lOGIN
     } catch (error) {
       console.error("Error:", error);
       throw error;
@@ -136,7 +147,6 @@ function Registro({ setActivo }) {
     return re.test(email);
   };
 
-
   return (
     <>
       <BackgroundOverlay>
@@ -146,11 +156,15 @@ function Registro({ setActivo }) {
               <DivImagen>
                 <ImagenFondo src={fondito}></ImagenFondo>
                 <ImagenCat src={fondolateral}></ImagenCat>
-                <TEXT>holi a la cafeteria donde los sueños no se hacen realidad</TEXT>
+                <TEXT>
+                  
+                </TEXT>
               </DivImagen>
               <DivFormu>
-                <Logito src={gatocafe} href></Logito>
-                <DivScroll>
+                <a href="../">
+                  <Logito src={gatocafe}></Logito>
+                </a>
+                <DivScroll className="scroll">
                   <FloatLabel className="Margin">
                     <InputText
                       name="nombre"
@@ -159,7 +173,9 @@ function Registro({ setActivo }) {
                       id="nombre"
                       onChange={handleInputChange}
                     />
-                    <label className="label" htmlFor="nombre">Nombre</label>
+                    <label className="label" htmlFor="nombre">
+                      Nombre
+                    </label>
                   </FloatLabel>
 
                   <FloatLabel className="Margin">
@@ -170,7 +186,9 @@ function Registro({ setActivo }) {
                       id="username"
                       onChange={handleInputChange}
                     />
-                    <label className="label" htmlFor="apellidos">Apellidos</label>
+                    <label className="label" htmlFor="apellidos">
+                      Apellidos
+                    </label>
                   </FloatLabel>
                   <FloatLabel className="Margin">
                     <InputText
@@ -180,7 +198,9 @@ function Registro({ setActivo }) {
                       id="telefono"
                       onChange={handleInputChange}
                     />
-                    <label className="label" htmlFor="telefono">Teléfono</label>
+                    <label className="label" htmlFor="telefono">
+                      Teléfono
+                    </label>
                   </FloatLabel>
 
                   <FloatLabel className="Margin">
@@ -191,7 +211,9 @@ function Registro({ setActivo }) {
                       id="email"
                       onChange={handleInputChange}
                     />
-                    <label className="label" htmlFor="email">Email</label>
+                    <label className="label" htmlFor="email">
+                      Email
+                    </label>
                   </FloatLabel>
 
                   <FloatLabel className="Margin">
@@ -202,7 +224,9 @@ function Registro({ setActivo }) {
                       id="dni"
                       onChange={handleInputChange}
                     />
-                    <label className="label" htmlFor="dni">Dni</label>
+                    <label className="label" htmlFor="dni">
+                      Dni
+                    </label>
                   </FloatLabel>
                   <FloatLabel className="Margin">
                     <InputText
@@ -212,10 +236,11 @@ function Registro({ setActivo }) {
                       id="nombreUsuario"
                       onChange={handleInputChange}
                     />
-                    <label className="label" htmlFor="nombreUsuario">Nombre de Usuario</label>
+                    <label className="label" htmlFor="nombreUsuario">
+                      Nombre de Usuario
+                    </label>
                   </FloatLabel>
-                  <FloatLabel className="Margin">
-                  
+                  <FloatLabel className="Margin2">
                     <Password
                       name="password"
                       placeholder="Contraseña"
@@ -225,10 +250,12 @@ function Registro({ setActivo }) {
                       className="Input"
                       toggleMask
                     />
-                    <label className="label" htmlFor="password">Contraseña</label>
+                    <label className="label" htmlFor="password">
+                      Contraseña
+                    </label>
                   </FloatLabel>
 
-                  <FloatLabel className="Margin">
+                  <FloatLabel className="Margin2">
                     <Password
                       name="password2"
                       placeholder="Repetir Contraseña"
@@ -238,23 +265,20 @@ function Registro({ setActivo }) {
                       className="Input"
                       toggleMask
                     />
-                    <label className="label" htmlFor="password">Repetir Contraseña</label>
+                    <label className="label" htmlFor="password">
+                      Repetir Contraseña
+                    </label>
                   </FloatLabel>
                 </DivScroll>
                 <FormBtn className="form-btn" onClick={onSubmit}>
-                  Iniciar Sesión
+                  Registrarse
                 </FormBtn>
                 <SignUpLabel className="sign-up-label">
                   ¿Tienes Cuenta?
                   <SignUpLink className="sign-up-link">
-                    <A href="../Login">Inicia Sesión</A>
+                    <A href="../Login"> Inicia Sesión. </A>
                   </SignUpLink>
                 </SignUpLabel>
-                <PageLink className="page-link">
-                  <PageLinkLabel className="page-link-label">
-                    <A href="">Olvidaste la contraseña?</A>
-                  </PageLinkLabel>
-                </PageLink>
               </DivFormu>
             </Form>
           </FormContainer>
