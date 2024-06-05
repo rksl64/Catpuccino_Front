@@ -13,6 +13,7 @@ import {
   Imagen,
   ToastDiv,
   A,
+  TILT,
 } from "./login-style";
 import authService from "../../Servicios/auth.service";
 import {
@@ -89,7 +90,7 @@ function Login({ setActivo }) {
     <BackgroundOverlay>
       <Div>
         <FormContainer className="form-container">
-          <Title className="title">Catpuccino</Title>
+        <TILT href="../"><Title className="title">Catpuccino</Title></TILT>
           <Form className="form">
             <FloatLabel className="Margin">
               <InputText
@@ -117,12 +118,12 @@ function Login({ setActivo }) {
           <SignUpLabel className="sign-up-label">
             No tienes Cuenta?
             <SignUpLink className="sign-up-link">
-              <A href="../Registro">Registrate</A>
+              <A href="../Registro"> Registrate.</A>
             </SignUpLink>
           </SignUpLabel>
           <PageLink className="page-link">
             <PageLinkLabel className="page-link-label">
-              <A href="">Olvidaste la contraseña?</A>
+              <A href="../CambiarContraseña">Olvidaste la contraseña?</A>
             </PageLinkLabel>
           </PageLink>
         </FormContainer>

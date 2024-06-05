@@ -8,8 +8,8 @@ export const Div = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media (max-width: 768px) {
-    height: auto;
+  @media (max-width: 1000px) {
+    height: 100%;
     padding: 20px;
   }
 `;
@@ -44,9 +44,9 @@ export const FormContainer = styled.div`
   border-radius: 10px;
   box-sizing: border-box;
   padding: 20px 30px;
-  @media (max-width: 768px) {
-    width: 90vw;
-    height: auto;
+  @media (max-width: 1000px) {
+    width: 95vw;
+    height: 80%;
     padding: 15px;
   }
 `;
@@ -58,7 +58,7 @@ export const Form = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
     height: auto;
   }
@@ -77,8 +77,6 @@ export const PageLink = styled.p`
 
 export const PageLinkLabel = styled.span`
   cursor: pointer;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 9px;
   font-weight: 700;
   color: #ffb03b;
@@ -88,53 +86,46 @@ export const PageLinkLabel = styled.span`
 `;
 
 export const FormBtn = styled.button`
-  padding: 10px 15px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  border-radius: 20px;
-  border: 0 !important;
-  outline: 0 !important;
-  background: #ffb03b;
+  border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+  background-color: #ce796b;
+  border: none;
+  padding: 0.7rem 2.5rem;
+  margin-top: 1rem;
   color: white;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: background-color 1s ease;
 
-  &:active {
-    box-shadow: none;
+  &:hover {
+    background-color: #e7ad99;
   }
 `;
 
 export const SignUpLabel = styled.p`
   margin: 0;
-  font-size: 10px;
+  margin-top: 1em;
+  font-size: 13px;
   color: white;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 `;
 
 export const SignUpLink = styled.span`
   margin-left: 1px;
-  font-size: 11px;
-  text-decoration: underline;
+  font-size: 14px;
   text-decoration-color: #747474;
-  color: #ffb03b;
+  color: #d36655;
   cursor: pointer;
   font-weight: 800;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   &:hover {
     color: white;
   }
 `;
 
 export const A = styled.a`
-  color: #ffb03b;
+  color: #d36655;
+  text-decoration: none;
 
   &:hover {
     color: white;
   }
 `;
-
 const slideDown = keyframes`
   from {
     transform: translateY(-100%);
@@ -146,8 +137,8 @@ const slideDown = keyframes`
 
 export const ImagenFondo = styled.img`
   height: 85vh;
-  width: 45vw;
-  @media (max-width: 768px) {
+  width: 40vw;
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -160,7 +151,7 @@ export const DivFormu = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     width: 90vw;
     height: auto;
   }
@@ -174,7 +165,7 @@ export const DivImagen = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -184,7 +175,7 @@ export const ImagenCat = styled.img`
   width: 25vw;
   margin-left: -5em;
   position: absolute;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -195,7 +186,8 @@ export const TEXT = styled.h2`
   position: absolute;
   bottom: 0;
   margin-bottom: 4em;
-  @media (max-width: 768px) {
+  font-family: "Manrope", sans-serif;
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -204,10 +196,12 @@ export const Logito = styled.img`
   height: 12vh;
   width: 8vw;
   margin-left: -1em;
-  @media (max-width: 768px) {
+  border-radius: 50%;
+  @media (max-width: 1000px) {
     width: 20vw;
     height: auto;
     margin-left: 0;
+    border-radius: 50%;
   }
 `;
 
@@ -219,7 +213,11 @@ export const DivScroll = styled.div`
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 `;
