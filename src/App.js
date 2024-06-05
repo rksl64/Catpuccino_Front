@@ -18,6 +18,10 @@ import Footer from "./Componentes/Footer/footer";
 import GestionGatos from "./Paginas/GestionGatos/gestionGatos";
 import DashboardGestorGatos from "./Paginas/DashboardGestorGatos/dashboardGestorGatos";
 import SolicitudAdopciones from "./Paginas/SolicitudesAdopcion/solicitudesAdopcion";
+import HistorialSolicitudes from "./Paginas/HistorialSolicitudes/HistorialSolicitudes";
+import HistorialAdopciones from "./Paginas/HistorialAdopciones/HistorialAdopciones"
+import DashboardSuperAdmin from "./Paginas/DashboardSuperAdmin/dashboardSuperAdmin";
+import DashboardCamarero from "./Paginas/DashboardCamarero/dashboardCamarero";
 import { useRef } from "react";
 
 import { Toast } from 'primereact/toast';
@@ -55,8 +59,12 @@ function App() {
         <Route path="/MisReservas" element={<MisReservas/>}></Route>
         <Route path="/spinner" element={<Spinner />}></Route>
         <Route path="/DashboardGatos" element={<DashboardGestorGatos/>}></Route>
+        <Route path="/DashboardSuperAdmin" element={<DashboardSuperAdmin/>}></Route>
+        <Route path="/DashboardCamarero" element={<DashboardCamarero/>}></Route>
         <Route path="/SolicitudesAdopcion" element={<SolicitudAdopciones/>}></Route>
         <Route path="/VisualizarPdf" element={<VisualizarPdf setActivo={setActivo} activo={activo}/>}></Route>
+        <Route path="/HistorialSolicitudes" element={<HistorialSolicitudes/>}></Route>
+        <Route path="/HistorialAdopciones" element={<HistorialAdopciones/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
       </Routes>

@@ -56,7 +56,7 @@ function SolicitudAdopciones(){
     <body className="gestion-solicitudes">
         <section className='TopBanner' style={{backgroundImage: `url(${pawsBanner})`}}></section>
 
-        <main className="container mt-5 mb-5">
+        <main className="container mt-5 pb-5">
             <h1>Solicitudes de adopción</h1>
             <p>Estos son todos las solicitudes de adopción hechas recientemente, para ver más detalles
                 y aceptar/rechazar las solicitud, hacer doble click.
