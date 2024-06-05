@@ -28,6 +28,8 @@ import { Toast } from 'primereact/toast';
 import MisReservas from "./Paginas/MisReservas/MisReservas";
 import Spinner from "./Componentes/Spinner/spinner";
 import VisualizarPdf from "./Utils/visualizar-pdf";
+import Recuperar from "./Paginas/Recuperar/recuperar";
+import CambiarContraseña from "./Paginas/CambiarContra/cambiarContra";
 
 function App() {
 
@@ -43,9 +45,9 @@ function App() {
         <Route path="/" element={<Inicio />}></Route>
         <Route path="/Login" element={<Login setActivo={setActivo}/>}></Route>
         <Route path="/Registro" element={<Registro setActivo={setActivo}/>}></Route>
+        <Route path="/CambiarContraseña" element={<CambiarContraseña setActivo={setActivo}/>}></Route>
+        <Route path="/Recuperar" element={<Recuperar setActivo={setActivo}/>}></Route>
         <Route path="/" element={<Inicio toast={toast} />}></Route>
-        <Route path="/Login" element={<Login />}></Route>
-        <Route path="/Registro" element={<Registro />}></Route>
         <Route path="/Reserva" element={<Reserva />}></Route>
         <Route path="/Productos" element={<Producto />}></Route>
         <Route path="/Consumiciones" element={<Consumiciones />}></Route>
