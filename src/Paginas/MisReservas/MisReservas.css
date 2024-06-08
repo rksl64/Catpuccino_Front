@@ -1,18 +1,29 @@
 .patata {
     margin: 0; 
+    .foto{
+      width: 100%; 
+        height: 25rem; 
+        background-image: url('C:/Users/Ladyd/Desktop/Catpuccino_Front/src/assets/img/fondo_cafe.avif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: -60px;
+    }
+  
 
     .cabecera {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         height: 25rem;
+        margin-top: -80px;
         width: auto;
         color: black;
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin-left: 3rem;
-        margin-bottom: -10rem;
+        margin-bottom: -7rem;
 
         .h1 {
             font-family: 'Quicksand', sans-serif;
@@ -21,63 +32,63 @@
         }
     }
 
-    .reservas-container {
+
+    .contenedor{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .reservas-container {
         display: flex;
         justify-content: center;
         margin-bottom: 1rem;
-        
-        .reserva-table {
-            border: 1px solid black;
-            border-radius: 25px; /* Establece el radio de curvatura de los bordes de la tabla */
-            overflow: hidden; 
-            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-            tr:nth-child(odd) {
-                background-color: #ffe5d3; /* Color de fondo para las filas impares */
-            }
+        margin-top: 2rem;
+        flex-direction: column;
+        width: 90%;
+        .filaFecha{
+          display: flex;
+          flex-direction: column;
+          margin-left: 11rem;
+          margin-right: 11rem;
+        }
+        .botoncitos{
+          display: flex;
+          flex-direction: column;
+          margin-left: 11rem;
+          button{
+            border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+            background-color: #ce796b;
+            border: none;
+            padding: 0.5rem, 2.5rem !important;
+            color: white;
+            transition: background-color 1s ease;
+            font-family: 'Quicksand', sans-serif !important;
+            margin: 0.5rem 4rem 0.5rem 8rem ;
             
-            /* Estilo para las filas pares */
-            tr:nth-child(even) {
-                background-color: #ffcbbb; /* Color de fondo para las filas pares */
-            }
-            .reserva-item {
-                
-                
-                .fila {
-                    border-bottom: 0,5px solid black;
-                    padding: 2.5rem;
-                    gap: 2px;
-                    text-align: center;
-                }
-                .fila1 {
-                    border-bottom: 0,5px solid black; 
-                    margin-right: 50px;
-                    padding: 2.5rem;
-                    text-align: center;
-                    
-                    .hola{
-                        margin-top: 0.5rem;
-                        
-                    }
-                    .hola1{
-                        margin-top: 0.5rem;
-                        margin-bottom: 0.5rem;
-                    }
-                    .imprimir{
-                        text-decoration: none;
-                        color: white;
-                    }
-                }
-                .fila2 {
-                    border-bottom: 0,5px solid black;
-                    margin-right: 50px;
-                    text-align: center;
-                    padding: 2.5rem;
-                }
-            }
+          }
+        }
+        .botonSolicitud{
+          margin-left: 25rem;
+        }
+        .status-aceptados{
+          margin-right: 20rem;
         }
     }
+    }
+    .p-menuitem-link{
+      text-decoration: none;
+      color: #808080;
+    }
 
-}
+       
+  }
+            
+
+
+                
+                
+                
+
+
 
   .toast{
     display: flex;
@@ -85,3 +96,211 @@
     justify-content: space-around;
     align-items: center;
   }
+  .modal-header {
+    border-bottom: none;
+  }
+  
+  .modal-footer {
+    border-top: none;
+  }
+ 
+
+/* CustomModal.css */
+
+.modal-body form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado uniforme entre inputs */
+  }
+  
+  .input-custom {
+    width: 100%; /* Asegura que todos los inputs tengan el mismo ancho */
+    padding: 10px; /* Añade padding para mejorar la apariencia */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ced4da; /* Borde gris claro */
+    box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
+  }
+  
+  .input-custom:focus {
+    border-color: #80bdff; /* Color del borde en foco */
+    outline: none; /* Elimina el outline por defecto */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra azul en foco */
+  }
+  
+  button.btn-primary {
+    align-self: center; /* Centra el botón en el formulario */
+    padding: 6px 12px; /* Menor padding para el botón */
+    font-size: 14px; /* Tamaño de fuente del botón */
+    border-radius: 5px; /* Bordes redondeados del botón */
+    margin-top: 10px; /* Margen superior para separar del último input */
+    width: auto; /* Ancho automático */
+    background-color: #ce796b;
+    border: none;
+  }
+  button.btn-primary:hover{
+    background-color: #d36655;
+  }
+  
+  
+
+
+
+  
+  
+  .card{
+    padding-top: 100rem !important;
+  }
+  /* Responsive design */
+@media (max-width: 1200px) {
+  .patata .contenedor .reservas-container {
+    width: 95%;
+
+    .filaFecha, .botoncitos {
+      margin-left: 5rem;
+      margin-right: 5rem;
+    }
+
+    .botonSolicitud, .status-aceptados {
+      margin-left: 5rem;
+      margin-right: 5rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .patata .cabecera {
+    margin-left: 1rem;
+    margin-bottom: -5rem;
+  }
+
+  .patata .contenedor .reservas-container {
+    width: 100%;
+
+    .filaFecha, .botoncitos {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    .botonSolicitud, .status-aceptados {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .patata .cabecera {
+    margin-left: 1rem;
+    margin-bottom: -5rem;
+
+    .h1 {
+      font-size: 2.5em;
+    }
+  }
+
+  .patata .contenedor {
+    flex-direction: column;
+
+    .reservas-container {
+      width: 100%;
+
+      .filaFecha, .botoncitos {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
+      .botonSolicitud, .status-aceptados {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .patata .cabecera {
+    margin-left: 0.5rem;
+    margin-bottom: -3rem;
+
+    .h1 {
+      font-size: 2em;
+    }
+  }
+
+  .patata .contenedor {
+    flex-direction: column;
+
+    .reservas-container {
+      width: 100%;
+
+      .filaFecha, .botoncitos {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+
+      .botonSolicitud, .status-aceptados {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 480px) {
+  .patata .cabecera {
+    margin-left: 0.25rem;
+    margin-bottom: -2rem;
+
+    .h1 {
+      font-size: 1.8em;
+    }
+  }
+
+  .patata .contenedor {
+    flex-direction: column;
+
+    .reservas-container {
+      width: 100%;
+
+      .filaFecha, .botoncitos {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+      }
+
+      .botonSolicitud, .status-aceptados {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .patata .cabecera {
+    margin-left: 0.1rem;
+    margin-bottom: -1rem;
+
+    .h1 {
+      font-size: 1.5em;
+    }
+  }
+
+  .patata .contenedor {
+    flex-direction: column;
+
+    .reservas-container {
+      width: 100%;
+
+      .filaFecha, .botoncitos {
+        margin-left: 0.1rem;
+        margin-right: 0.1rem;
+      }
+
+      .botonSolicitud, .status-aceptados {
+        margin-left: 0.1rem;
+        margin-right: 0.1rem;
+      }
+    }
+  }
+}
