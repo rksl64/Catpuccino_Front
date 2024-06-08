@@ -373,6 +373,30 @@ export async function getSolicitudOneByOne(id){
   }
 }
 
+// Función para obtener adopciones por usuario
+export async function obtenerAdopcionesPorUsuario (idUsuario){
+  try {
+    const response = await axios.get(`${BASE_HOST}/adopcion/usuario/${idUsuario}`);
+    console.log('Adopciones del usuario',response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error obteniendo adopciones por usuario:', error);
+    throw error;
+  }
+};
+
+// Función para obtener solicitudes por usuario
+export async function obtenerSolicitudesPorUsuario(idUsuario){
+  try {
+    const response = await axios.get(`${BASE_HOST}/solicitud/usuario/${idUsuario}`);
+    console.log('solicitudes del usuario',response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error obteniendo solicitudes por usuario:', error);
+    throw error;
+  }
+};
+
 export async function aceptarSolicitud(id){
   try{
     const response = await axios.patch(`${BASE_HOST}/solicitud/${id}/aceptar`);
