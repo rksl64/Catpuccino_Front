@@ -254,7 +254,7 @@ function MisReservas() {
                       <img className="img" src={adopcion.gatoDTO.imagen}></img>
                       <div className="data">
                         <h6 className="highlight-p">
-                          Solicitud para adoptar a{" "}
+                          Gato adoptado: {" "}
                           <span>{adopcion.gatoDTO.nombre}</span>
                         </h6>
                         <p className="small-text">
