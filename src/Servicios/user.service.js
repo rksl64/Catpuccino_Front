@@ -457,4 +457,27 @@ export async function getAllSolicitudes(){
     console.error('Ops, un error getAllSolicitudes', error);
     throw error;
   }
+
+  
+}
+
+export async function getReservasDiaHora(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/reserva/fechayhora`)
+    return response.data;
+  } catch (error) {
+    console.error('No te traigo las reservas', error);
+    throw error;
+  }
+
+}
+export async function cancelarReservasHora(){
+  try{
+    const response = await axios.put(`${BASE_HOST}/reserva/ausentes`)
+    return response.data;
+  } catch (error) {
+    console.error('No te traigo las reservas', error);
+    throw error;
+  }
+
 }
