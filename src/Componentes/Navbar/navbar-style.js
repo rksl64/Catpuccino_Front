@@ -66,6 +66,7 @@ const Header = styled.div`
   .logo img {
     padding: 0;
     margin: 0;
+    width: 50px;
     max-height: 60px;
   }
   .scrollto{

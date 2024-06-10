@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import userService from "../../Servicios/user.service";
 import "./Reserva.css";
-import { Button } from 'primereact/button';
 import 'primeicons/primeicons.css';
 import { Calendar } from 'primereact/calendar';
 import { getToken } from "../../Servicios/Cookies/cookies";
 import { HacerReserva } from "../../Servicios/user.service";
-
-
-
+import { format } from "date-fns";
+import { showSuccessMessage, showErrorMessage, } from "../../Componentes/Toast/toast";
+import { Toast } from "primereact/toast";
 
 
 function Reserva() {
@@ -23,6 +22,7 @@ function Reserva() {
   const [prueba1, setprueba1] = useState(false);
   const inputRef = useRef(null);
   const [activeTab, setActiveTab] = useState(1);
+  const toast = useRef(null);
   const [reserva, setReserva] = useState({
     
   nombre_reserva: "",
@@ -69,7 +69,14 @@ function Reserva() {
   };
 
   const handleFechaChange = (e) => {
-    setFecha(e.target.value);
+    // Obtener la fecha seleccionada
+    const selectedDate = e.value;
+    
+    // Formatear la fecha en el formato yyyy-MM-dd
+    const formattedDate = format(selectedDate, "yyyy-MM-dd");
+    
+    // Establecer la fecha formateada en el estado
+    setFecha(formattedDate);
   };
 
   const handleInputChange = (event) => {
@@ -122,12 +129,26 @@ function Reserva() {
         const month = String(nuevaFecha.getMonth() + 1).padStart(2, '0');
         const day = String(nuevaFecha.getDate()).padStart(2, '0');
         const formattedDate = `${year}-${month}-${day}`;
-        
-        // Actualizar el estado con la fecha formateada y establecer formatefecha en true
         setFecha(formattedDate);
+        if (bool === false) {
+          showErrorMessage(
+            toast,
+            response[1]
+          );
+        }
+
       } else if (hora === "null" && fecha !== "") {
         response = await userService.Search(hora, fecha);
         setHorasDisponibles(response);
+        bool = response[0];
+        const nuevaFecha = new Date(fecha);
+        const year = nuevaFecha.getFullYear();
+        const month = String(nuevaFecha.getMonth() + 1).padStart(2, '0');
+        const day = String(nuevaFecha.getDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+        setFecha(formattedDate);
+        setFecha("");
+
       } else if (hora !== "null" && fecha === "") {
         response = await userService.Search(hora, fecha);
         setHorasDisponibles(response);
@@ -142,6 +163,7 @@ function Reserva() {
       // Manejar el error de acuerdo a tus necesidades
     }
   };
+  
 
   return (
     <section className="reserva">
@@ -167,57 +189,41 @@ function Reserva() {
           </select>
         </div>
         <div className="search-box">
-          <Calendar className="search-input" value={fecha} onChange={handleFechaChange} dateFormat="dd/mm/yy" placeholder="Selecciona Fecha" />
+          <Calendar className="search-input" value={fecha} onChange={handleFechaChange} dateFormat="dd/mm/yy" placeholder={fecha ? fecha : "Selecciona Fecha"} />
         </div>
-        <Button className="search-btn" severity="secondary" raised
+        <button className="search-btn" raised
           disabled={!puedoBuscar}
           onClick={onSearch}
         >
           Buscar
-        </Button>
+        </button>
       </div>
-
+      <Toast ref={toast} />
       <div className="content">
         {horanull && !fechanull && (
           <div className="default-container">
             <table className="default">
-              <thead>
-                <tr>
-                  {horasDisponibles.map((hora, index) => (
-                    <th key={index}>{hora[0]}</th>
-                  ))}
-                </tr>
-              </thead>
               <tbody>
-                <tr>
-                  {horasDisponibles.map((hora, index) => (
-                    <td key={index}>
-                      {hora[1] ? "Hora disponible" : "Hora no disponible"}
-                    </td>
-                  ))}
-                </tr>
+                {horasDisponibles.map((hora, index) => (
+                  <tr key={index}>
+                    <th>{hora[0]}</th>
+                    <td className={`${getButtonColor(hora[1])}`}>{hora[1] ? "Hora disponible" : "Hora no disponible"}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         )}
         {!horanull && fechanull && (
           <div className="default-container">
-            <table className="default">
-              <thead>
-                <tr>
-                  {horasDisponibles.map((hora, index) => (
-                    <th key={index}>{hora[1]}</th>
-                  ))}
-                </tr>
-              </thead>
+             <table className="default">
               <tbody>
-                <tr>
-                  {horasDisponibles.map((hora, index) => (
-                    <td key={index}>
-                      {hora[0] ? "Hora disponible" : "Hora no disponible"}
-                    </td>
-                  ))}
-                </tr>
+                {horasDisponibles.map((horita, index) => (
+                  <tr key={index}>
+                    <th>{horita[1]}</th>
+                    <td className={`${getButtonColor(horita[0] == hora ? true : false)}`}>{horita[0] ? "Hora disponible" : "Hora no disponible"}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -380,7 +386,7 @@ function Reserva() {
                     <p>
                       Si no puedes acudir o deseas modificar la reserva, puedes
                       ponerte en contacto por email a
-                      nekocafe_catpuccino@gmail.com o bien puedes acceder al
+                      catcafe_catpuccino@gmail.com o bien puedes acceder al
                       desplegable y acceder a <span> Mis Reservas </span> en el podras editar la fecha o la hora si estan
                       disponibles.
                     </p>
@@ -473,7 +479,7 @@ function Reserva() {
                   
                 </div>
                 <div className="text-center">
-                <button type="button" onClick={onSubmitReserva}>Enviar Mensaje</button>
+                <button type="button" className="search-btn" onClick={onSubmitReserva}>Hacer Reserva</button>
                 </div>
               </form>
             </div>
@@ -485,3 +491,12 @@ function Reserva() {
 }
 
 export default Reserva;
+
+function getButtonColor(estadoReserva) {
+  switch (estadoReserva) {
+    case true:
+      return "horaDisponible";
+    case false:
+      return "horaNoDisponible";
+  }
+}

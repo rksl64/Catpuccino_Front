@@ -2,18 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Header, Nav, MobileNavToggle, Topbar } from "./navbar-style";
 import logito from "../../assets/logito.png";
 import { deleteCookie, getToken } from "../../Servicios/Cookies/cookies";
+import { habilitarConsumicion } from "../../Servicios/user.service";
+import { id } from "date-fns/locale";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [token, setToken] = useState(false);
   const [Id, setId] = useState(false);
   const [rol, setrol] = useState('');
+  const [Ids, setIds] = useState(0);
+  const [permiso, setPermiso] = useState(false);
 
-  useEffect(() => {
+  useEffect( () => {
     if (getToken("token") != null ) {
       setToken(true);
       setId(true);
+      setIds(getToken("ID"));
       setrol(getToken("Rol"));
+      
     } else {
     }
     const handleScroll = () => {
@@ -31,6 +37,17 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    habilita();
+  });
+  const habilita = async () =>{
+    if (rol === 'USUARIO'){
+      const response = await habilitarConsumicion(parseInt(Ids));
+      setPermiso(response);
+    }
+  }
+
   const onLogout = () => {
     
     setTimeout(() => {
@@ -97,65 +114,16 @@ function Navbar() {
                   <li>
                     <a href="Reserva">Hacer reserva</a>
                   </li>
+                  {permiso && (
+                    <li>
+                      <a href="/Productos">Hacer consumición</a>
+                    </li>
+                  )}
                   <li>
-                    <a href="/Productos">Hacer consumición</a>
+                    <a href="/Adopcion">Hacer adopción</a>
                   </li>
                   <li>
-                    <a href="/Adopcion">Hacer Adopcion</a>
-                  </li>
-                  <li>
-                    <a href="/">Mis Reservas</a>
-                  </li>
-                  <li>
-                    <a href="/">Mis Adopciones</a>
-                  </li>
-                </ul>
-              </li>)}
-              {rol !== '' && rol === 'CAMARERO' && (
-              <li className="dropdown">
-                <a href="/" className="nav-link scrollto">
-                  <span>Nuestros Servicios</span>{" "}
-                  <i className="bi bi-chevron-down"></i>
-                </a>
-                <ul>
-                  <li>
-                    <a href="Reserva">Hacer reserva</a>
-                  </li>
-                  <li>
-                    <a href="/Productos">Hacer consumición</a>
-                  </li>
-                  <li>
-                    <a href="/Adopcion">Hacer Adopcion</a>
-                  </li>
-                  <li>
-                    <a href="/">Mis Reservas</a>
-                  </li>
-                  <li>
-                    <a href="/">Mis Adopciones</a>
-                  </li>
-                </ul>
-              </li>)}
-              {rol !== '' && rol === 'ADOPCION' && (
-              <li className="dropdown">
-                <a href="/" className="nav-link scrollto">
-                  <span>Nuestros Servicios</span>{" "}
-                  <i className="bi bi-chevron-down"></i>
-                </a>
-                <ul>
-                  <li>
-                    <a href="Reserva">Hacer reserva</a>
-                  </li>
-                  <li>
-                    <a href="/Productos">Hacer consumición</a>
-                  </li>
-                  <li>
-                    <a href="/Adopcion">Hacer Adopcion</a>
-                  </li>
-                  <li>
-                    <a href="/">Mis Reservas</a>
-                  </li>
-                  <li>
-                    <a href="/">Mis Adopciones</a>
+                    <a href="/MisReservas">Mis gestiones</a>
                   </li>
                 </ul>
               </li>)}

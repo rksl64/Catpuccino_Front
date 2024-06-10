@@ -6,6 +6,7 @@ import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { agregarProductoAlCarrito } from "../../Servicios/user.service";
+import { disminuirProductoAlCarrito } from "../../Servicios/user.service";
 import { listaCarrito } from "../../Servicios/user.service";
 import { getToken } from "../../Servicios/Cookies/cookies";
 import { verCarrito } from "../../Servicios/user.service";
@@ -41,6 +42,30 @@ const addToCart = async (idProducto, cantidad, idUsuario) => {
     alert("Error al añadir el producto al carrito");
   }
 };
+const añadirToCart = async (idProducto, cantidad, idUsuario) => {
+  try {
+    await agregarProductoAlCarrito(idProducto, cantidad, idUsuario);
+    toast.current.show({ severity:'success', summary: 'Cantidad aumentantada', detail: ' correctamente' });
+    await verCarrito().then((data) => setCarrito(data));
+  } catch (error) {
+    console.error("Error al añadir el producto al carrito:", error);
+    alert("Error al añadir el producto al carrito");
+  }
+};
+
+const disminuirToCart = async (idProducto, cantidad, idUsuario) => {
+  try {
+    await disminuirProductoAlCarrito(idProducto, cantidad, idUsuario);
+    toast.current.show({ severity:'success', summary: 'Cantidad disminuida', detail: ' correctamente' });
+    await verCarrito().then((data) => setCarrito(data));
+  } catch (error) {
+    console.error("Error al añadir el producto al carrito:", error);
+    alert("Error al añadir el producto al carrito");
+  }
+};
+
+
+
 
   //INSERTAR CARRITO EN BBDD
   const finalizarPedido = async () => {
@@ -130,7 +155,7 @@ const addToCart = async (idProducto, cantidad, idUsuario) => {
   };
 
   const listTemplate = (products, layout) => {
-    return <div className="grid grid-nogutter">{products.map((product, index) => itemTemplate(product, layout, index))}</div>;
+    return <div className="grid grid-nogutter ">{products.map((product, index) => itemTemplate(product, layout, index))}</div>;
   };
 
   const header = () => {
@@ -148,19 +173,43 @@ const addToCart = async (idProducto, cantidad, idUsuario) => {
   const itemCarrito = (data) => {
     return (
         <div className="col-12">
-            <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-                <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={data.productoDTO.imagen} alt={data.productoDTO.nombre} />
+            <div className="flex flex-column xl:flex-row xl:align-items-start pt-3">
+                <img className="w-9 sm:w-16rem xl:w-7rem shadow-2 block xl:block mx-auto border-round" src={data.productoDTO.imagen} alt={data.productoDTO.nombre} />
                 <div className="flex flex-column lg:flex-row justify-content-between align-items-center xl:align-items-start lg:flex-1 gap-4">
                     <div className="flex flex-column align-items-center lg:align-items-start gap-3">
-                        <div className="flex flex-column gap-1">
-                            <div className="text-2xl font-bold text-900">{data.productoDTO.nombre}</div>
-                            <div className="text-700">{data.productoDTO.description}</div>
+                        <div className="flex flex-column gap-1 pl-3">
+                            <div className="text-1xl font-bold text-900 prueba">{data.productoDTO.nombre}</div>
+                            <div className="text-700">{data.productoDTO.descripcion}</div>
                         </div>
                         <div className="flex flex-column gap-2">
                            
-                            <span className="flex align-items-center gap-2">
-                                <span className="text-2xl font-semibold">cantidad: {data.cantidad}</span>
-                            </span>
+                        <span className="d-flex align-items-center">
+                            <Button 
+                                icon="pi pi-minus-circle" 
+                                className="p-button-rounded"
+                                onClick={() =>
+                                  disminuirToCart(
+                                    data.productoDTO.id,
+                                    contador,
+                                    idUsuario
+                                  )
+                                }
+                              ></Button>
+                              <span className="text-1xl font-semibold mx-2" style={{ whiteSpace: 'nowrap' }}>
+                                cantidad: {data.cantidad}
+                              </span>
+                              <Button 
+                                icon="pi pi-plus-circle" 
+                                className="p-button-rounded"
+                                onClick={() =>
+                                  añadirToCart(
+                                    data.productoDTO.id,
+                                    contador,
+                                    idUsuario
+                                  )
+                                }
+                              ></Button>
+                          </span>
                         </div>
                     </div>
                     <div className="flex flex-row lg:flex-column align-items-center lg:align-items-end gap-4 lg:gap-2">
@@ -195,7 +244,7 @@ const addToCart = async (idProducto, cantidad, idUsuario) => {
       </SplitterPanel>
       <SplitterPanel className="flex align-items-center justify-content-center" size={25} minSize={10}>
       {carrito.length > 0 && (
-      <div className="card" style={{ height: '100%', overflow: 'auto' }}>
+      <div style={{ height: '100%', overflow: 'auto' }}>
             <DataScroller value={carrito} itemTemplate={itemCarrito} rows={34} buffer={0.4} header="Productos del carrito" />
             <button className="boton" onClick={finalizarPedido}>
                Finalizar pedido
