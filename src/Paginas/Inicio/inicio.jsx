@@ -10,7 +10,8 @@ import Carousel from "../../Componentes/CarruselGatos/carruselGatos";
 import React, { useEffect, useState } from "react";
 import { listarproductos } from "../../Servicios/user.service";
 import { getToken } from "../../Servicios/Cookies/cookies";
-
+import DashboardGestorGatos from "../../Paginas/DashboardGestorGatos/dashboardGestorGatos";
+import DashboardCamarero from "../../Paginas/DashboardCamarero/dashboardCamarero";
 
 function Inicio() {
   const [productos, setProductos] = useState([]);
@@ -38,101 +39,210 @@ function Inicio() {
 
   return (
     <>
-      <section id="hero">
-        <div class="hero-container">
-          <div
-            id="heroCarousel"
-            data-bs-interval="5000"
-            class="carousel slide carousel-fade"
-            data-bs-ride="carousel"
-          >
-            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+     {rol !== '' && rol === 'USUARIO' && (
+      <><><section id="hero">
+          <div className="hero-container">
+            <div
+              id="heroCarousel"
+              data-bs-interval="5000"
+              className="carousel slide carousel-fade"
+              data-bs-ride="carousel"
+            >
+              <ol className="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-            <div class="carousel-inner" role="listbox">
-              <div
-                class="carousel-item active"
-                style={{ backgroundImage: `url(${Banner1})` }}
-              >
-                <div class="carousel-container">
-                  <div class="carousel-content">
-                    <h2 class="animate__animated animate__fadeInDown">
-                      <span>Catpuccino</span> Cat Café
-                    </h2>
-                    <p class="animate__animated animate__fadeInUp">
-                      ¡Bienvenido al encantador mundo de Catpuccino! Reserva tu
-                      hora y disfruta de la compañía de nuestros adorables gatos
-                      durante 60 minutos. También ofrecemos una variedad de
-                      cafés, tés y dulces en nuestra acogedora cafetería. ¡Ven y
-                      relájate entre felinos!"
-                    </p>
-                    <div>
-                      <a
-                        href="#menu"
-                        class="btn-menu animate__animated animate__fadeInUp scrollto"
-                      >
-                        Nuestro Menu
-                      </a>
-                      {rol !== '' && (
-                      <a
-                        href="/Reserva"
-                        class="btn-book animate__animated animate__fadeInUp scrollto"
-                      >
-                        Hacer una Reserva
-                      </a>)}
-                      {rol !== '' && (
-                      <a
-                        href="/Adopcion"
-                        class="btn-book animate__animated animate__fadeInUp scrollto"
-                      >
-                        Hacer una Adopción
-                      </a>)}
+              <div className="carousel-inner" role="listbox">
+                <div
+                  className="carousel-item active"
+                  style={{ backgroundImage: `url(${Banner1})` }}
+                >
+                  <div className="carousel-container">
+                    <div className="carousel-content">
+                      <h2 className="animate__animated animate__fadeInDown">
+                        <span>Catpuccino</span> Cat Café
+                      </h2>
+                      <p className="animate__animated animate__fadeInUp">
+                        ¡Bienvenido al encantador mundo de Catpuccino! Reserva tu
+                        hora y disfruta de la compañía de nuestros adorables gatos
+                        durante 60 minutos. También ofrecemos una variedad de
+                        cafés, tés y dulces en nuestra acogedora cafetería. ¡Ven y
+                        relájate entre felinos!"
+                      </p>
+                      <div>
+                        <a
+                          href="#menu"
+                          className="btn-menu animate__animated animate__fadeInUp scrollto"
+                        >
+                          Nuestro Menu
+                        </a>
+                        {rol !== '' && (
+                          <a
+                            href="/Reserva"
+                            className="btn-book animate__animated animate__fadeInUp scrollto"
+                          >
+                            Hacer una Reserva
+                          </a>)}
+                        {rol !== '' && (
+                          <a
+                            href="/Adopcion"
+                            className="btn-book animate__animated animate__fadeInUp scrollto"
+                          >
+                            Hacer una Adopción
+                          </a>)}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <Carousel />
-      <section id="menu" className="menu">
-        <div className="container">
-          <div className="section-title">
-            <h2>Disfruta nuestro delicioso <span>Menú</span></h2>
-          </div>
+        </section>
+          <Carousel /></>
+          <section id="menu" className="menu">
+            <div className="container">
+              <div className="section-title">
+                <h2>Disfruta nuestro delicioso <span>Menú</span></h2>
+              </div>
 
-          <div className="row">
-            <div className="col-lg-12 d-flex justify-content-center">
-              <ul id="menu-flters">
-                <li onClick={() => filtrarProductos("todos")} className={filtro === "todos" ? "filter-active" : ""}>Ver todo</li>
-                <li onClick={() => filtrarProductos("bebida")} className={filtro === "bebida" ? "filter-active" : ""}>Bebidas</li>
-                <li onClick={() => filtrarProductos("comida")} className={filtro === "comida" ? "filter-active" : ""}>Comida</li>
-                <li onClick={() => filtrarProductos("postre")} className={filtro === "postre" ? "filter-active" : ""}>Dulces y Acompañamientos</li>
-              </ul>
+              <div className="row">
+                <div className="col-lg-12 d-flex justify-content-center">
+                  <ul id="menu-flters">
+                    <li onClick={() => filtrarProductos("todos")} className={filtro === "todos" ? "filter-active" : ""}>Ver todo</li>
+                    <li onClick={() => filtrarProductos("bebida")} className={filtro === "bebida" ? "filter-active" : ""}>Bebidas</li>
+                    <li onClick={() => filtrarProductos("comida")} className={filtro === "comida" ? "filter-active" : ""}>Comida</li>
+                    <li onClick={() => filtrarProductos("postre")} className={filtro === "postre" ? "filter-active" : ""}>Dulces y Acompañamientos</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="row menu-container">
+                {productos.map((producto) => {
+                  if (filtro === "todos" || producto.tipo.toLowerCase() === filtro) {
+                    return (
+                      <div key={producto.id} className="col-lg-6 menu-item">
+                        <div className="menu-content">
+                          <a href="/">{producto.nombre}</a>
+                          <span>{producto.precio}€</span>
+                        </div>
+                        <div className="menu-ingredients">
+                          {producto.descripcion}
+                        </div>
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </div>
             </div>
-          </div>
-
-          <div className="row menu-container">
-            {productos.map((producto) => {
-              if (filtro === "todos" || producto.tipo.toLowerCase() === filtro) {
-                return (
-                  <div key={producto.id} className="col-lg-6 menu-item">
-                    <div className="menu-content">
-                      <a href="/">{producto.nombre}</a>
-                      <span>{producto.precio}€</span>
-                    </div>
-                    <div className="menu-ingredients">
-                      {producto.descripcion}
+          </section></>
+      )}{rol === '' && (
+        <><><section id="hero">
+            <div className="hero-container">
+              <div
+                id="heroCarousel"
+                data-bs-interval="5000"
+                className="carousel slide carousel-fade"
+                data-bs-ride="carousel"
+              >
+                <ol className="carousel-indicators" id="hero-carousel-indicators"></ol>
+  
+                <div className="carousel-inner" role="listbox">
+                  <div
+                    className="carousel-item active"
+                    style={{ backgroundImage: `url(${Banner1})` }}
+                  >
+                    <div className="carousel-container">
+                      <div className="carousel-content">
+                        <h2 className="animate__animated animate__fadeInDown">
+                          <span>Catpuccino</span> Cat Café
+                        </h2>
+                        <p className="animate__animated animate__fadeInUp">
+                          ¡Bienvenido al encantador mundo de Catpuccino! Reserva tu
+                          hora y disfruta de la compañía de nuestros adorables gatos
+                          durante 60 minutos. También ofrecemos una variedad de
+                          cafés, tés y dulces en nuestra acogedora cafetería. ¡Ven y
+                          relájate entre felinos!"
+                        </p>
+                        <div>
+                          <a
+                            href="#menu"
+                            className="btn-menu animate__animated animate__fadeInUp scrollto"
+                          >
+                            Nuestro Menu
+                          </a>
+                          {rol !== '' && (
+                            <a
+                              href="/Reserva"
+                              className="btn-book animate__animated animate__fadeInUp scrollto"
+                            >
+                              Hacer una Reserva
+                            </a>)}
+                          {rol !== '' && (
+                            <a
+                              href="/Adopcion"
+                              className="btn-book animate__animated animate__fadeInUp scrollto"
+                            >
+                              Hacer una Adopción
+                            </a>)}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </div>
-        </div>
-      </section>
+                </div>
+              </div>
+            </div>
+          </section>
+            <Carousel /></>
+            <section id="menu" className="menu">
+              <div className="container">
+                <div className="section-title">
+                  <h2>Disfruta nuestro delicioso <span>Menú</span></h2>
+                </div>
+  
+                <div className="row">
+                  <div className="col-lg-12 d-flex justify-content-center">
+                    <ul id="menu-flters">
+                      <li onClick={() => filtrarProductos("todos")} className={filtro === "todos" ? "filter-active" : ""}>Ver todo</li>
+                      <li onClick={() => filtrarProductos("bebida")} className={filtro === "bebida" ? "filter-active" : ""}>Bebidas</li>
+                      <li onClick={() => filtrarProductos("comida")} className={filtro === "comida" ? "filter-active" : ""}>Comida</li>
+                      <li onClick={() => filtrarProductos("postre")} className={filtro === "postre" ? "filter-active" : ""}>Dulces y Acompañamientos</li>
+                    </ul>
+                  </div>
+                </div>
+  
+                <div className="row menu-container">
+                  {productos.map((producto) => {
+                    if (filtro === "todos" || producto.tipo.toLowerCase() === filtro) {
+                      return (
+                        <div key={producto.id} className="col-lg-6 menu-item">
+                          <div className="menu-content">
+                            <a href="/">{producto.nombre}</a>
+                            <span>{producto.precio}€</span>
+                          </div>
+                          <div className="menu-ingredients">
+                            {producto.descripcion}
+                          </div>
+                        </div>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+                </div>
+              </div>
+            </section></>
+        )}{rol !== '' && rol === 'ADOPCION' && (
+          <>
+          <DashboardGestorGatos/>
+          </>
+          )}
+          {rol !== '' && rol === 'CAMARERO' && (
+          <>
+          <DashboardCamarero/>
+          </>
+          )}
+      
+      
      
     </>
   );

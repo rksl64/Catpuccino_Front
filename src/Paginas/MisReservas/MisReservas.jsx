@@ -14,15 +14,11 @@ import "./MisReservas.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "primeicons/primeicons.css";
-import { Calendar } from "primereact/calendar";
 import { Toast } from "primereact/toast";
 import {
   showSuccessMessage,
   showErrorMessage,
 } from "../../Componentes/Toast/toast";
-import { PDFDOC } from "../../Utils/pdf";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
-import { useNavigate } from "react-router-dom";
 
 function MisReservas() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -35,14 +31,14 @@ function MisReservas() {
   const [adopciones, setAdopciones] = useState([]);
   const [solicitudes, setSolicitudes] = useState([]);
   const [idUsuario, setIdUsuario] = useState(0);
-  const [activeItem, setActiveItem] = useState("reservas");
-  const [username, setUsername] = useState(getUserName("UserName"));
+  const [setActiveItem] = useState("reservas");
+  const [username] = useState(getUserName("UserName"));
   const [currentTime, setCurrentTime] = useState(new Date());
   const [modalShow, setModalShow] = useState(false);
   const [confirmationModalShow, setConfirmationModalShow] = useState(false);
   const [reservaIdToCancel, setReservaIdToCancel] = useState(null);
   const [reservaSeleccionada, setReservaSeleccionada] = useState(null);
-  const [data, setData] = useState([]);
+  const [setData] = useState([]);
 
   useEffect(() => {
     const id = getToken("ID");
@@ -96,9 +92,6 @@ function MisReservas() {
     setCurrentTime(new Date());
   }, 3600000);
 
-  const handleTabChange = (e) => {
-    setActiveItem(e.value);
-  };
 
   const handleEditarReserva = (reserva) => {
     setReservaSeleccionada(reserva);
@@ -123,7 +116,7 @@ function MisReservas() {
     }
   };
 
-  const navigate = useNavigate();
+
   const consumicionData = async (id, reserva) => {
     try {
       const response = await obtenerConsumicionReserva(id);
