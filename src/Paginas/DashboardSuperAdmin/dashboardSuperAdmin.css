@@ -134,7 +134,17 @@
         opacity: 1;
       }
 
-
+      
 
       
 }
+.p-dialog-header{
+  background-color: #262626;
+}
+.p-dialog-content{
+  background-color: #262626;
+  overflow:hidden !important;
+  }
+  .p-dialog-title{
+    color: #FEEECA;
+  }

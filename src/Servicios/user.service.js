@@ -126,6 +126,17 @@ export async function obtenerReservasUsuario(idUsuario) {
     const response = await axios.get(`${BASE_HOST}/reserva/reservas/${idUsuario}`, {
       headers: authHeader(),
     });
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener reservas del usuario:", error);
+    throw error;
+  }
+}
+export async function obtenerReservas() {
+  try {
+    const response = await axios.get(`${BASE_HOST}/reserva`, {
+      headers: authHeader(),
+    });
     console.log("Reservas del usuario:", response.data);
     return response.data;
   } catch (error) {
@@ -133,7 +144,6 @@ export async function obtenerReservasUsuario(idUsuario) {
     throw error;
   }
 }
-
 //LLAMO AL METODO QUE ME ACTUALIZA EL ESTADO DE LAS RESERVAS
 export async function actualizarEstadosReserva(){
   try {
