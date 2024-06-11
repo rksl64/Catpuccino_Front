@@ -4,15 +4,10 @@ import {
   BackgroundOverlay,
   Div,
   FormContainer,
-  Title,
   Form,
-  PageLink,
   FormBtn,
-  PageLinkLabel,
   SignUpLabel,
   SignUpLink,
-  Imagen,
-  ToastDiv,
   A,
   ImagenFondo,
   DivFormu,
@@ -219,13 +214,13 @@ function Registro({ setActivo }) {
                   <FloatLabel className="Margin">
                     <InputText
                       name="dni"
-                      placeholder="Dni"
+                      placeholder="DNI"
                       className="Input"
                       id="dni"
                       onChange={handleInputChange}
                     />
                     <label className="label" htmlFor="dni">
-                      Dni
+                      DNI
                     </label>
                   </FloatLabel>
                   <FloatLabel className="Margin">

@@ -30,6 +30,8 @@ import Spinner from "./Componentes/Spinner/spinner";
 import VisualizarPdf from "./Utils/visualizar-pdf";
 import Recuperar from "./Paginas/Recuperar/recuperar";
 import CambiarContraseña from "./Paginas/CambiarContra/cambiarContra";
+import ListarReservas from "./Paginas/ListarReservas/listarReservas";
+import ListarAdopciones from "./Paginas/ListarAdopSoli/listarAdopSoli";
 
 function App() {
 
@@ -65,6 +67,8 @@ function App() {
         <Route path="/VisualizarPdf" element={<VisualizarPdf setActivo={setActivo} activo={activo}/>}></Route>
         <Route path="/HistorialSolicitudes" element={<HistorialSolicitudes/>}></Route>
         <Route path="/HistorialAdopciones" element={<HistorialAdopciones/>}></Route>
+        <Route path="/ListarReservas" element={<ListarReservas/>}></Route>
+        <Route path="/ListarAdopciones" element={<ListarAdopciones/>}></Route>
 
         <Route path="/carrusel" element={<CarruselGatos />}></Route>
       </Routes>
