@@ -57,7 +57,7 @@
     text-decoration: none;
   }
   #topbar i {
-    color: #ffb03b;
+    color: #ce796b;
     line-height: 0;
   }
   
@@ -112,7 +112,7 @@
   # Book a table button Menu
   --------------------------------------------------------------*/
   .book-a-table-btn {
-    background: #ffb03b;
+    background: #ce796b;
     color: #fff;
     border-radius: 50px;
     margin: 0 0 0 20px;
@@ -125,8 +125,9 @@
   }
   
   .book-a-table-btn:hover {
-    background: #ffa012;
+    background: #E7AD99;
     color: #fff;
+    cursor: pointer;
   }
   
   @media (max-width: 992px) {
@@ -183,7 +184,7 @@
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover>a {
-    color: #ffb03b;
+    color: #ce796b !important;
   }
   
   .navbar .dropdown ul {
@@ -220,7 +221,7 @@
   .navbar .dropdown ul a:hover,
   .navbar .dropdown ul .active:hover,
   .navbar .dropdown ul li:hover>a {
-    color: #ffb03b;
+    color: #ce796b;
   }
   
   .navbar .dropdown:hover>ul {
@@ -316,7 +317,7 @@
   .navbar-mobile a:hover,
   .navbar-mobile .active,
   .navbar-mobile li:hover>a {
-    color: #ffb03b;
+    color: #ce796b;
   }
   
   .navbar-mobile .getstarted,
@@ -351,7 +352,7 @@
   .navbar-mobile .dropdown ul a:hover,
   .navbar-mobile .dropdown ul .active:hover,
   .navbar-mobile .dropdown ul li:hover>a {
-    color: #ffb03b;
+    color: #ce796b;
   }
   
   .navbar-mobile .dropdown>.dropdown-active {
@@ -414,7 +415,7 @@
   }
   
   #hero h2 span {
-    color: #ffb03b;
+    color: #ce796b;
   }
   
   #hero p {
@@ -493,12 +494,12 @@
     margin: 0 10px;
     animation-delay: 0.8s;
     color: #fff;
-    border: 2px solid #ffb03b;
+    border: 2px solid #ce796b;
   }
   
   #hero .btn-menu:hover,
   #hero .btn-book:hover {
-    background: #ffb03b;
+    background: #ce796b;
     color: #fff;
   }
   
@@ -543,7 +544,7 @@
   }
   
   .section-title h2 span {
-    color: #ffb03b;
+    color: #ce796b;
   }
   
   .section-title p {
@@ -663,7 +664,7 @@
   
   .about .content ul i {
     font-size: 20px;
-    color: #ffb03b;
+    color: #ce796b;
     position: absolute;
     left: 0;
     top: 2px;
@@ -684,7 +685,7 @@
   .about .play-btn {
     width: 94px;
     height: 94px;
-    background: radial-gradient(#ffb03b 50%, rgba(255, 176, 59, 0.4) 52%);
+    background: radial-gradient(#ce796b 50%, rgba(255, 176, 59, 0.4) 52%);
     border-radius: 50%;
     display: block;
     position: absolute;
@@ -727,7 +728,7 @@
   }
   
   .about .play-btn:hover::after {
-    border-left: 15px solid #ffb03b;
+    border-left: 15px solid #ce796b;
     transform: scale(20);
   }
   
@@ -812,7 +813,7 @@
   }
   
   .why-us .box:hover {
-    background: #ffb03b;
+    background: #ce796b;
     padding: 30px 30px 70px 30px;
     box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
   }
@@ -845,14 +846,14 @@
     margin: 0 3px 10px 3px;
     transition: all ease-in-out 0.3s;
     background: #fff;
-    border: 2px solid #ffb03b;
+    border: 2px solid #ce796b;
     border-radius: 50px;
   }
   
   .menu #menu-flters li:hover,
   .menu #menu-flters li.filter-active {
     color: #fff;
-    background: #ffb03b;
+    background: #ce796b;
   }
   
   .menu #menu-flters li:last-child {
@@ -884,7 +885,7 @@
     position: relative;
     z-index: 3;
     font-weight: 700;
-    color: #ff9b08;
+    color: #ce796b;
   }
   
   .menu .menu-content span {
@@ -1532,7 +1533,7 @@
   #footer h3 {
     font-size: 36px;
     font-weight: 700;
-    color: #ffb03b;
+    color: #ce796b;
     position: relative;
     padding: 0;
     margin: 0 0 15px 0;
@@ -1565,7 +1566,7 @@
   }
   
   #footer .social-links a:hover {
-    background: #ffb03b;
+    background: #ce796b;
   }
   
   #footer .copyright {

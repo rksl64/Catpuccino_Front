@@ -1,25 +1,28 @@
 .reserva {
   height: 100%;
   min-height: 100vh;
-  margin: 0; /* Eliminar márgenes predeterminados */
+  margin: 0;
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  background: rgb(255, 218, 185);
-  background: linear-gradient(to bottom, #ecc8af, #ebc0a6, #e9b79d, #e7ad99, #dfa693, #d69e8d, #ce9377, #c57d65, #bd7260, #b4685b, #ac5d56, #a45351, #9c494c, #943f47, #8c3443, #84303f, #7c2b3b, #742737, #6c2233, #641d2f, #5c192b, #541426, #4c0f22, #440b1e, #3c061a, #340216, #35322d);
+  justify-content: center; 
+  align-items: center; 
+  background: #E2C7BE;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .search-container {
   width: 100%;
-  max-width: 800px; /* Ancho máximo para pantallas grandes */
+  max-width: 800px; 
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  flex-direction: column; /* Para alinear los elementos verticalmente */
-  background-color: #ffdab9; /* Color naranja claro */
-  padding: 20px; /* Espaciado interno */
-  border-radius: 10px; /* Border radius */
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column; 
+  background: rgba(211,102,85,0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(211,102,85,0.5);
+  border-radius: 27% 5% 27% 5% / 0% 25% 0% 25%;
+  padding: 20px;
   
 }
 
@@ -31,7 +34,7 @@
 
 .search-input,
 .search-btn {
-  width: calc(100% - 0px); /* Ajuste para compensar el padding */
+  width: calc(100% - 0px); 
   padding: 8.5px;
   border-radius: 3px;
 }
@@ -39,53 +42,66 @@
 .holi{
   border: 1px lightgray solid;
 }
-/* Estilos del desplegable */
+
 .search-input {
-  font-size: 16px; /* Tamaño de fuente más grande para mejorar la legibilidad */
+  font-size: 16px; 
 }
 
-/* Estilos para el input numérico */
+
 .search-input[type="number"]::placeholder {
-  font-size: 12px; /* Tamaño de fuente del placeholder reducido */
+  font-size: 12px; 
 }
 
 /* Estilos del botón de búsqueda */
 
 .search-btn:hover {
-  background-color: rgba(148, 187, 233, 1); /* Cambio de color al pasar el puntero */
+  background-color: #E7AD99 !important;
 }
 
 .search-btn:disabled {
-  background-color: #fff !important; /* Cambio de color al pasar el puntero */
+  background-color: #fff !important; 
 }
 
 .search-btn:active {
   transform: translateY(2px) translateX(1px);
   box-shadow: 0 0 0 0 black;
+  background-color: #E7AD99 !important;
 };
 
 
 .search-btn  {
-  background-color: white !important;
-  color: black;
-  border-radius: 10em;
-  font-size: 17px;
-  font-weight: 600;
-  padding: 10px;
-  transition: all 0.3s ease-in-out;
-  border: 1px solid black;
-  box-shadow: 0 0 0 0 black;
+  border-radius: 355px 45px 225px 75px/15px 225px 15px 255px !important;
+  background-color: #ce796b !important;
+  border: none !important;
+  padding: 0.7rem 2.5rem !important;
+  margin-top: 1rem !important;
+  color: white !important;
+  transition: background-color 1s ease !important;
+  font-family: 'Quicksand', sans-serif !important;
+  margin: 1rem 2rem !important;
 }
 
 
-/* Estilos para la distribución en dispositivos pequeños */
+
 @media screen and (min-width: 768px) {
+ .search-btn{
+  border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+  background-color: #ce796b;
+  border: none;
+  padding: 0.7rem 2.5rem;
+  margin-top: 1rem;
+  color: white;
+  transition: background-color 1s ease;
+  font-family: 'Quicksand', sans-serif !important;
+  margin: 1rem 0;
+ }
+  
   .search-container {
-    flex-direction: row; /* Restablece la dirección del flujo a horizontal en pantallas más grandes */
+    flex-direction: row; 
   }
 
   .search-box {
-    flex: 1; /* Permitir que los campos de entrada ocupen el espacio disponible */
+    flex: 1; 
     margin-right: 10px;
     margin-bottom: 0;
   }
@@ -101,37 +117,70 @@
 
 .default-container {
   margin-top: 20px;
-  overflow-x: auto;
 }
 
 .default {
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+  background: rgba(255,255,255,0.25);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.125);
+  padding: 1rem 2rem;
+  border-radius: 10px;
 }
 
 .default th,
 .default td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  padding: 15px;
+  text-align: center;
+  border-radius: 50px;
+  
 }
 
 .default th {
   background-color: #f2f2f2;
+  border-radius: 25% 25% 25% 25% / 55% 0% 55% 0%;
+  
+}
+
+.default td {
+  border-radius: 25% 25% 25% 25% / 0% 55% 0% 55%;
+  
+}
+
+.horaDisponible{
+  background-color: aquamarine;
+}
+.horaNoDisponible{
+  background-color: lightcoral;
 }
 
 /* Estilos para hacer la tabla responsive */
 @media screen and (max-width: 767px) {
+  .search-btn  {
+    border-radius: 355px 45px 225px 75px/15px 225px 15px 255px !important;
+    background-color: #ce796b !important;
+    border: none !important;
+    padding: 0.7rem 2.5rem !important;
+    margin-top: 1rem !important;
+    color: white !important;
+    transition: background-color 1s ease !important;
+    font-family: 'Quicksand', sans-serif !important;
+    margin: 1rem 0rem !important;
+  }
   .default-container {
     overflow-x: auto;
   }
 
   .default {
     width: 100%;
+    display: block;
   }
 
   .default thead {
-    display: block;
+    display: flex;
   }
 
   .default tbody,
@@ -139,17 +188,17 @@
   .default tr,
   .default th,
   .default td {
-    display: block;
+    display:block;
     width: 100%;
-    text-align: left;
+    text-align: center;
+    
   }
 
   .default th,
   .default td {
     border: none;
     padding: 5px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    text-align: center;
   }
 
   .default td:before {
@@ -175,6 +224,7 @@
   padding: 10px 16px;
   cursor: pointer;
   background: #fff;
+  margin: 0 10px 0 0;
 }
 
 .tabs__radio {
@@ -189,7 +239,9 @@
   background: #fff;
   text-align: justify;
   width: 100%;
-  box-shadow: 10px 5px 5px rgb(106, 106, 106);
+  -webkit-box-shadow: 1px 0.5px 7px 3px #bbbbbb;
+  -moz-box-shadow: 1px 0.5px 7px 3px #bbbbbb;
+  box-shadow: 1px 0.5px 7px 3px #bbbbbb;
 }
 
 .tabs__content p {
@@ -203,12 +255,21 @@
 
 .tabs__radio:checked + .tabs__label {
   font-weight: bold;
-  color: #ffb03b;
-  border-top: 3px solid #dddddd;
-  border-right: 3px solid #dddddd;
-  border-left: 3px solid #dddddd;
+  color: #ffb03b; 
+  -webkit-box-shadow: 1px 0.5px 7px 3px #bbbbbb;
+  -moz-box-shadow: 1px 0.5px 7px 3px #bbbbbb;
+  box-shadow: 1px 0.5px 7px 3px #bbbbbb;
 }
 
 .tabs__radio:checked + .tabs__label + .tabs__content {
   display: initial;
+}
+
+.book-a-table{
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(255,255,255,0.5);
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.25);
 }

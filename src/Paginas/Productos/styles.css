@@ -71,10 +71,26 @@
     tbody tr:hover {
         background-color: #fff6 !important;
     }
+
+    
     
 }
 .body1{
-    background: linear-gradient(to bottom, #ecc8af, #ebc0a6, #e9b79d, #e7ad99, #dfa693, #d69e8d, #ce9377, #c57d65, #bd7260, #b4685b, #ac5d56, #a45351, #9c494c, #943f47, #8c3443, #84303f, #7c2b3b, #742737, #6c2233, #641d2f, #5c192b, #541426, #4c0f22, #440b1e, #3c061a, #340216, #35322d);
+    background: #ecc8af;
+
+    button{
+        background-color: #ce796b;
+        color: white;
+   }
+
+   button:active {
+        background-color: #E7AD99;
+    }
+
+   button:focus {
+        outline: none; /* Opcional: quitar el borde del enfoque */
+        background-color: #E7AD99;
+   }
 }
 
 .p-button-rounded{
@@ -82,19 +98,30 @@
 }
 
 .boton{
-    border-radius: 2rem;
-    margin: 0 10rem;
-    padding: 0.5rem 0 ;
-    background-color: #e7ad99 !important;
+    border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+    background-color: #ce796b;
+    border: none;
+    padding: 0.7rem 2.5rem;
+    margin-top: 1rem;
+    color: white;
+    transition: background-color 1s ease;
+    font-family: 'Quicksand', sans-serif !important;
+    margin: 1rem 4rem 1rem 8rem ;
+
 }
+
+.boton:hover{
+    background-color: #E7AD99;
+}
+
 .pruebita button{
     background: none;
 }
 
-.p-button{
+.p-button-rounded{
     background-color: #e7ad99 !important;
     border: 1px solid white;
-
+    padding: 1rem;
 }
 
 .imagen1{
@@ -111,4 +138,12 @@
 
 .book-a-table-btn{
     font-family: 'Quicksand', sans-serif !important;
+}
+
+.prueba{
+    width: 8rem;
+}
+
+.margen{
+    padding: 0 2rem;
 }

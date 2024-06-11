@@ -36,10 +36,10 @@ function CarruselGatos(){
 
         fetchData();
       }, []);
-
+// cambie el <body className="carruselGatos"> por <div className="carruselGatos"> por que salia el siguiente error react-dom.development.js:86 Warning: validateDOMNesting(...): <body> cannot appear as a child of <div>.
     return(
     <>
-    <body className="carruselGatos">
+    <div className="carruselGatos"> 
     <main>
         <div>
             <span>conoce a</span>
@@ -92,7 +92,7 @@ function CarruselGatos(){
                 </div>
             </SwiperSlide>
         ))}
-        <div class="swiper-pagination"></div>
+        <div className="swiper-pagination"></div>
         </Swiper>
         {/* <img src="https://cdn.pixabay.com/photo/2021/11/04/19/39/jellyfish-6769173_960_720.png" alt="" class="bg"></img> 
         <img src="https://cdn.pixabay.com/photo/2012/04/13/13/57/scallop-32506_960_720.png" alt="" class="bg2"></img> */}
@@ -100,7 +100,7 @@ function CarruselGatos(){
 
 
 
-    </body>
+    </div>
     </>
     );
 }

@@ -76,6 +76,28 @@ async function agregarProductoAlCarrito(idProducto, cantidad, idUsuario) {
 
 }
 
+async function disminuirProductoAlCarrito(idProducto, cantidad, idUsuario) {
+  try {
+    //const token = getToken("token"); // Obtener el token de autenticación
+    const response = await axios.post(`${BASE_HOST}/consumiciones/carrito/disminuir`,null, {
+      params:{
+      idProducto:idProducto,
+      cantidad:cantidad,
+      idUsuario:idUsuario}
+    }, {
+      headers: authHeader()
+
+    });
+    console.log('Producto agregado al carrito:', response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error al agregar el producto al carrito:', error);
+    throw error;
+  }
+
+}
+
+
 async function listaCarrito() {
   try {
     const response = await axios.post(`${BASE_HOST}/consumiciones/pedido`);
@@ -145,13 +167,23 @@ export async function actualizarEstadosReserva(){
   }
 }
 
+export async function habilitarConsumicion(idUsuario){
+  try{
+    const response = await axios.get(`${BASE_HOST}/reserva/quedanDiezMinutos/${idUsuario}`);
+    return response.data;
+  }catch(error){
+    throw error;
+  }
+}
+
 export {
   listarproductos,
   listarconsumiciones,
   agregarProductoAlCarrito,
   listaCarrito,
   verCarrito,
-  cancelarReserva1
+  cancelarReserva1,
+  disminuirProductoAlCarrito
 
 };
 
@@ -435,4 +467,27 @@ export async function getAllSolicitudes(){
     console.error('Ops, un error getAllSolicitudes', error);
     throw error;
   }
+
+  
+}
+
+export async function getReservasDiaHora(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/reserva/fechayhora`)
+    return response.data;
+  } catch (error) {
+    console.error('No te traigo las reservas', error);
+    throw error;
+  }
+
+}
+export async function cancelarReservasHora(){
+  try{
+    const response = await axios.put(`${BASE_HOST}/reserva/ausentes`)
+    return response.data;
+  } catch (error) {
+    console.error('No te traigo las reservas', error);
+    throw error;
+  }
+
 }
