@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import SolicitudAceptadas from "../../Componentes/solicitudesAceptadas/solicitudesAceptadas";
 import SolicitudPendientes from "../../Componentes/solicitudesPendientes/solicitudesPendientes";
 import SolicitudRechazadas from "../../Componentes/solicitudesRechazadas/solicitudesRechazadas";
+import SolicitudCanceladas from "../../Componentes/solicitudesCanceladas/solicitudesCancelas";
 
 import { TabMenu } from 'primereact/tabmenu';
 import 'primeicons/primeicons.css';        
@@ -35,6 +36,13 @@ function SolicitudAdopciones(){
             command: () => {
                 setActiveIndex(2);
             }
+        },
+        {
+            label: 'Canceladas',
+            icon: 'pi pi-spinner-dotted',
+            command: () => {
+                setActiveIndex(3);
+            }
         }
     ];
 
@@ -46,6 +54,8 @@ function SolicitudAdopciones(){
                 return <SolicitudAceptadas />;
             case 2:
                 return <SolicitudRechazadas />;
+            case 3:
+                return <SolicitudCanceladas />;
             default:
                 return null;
         }

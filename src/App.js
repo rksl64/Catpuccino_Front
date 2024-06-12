@@ -22,6 +22,7 @@ import HistorialSolicitudes from "./Paginas/HistorialSolicitudes/HistorialSolici
 import HistorialAdopciones from "./Paginas/HistorialAdopciones/HistorialAdopciones"
 import DashboardSuperAdmin from "./Paginas/DashboardSuperAdmin/dashboardSuperAdmin";
 import DashboardCamarero from "./Paginas/DashboardCamarero/dashboardCamarero";
+import SolicitudesByUsuario from "./Componentes/solicitudesByUsuario/solicitudesByUsuario";
 import { useRef } from "react";
 
 import { Toast } from 'primereact/toast';

@@ -118,7 +118,12 @@
             
             .status-pendiente p {
                 background-color: #fae29c;
-            }    
+            }
+            
+            .status-cancelada p {
+                background-color: #d34240;
+                color: #ffff;
+            }
         }
         .p-paginator {
             background: #FAF9F6 !important;

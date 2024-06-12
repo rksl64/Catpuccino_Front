@@ -1,0 +1,108 @@
+.solicitudes-container{
+    padding: 0 4rem 0 4rem;
+    
+    p{
+        color: #808080
+    }
+
+     .tarjeta{
+        margin-bottom: 1rem;
+        background-color: #ecc8af;
+        height: 8.5rem;
+        display: flex;
+        justify-content: space-between; 
+        align-items: center; 
+        flex-direction: row;
+        padding: 2rem; 
+        border-radius: .5rem;
+
+        .img{
+            height: auto;
+            width: 7.5rem;
+            border-radius: 50%;
+        }
+
+        .img-data{
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            flex-direction: row; 
+        }
+        
+        .data{
+            margin-left: 1.8rem;
+
+            span{
+                font-family: 'Quicksand', sans-serif;
+                font-size: 1.35em;
+                font-weight: bold;
+                display: inline;
+            }
+
+            .highlight-p {
+                margin-bottom: 15px; 
+                color: #808080
+            }
+            
+            .small-text {
+                font-size: 0.85em; 
+                margin: -3px 0; 
+            }
+
+            .italic {
+                font-style: italic; 
+            }
+        }
+
+        .status{
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            
+            p{
+                border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+                border: none;
+                padding: 0.7rem 2.5rem;
+                margin-top: 1rem;
+                color: #808080;
+                transition: background-color 1s ease;
+                font-family: 'Quicksand', sans-serif !important;
+                box-shadow: 2px 2px 4px rgba(143, 143, 143, 0.258);
+
+                i{
+                    font-size: 1.3rem;
+                    margin-right: .8rem;
+                }
+            }
+        }
+
+        .status-aceptado p {
+            background-color: #d0f0c0;
+        }
+        
+        .status-rechazado p {
+            background-color: #ce796b;
+            color: #ffff;
+        }
+        
+        .status-pendiente p {
+            background-color: #fae29c;
+        }
+        
+        .status-cancelada p {
+            background-color: #d34240;
+            color: #ffff;
+        }
+        
+        .cancelar-button{
+            margin-left: .8rem;
+            margin-top: 0;
+            border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
+            border: none;
+            padding: 0.7rem 2.5rem;
+            color: white;
+            transition: background-color 1s ease;
+            background-color: #d34240;
+        }
+    } 
+}

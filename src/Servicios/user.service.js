@@ -186,6 +186,74 @@ export {
   disminuirProductoAlCarrito
 
 };
+//---------------------- HACER RESERVA --------------------------
+export async function HacerReserva(
+  nombre_reserva,
+  telefono,
+  fecha,
+  hora,
+  numeroPersonas,
+  estadoReserva,
+  reserva_activa,
+  pagado,
+  total,
+  usuarioDTO
+){
+  try {
+    const response = await axios.post(`${BASE_HOST}/reserva/crear`, {
+    nombre_reserva,
+    telefono,
+    fecha,
+    hora,
+    numeroPersonas,
+    estadoReserva,
+    reserva_activa,
+    pagado,
+    total,
+    usuarioDTO
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+
+//Editar reserva
+export async function editarReserva1(
+  reservaId,
+  nombre_reserva,
+  telefono,
+  fecha,
+  hora,
+  numeroPersonas
+){
+  try {
+    const response = await axios.post(`${BASE_HOST}/reserva/modificar/${reservaId}`, {
+    nombre_reserva,
+    telefono,
+    fecha,
+    hora,
+    numeroPersonas,
+    });
+    console.log("el que te de mas coraje", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
+export async function obtenerConsumicionReserva(idReserva) {
+  try {
+    const response = await axios.get(`${BASE_HOST}/consumiciones/consumicionReserva/${idReserva}`);
+    console.log("Datos del backend:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Algo salio mal:", error);
+    throw error;
+  }
+}
 
 
 
@@ -267,79 +335,6 @@ export async function editGato(gatoData){ //FUNCION ADMIN
   }
 }
 
-
-
-//---------------------- HACER RESERVA --------------------------
-export async function HacerReserva(
-  nombre_reserva,
-  telefono,
-  fecha,
-  hora,
-  numeroPersonas,
-  estadoReserva,
-  reserva_activa,
-  pagado,
-  total,
-  usuarioDTO
-){
-  try {
-    const response = await axios.post(`${BASE_HOST}/reserva/crear`, {
-    nombre_reserva,
-    telefono,
-    fecha,
-    hora,
-    numeroPersonas,
-    estadoReserva,
-    reserva_activa,
-    pagado,
-    total,
-    usuarioDTO
-    });
-    console.log(response.data);
-    return response.data;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
-}
-
-//Editar reserva
-export async function editarReserva1(
-  reservaId,
-  nombre_reserva,
-  telefono,
-  fecha,
-  hora,
-  numeroPersonas
-){
-  try {
-    const response = await axios.post(`${BASE_HOST}/reserva/modificar/${reservaId}`, {
-    nombre_reserva,
-    telefono,
-    fecha,
-    hora,
-    numeroPersonas,
-    });
-    console.log("el que te de mas coraje", response.data);
-    return response.data;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
-}
-export async function obtenerConsumicionReserva(idReserva) {
-  try {
-    const response = await axios.get(`${BASE_HOST}/consumiciones/consumicionReserva/${idReserva}`);
-    console.log("Datos del backend:", response.data);
-    return response.data;
-  } catch (error) {
-    console.error("Algo salio mal:", error);
-    throw error;
-  }
-}
-
-
-
 //---------------------- CARRUSEL ADOPCION --------------------------
 export async function getNumGatosAdoptados(){
   try{
@@ -405,12 +400,32 @@ export async function getSolicitudesRechazadas(){
   }
 }
 
+export async function getSolicitudesCanceladas(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/solicitud/estadoSolicitud?enumEstadoSolicitud=3`)
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error getSolicitudesCanceladas', error);
+    throw error;
+  }
+}
+
 export async function getSolicitudOneByOne(id){
   try{
     const response = await axios.get(`${BASE_HOST}/solicitud/${id}`);
     return response.data;
   } catch (error) {
       console.error('Ops, un error getGatoOneByOne', error);
+    throw error;
+  }
+}
+
+export async function getSolicitudesByUsuario(idUsuario){
+  try{
+    const response = await axios.get(`${BASE_HOST}/solicitud/${idUsuario}/solicitudUsuario`)
+    return response.data;
+  } catch (error) {
+    console.error('Ops, un error getSolicitudesByUsuario', error);
     throw error;
   }
 }
@@ -455,6 +470,16 @@ export async function rechazarSolicitud(id){
     return response.data;
   } catch (error) {
       console.error('Ops, un error rechazarSolicitud', error);
+    throw error;
+  }
+}
+
+export async function cancelarSolicitud(id){
+  try{
+    const response = await axios.patch(`${BASE_HOST}/solicitud/${id}/cancelar`);
+    return response.data;
+  } catch (error) {
+      console.error('Ops, un error cancelarSolicitud', error);
     throw error;
   }
 }

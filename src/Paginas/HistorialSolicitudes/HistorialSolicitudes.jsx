@@ -33,6 +33,8 @@ function HistorialSolicitudes(){
                 return 'status-rechazado';
             case 'PENDIENTE':
                 return 'status-pendiente';
+            case 'CANCELADA':
+                return 'status-cancelada';
         }
     };
 
