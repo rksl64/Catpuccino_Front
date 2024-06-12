@@ -19,6 +19,11 @@ import {
   showSuccessMessage,
   showErrorMessage,
 } from "../../Componentes/Toast/toast";
+import { PDFDOC } from "../../Utils/pdf";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { useNavigate } from "react-router-dom";
+import SolicitudesByUsuario from "../../Componentes/solicitudesByUsuario/solicitudesByUsuario";
+import { format } from 'date-fns';
 
 function MisReservas() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -133,6 +138,11 @@ function MisReservas() {
       console.error("Error al obtener la reserva:", error);
     }
   };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return format(date, 'dd/MM/yyyy \'a las\' HH:mm');
+};
 
   return (
     <section className="patata">
@@ -254,12 +264,10 @@ function MisReservas() {
                       <img className="img" src={adopcion.gatoDTO.imagen}></img>
                       <div className="data">
                         <h6 className="highlight-p">
-                          Gato adoptado: {" "}
-                          <span>{adopcion.gatoDTO.nombre}</span>
+                          ¡Adoptaste a{" "}
+                          <span>{adopcion.gatoDTO.nombre}</span>!
                         </h6>
-                        <p className="small-text">
-                          Hecha por <span>{adopcion.usuarioDTO.nombre}</span>
-                        </p>
+                        <p className="small-text italic">Fue adoptado el {formatDate(adopcion.fecha)}</p>
                         <p className="small-text italic">
                           Sexo:{" "}
                           <span>
@@ -275,9 +283,6 @@ function MisReservas() {
                           {}
                         </p>
                       </div>
-                      <div className="botonSolicitud">
-                        <button>Cancelar solicitud</button>
-                      </div>
                     </div>
                   </div>
                 </section>
@@ -287,41 +292,7 @@ function MisReservas() {
           </div>
         )}
         {activeIndex === 2 && (
-          <div className="contenedor">
-          <div className="reservas-container">
-            <tbody>
-              {solicitudes.map((solicitud) => (
-                <section className="solicitudes-container">
-                  <div className="tarjeta">
-                    <div className="img-data">
-                      <img className="img" src={solicitud.gatoDTO.imagen}></img>
-                      <div className="data">
-                        <h6 className="highlight-p">
-                          Solicitud para adoptar a{" "}
-                          <span>{solicitud.gatoDTO.nombre}</span>
-                        </h6>
-                        <p className="small-text">
-                          Hecha por <span>{solicitud.usuarioDTO.nombre}</span>
-                        </p>
-                        <p className="small-text italic">{solicitud.titulo}</p>
-                      </div>
-                    </div>
-
-                    <div className="status-aceptados">
-                      <div
-                        className={`btn ${getButtonColor2(
-                          solicitud.estadoSolicitud
-                        )}`}
-                      >
-                        {solicitud.estadoSolicitud}
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              ))}
-            </tbody>
-          </div>
-          </div>
+          <SolicitudesByUsuario></SolicitudesByUsuario>
         )}
       </div>
     </section>

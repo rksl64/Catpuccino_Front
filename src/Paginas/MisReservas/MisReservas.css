@@ -1,8 +1,8 @@
 .patata {
-  margin: 0; 
+  margin: 0;
   .foto{
-    width: 100%; 
-      height: 25rem; 
+    width: 100%;
+      height: 25rem;
       background-image: url('/src/assets/img/fondo_cafe.avif');
       background-size: cover;
       background-repeat: no-repeat;
@@ -63,7 +63,7 @@
           transition: background-color 1s ease;
           font-family: 'Quicksand', sans-serif !important;
           margin: 0.5rem 4rem 0.5rem 8rem ;
-          
+
         }
       }
       .botonSolicitud{
@@ -79,14 +79,14 @@
     color: #808080;
   }
 
-     
+
 }
-          
 
 
-              
-              
-              
+
+
+
+
 
 
 

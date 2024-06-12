@@ -8,6 +8,7 @@ import pawsBanner from '../../assets/img/adopcion/pawsBanner.jpg';
 
 import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
+import { Dialog } from 'primereact/dialog';
         
 
 function Formulario(){
@@ -89,24 +90,47 @@ function Formulario(){
         }
     }
 
-
+    /*--------- MODAL LOGICA  ---------*/
+    const [visible, setVisible] = useState(false);
+    const headerElement = (
+        <div className="inline-flex align-items-center justify-content-center gap-2">
+            <span className="font-bold white-space-nowrap"><h2>¡Yay! Añadamos un nuevo gato a la familia</h2></span>
+        </div>
+    );
+    /*--------- MODAL LOGICA  ---------*/ 
 
     return(
     <>
-    <body className="formulario-general">
-        <section className='TopBanner' style={{backgroundImage: `url(${pawsBanner})`}}></section>
 
+        {/* ESTILO BOTÓN MODAL */}
+        <button class="animated-button" style={{ textDecoration: 'none' }} onClick={() => setVisible(true)}>
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                ></path>
+            </svg>
+            <span class="text"> <i class='bx bxs-message-square-add'></i> A Ñ A D I R <br></br> G A T O</span>
+            <span class="circle"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                ></path>
+            </svg>
+        </button>
+        {/* ESTILO BOTÓN MODAL */}
+
+        {/* CONTENIDO MODAL (AÑADIR GATO) */}
+        <Dialog visible={visible} modal header={headerElement} style={{ width: '70rem' }} onHide={() => setVisible(false)}>
         <Toast ref={toast} />
-        <main className="container">
+        <main className="formulario-general">
             <div className="row">
                 <section className="img slide d-none d-lg-block  ">
                      {/* IMAGEN */}
                 </section>
 
-                <section className="cont-formulario col">
-                    <h2>¡Yay! Añadamos un nuevo gato a la familia</h2>
-                    <form onSubmit={(event) => { event.preventDefault(); addMichi(); }}> {/* AQUI INICIA EL FORMULARIO */}
 
+                <section className="cont-formulario col">
+                    <form onSubmit={(event) => { event.preventDefault(); addMichi(); }}> {/* AQUI INICIA EL FORMULARIO */}
                         <div className="line">
                             <div className="selects">
                                 <label>Nombre</label>
@@ -118,6 +142,7 @@ function Formulario(){
                             </div>
                         </div>
 
+
                         <div className="line">
                             <div className="selects">
                                 <label>Descripción breve</label>
@@ -128,6 +153,7 @@ function Formulario(){
                                 <Dropdown id="dd-razas" value={selectedRaza} options={razas} onChange={(e) => {console.log("Valor seleccionado:", e.target.value);setSelectedRaza(e.value);}} placeholder="Selecciona una raza" />
                             </div>
                         </div>
+
 
                         <div className="line">
                             <div className="selects">
@@ -149,6 +175,7 @@ function Formulario(){
                                 </div>
                             </div>
                         </div>
+
 
                         <div className="line-size">
                             <div className="selects">
@@ -174,6 +201,7 @@ function Formulario(){
                                 </div>
                             </div>
 
+
                             <div className="selects">
                                 <label for='pet-spayed'>¿Tiene chip?</label>
                                 <div class='radio-container'>
@@ -185,12 +213,14 @@ function Formulario(){
                             </div>
                         </div>
 
+
                         <div className="line mb-5">
                             <div className="selects">
                                 <label>Descripción detallada</label>
                                 <textarea class="input" type="text" id="description-large" value={descripcionLarga}  onChange={(e) => setDescripcionLarga(e.target.value)} placeholder="Escribe una descripción más detallada sobre el gato!" maxLength={500}></textarea>
                             </div>
                         </div>
+
 
                         <div style={{ textAlign: "center" }} >
                             <button type="submit">Registrar gato</button>
@@ -199,8 +229,8 @@ function Formulario(){
                 </section>
             </div>
         </main>
-    </body>
-    
+        </Dialog>
+        {/* CONTENIDO MODAL (AÑADIR GATO) */}
     </>
     )
 }
