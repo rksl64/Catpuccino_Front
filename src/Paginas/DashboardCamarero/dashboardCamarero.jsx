@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./dashboardCamarero.css";
 import coffeBanner from "../../assets/img/adopcion/banner.jpg";
 import camarero from "../../assets/img/adopcion/camareroCafeteria.jpg";
 import { Link } from "react-router-dom";
 import { Divider } from "primereact/divider";
 import { getReservasDiaHora, cancelarReservasHora } from "../../Servicios/user.service";
+import { Toast } from "primereact/toast";
+import {
+  showSuccessMessage,
+  showErrorMessage,
+} from "../../Componentes/Toast/toast";
 
 function DashboardCamarero() {
   const [isEnabled, setIsEnabled] = useState(false);
   const [reservas, setReservas] = useState([]);
+
+  const toast = useRef(null);
 
   useEffect(() => {
     const fetchReservas = async () => {
@@ -46,6 +53,24 @@ function DashboardCamarero() {
 
     return () => clearInterval(interval); // Limpiar el intervalo al desmontar el componente
   }, []);
+
+  const handleCancelarReservas = async () => {
+    try {
+     const response = await cancelarReservasHora();
+      // Aquí puedes agregar cualquier lógica adicional que necesites después de cancelar las reservas.
+      console.log("Reservas canceladas con éxito");
+      if(response === true){
+        showSuccessMessage(toast, "Se han cancelado las reservas");
+      }else{
+        showErrorMessage(
+          toast,
+          "No hay reservas que cancelar"
+        );
+      }
+    } catch (error) {
+      console.error("Error al cancelar reservas:", error);
+    }
+  };
 
   return (
     <>
@@ -112,6 +137,7 @@ function DashboardCamarero() {
                       textDecoration: "none",
                       pointerEvents: isEnabled ? "auto" : "none",
                     }}
+                    onClick={handleCancelarReservas}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -132,6 +158,7 @@ function DashboardCamarero() {
                       <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                     </svg>
                   </Link>
+                  <Toast ref={toast} />
 
                   <Link
                     to="/SolicitudesAdopcion"

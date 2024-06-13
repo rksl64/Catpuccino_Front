@@ -428,6 +428,7 @@ function Reserva() {
                       className="form-control"
                       placeholder="Nombre de la persona reservante"
                       onChange={handleInputChange}
+                      maxLength={50}
                     />
                     <div className="validate"></div>
                   </div>

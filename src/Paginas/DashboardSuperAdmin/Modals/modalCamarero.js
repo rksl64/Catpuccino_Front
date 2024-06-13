@@ -133,6 +133,7 @@ function ModalCamarero() {
                 className="Input"
                 id="nombre"
                 onChange={handleInputChange}
+                maxLength={50}
               />
               <label className="label" htmlFor="nombre">
                 Nombre
@@ -146,6 +147,7 @@ function ModalCamarero() {
                 className="Input"
                 id="username"
                 onChange={handleInputChange}
+                maxLength={60}
               />
               <label className="label" htmlFor="apellidos">
                 Apellidos
@@ -171,6 +173,7 @@ function ModalCamarero() {
                 className="Input"
                 id="email"
                 onChange={handleInputChange}
+                maxLength={50}
               />
               <label className="label" htmlFor="email">
                 Email
@@ -184,6 +187,7 @@ function ModalCamarero() {
                 className="Input"
                 id="dni"
                 onChange={handleInputChange}
+                maxLength={9}
               />
               <label className="label" htmlFor="dni">
               DNI
@@ -196,6 +200,7 @@ function ModalCamarero() {
                 className="Input"
                 id="nombreUsuario"
                 onChange={handleInputChange}
+                maxLength={50}
               />
               <label className="label" htmlFor="nombreUsuario">
                 Nombre de Usuario
@@ -210,6 +215,7 @@ function ModalCamarero() {
                 tabIndex={1}
                 className="Input"
                 toggleMask
+                maxLength={100}
               />
               <label className="label" htmlFor="password">
                 Contraseña
@@ -225,6 +231,7 @@ function ModalCamarero() {
                 tabIndex={1}
                 className="Input"
                 toggleMask
+                maxLength={100}
               />
               <label className="label" htmlFor="password">
                 Repetir Contraseña

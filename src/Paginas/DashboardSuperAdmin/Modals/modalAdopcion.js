@@ -132,6 +132,7 @@ function ModalAdopcion() {
             className="Input"
             id="nombre"
             onChange={handleInputChange}
+            maxLength={50}
           />
           <label className="label" htmlFor="nombre">
             Nombre
@@ -145,6 +146,7 @@ function ModalAdopcion() {
             className="Input"
             id="username"
             onChange={handleInputChange}
+            maxLength={60}
           />
           <label className="label" htmlFor="apellidos">
             Apellidos
@@ -170,6 +172,7 @@ function ModalAdopcion() {
             className="Input"
             id="email"
             onChange={handleInputChange}
+            maxLength={50}
           />
           <label className="label" htmlFor="email">
             Email
@@ -183,6 +186,7 @@ function ModalAdopcion() {
             className="Input"
             id="dni"
             onChange={handleInputChange}
+            maxLength={9}
           />
           <label className="label" htmlFor="dni">
           DNI
@@ -195,6 +199,7 @@ function ModalAdopcion() {
             className="Input"
             id="nombreUsuario"
             onChange={handleInputChange}
+            maxLength={50}
           />
           <label className="label" htmlFor="nombreUsuario">
             Nombre de Usuario
@@ -209,6 +214,7 @@ function ModalAdopcion() {
             tabIndex={1}
             className="Input"
             toggleMask
+            maxLength={100}
           />
           <label className="label" htmlFor="password">
             Contraseña
@@ -224,6 +230,7 @@ function ModalAdopcion() {
             tabIndex={1}
             className="Input"
             toggleMask
+            maxLength={100}
           />
           <label className="label" htmlFor="password">
             Repetir Contraseña
