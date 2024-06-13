@@ -506,6 +506,17 @@ export async function getReservasDiaHora(){
   }
 
 }
+
+export async function reservasDiaPagadas(){
+  try{
+    const response = await axios.get(`${BASE_HOST}/reserva/pagadasdia`)
+    return response.data;
+  } catch (error) {
+    console.error('No te traigo las reservas', error);
+    throw error;
+  }
+
+}
 export async function cancelarReservasHora(){
   try{
     const response = await axios.put(`${BASE_HOST}/reserva/ausentes`)

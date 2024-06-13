@@ -98,6 +98,7 @@ function Login({ setActivo }) {
                 className="Input"
                 id="username"
                 onChange={handleLoginName}
+                maxLength={50}
               />
               <label className="label" htmlFor="username">Usuario</label>
             </FloatLabel>
@@ -108,6 +109,7 @@ function Login({ setActivo }) {
                 feedback={false}
                 tabIndex={1}
                 toggleMask
+                maxLength={100}
               />
               <label className="label" htmlFor="password">Contraseña</label>
             </FloatLabel>

@@ -417,6 +417,7 @@ function MyVerticallyCenteredModal({ show, onHide, reservaSeleccionada }) {
             onChange={handleInputChange}
             className="form-control"
             placeholder="Nombre de la persona reservante"
+            maxLength={50}
           />
           <input
             type="number"
