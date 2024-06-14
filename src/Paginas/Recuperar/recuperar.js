@@ -8,7 +8,14 @@ import {
   showErrorMessage,
   showSuccessMessage,
 } from "../../Componentes/Toast/toast";
-import { FormBtn } from "./recuperar-style";
+import {
+  BackgroundOverlay,
+  Div,
+  DivFormu,
+  FormBtn,
+  FormContainer,
+  P,
+} from "./recuperar-style";
 
 function Recuperar({ setActivo }) {
   const [newPassword, setNewPassword] = useState("");
@@ -23,7 +30,8 @@ function Recuperar({ setActivo }) {
     setActivo(false);
   }, []);
 
-  const onCambio = async () => {
+  const onCambio = async (e) => {
+    e.preventDefault();
     if (newPassword !== confirmPassword) {
       showErrorMessage(toast, "Las contraseñas no coinciden");
       return;
@@ -35,7 +43,7 @@ function Recuperar({ setActivo }) {
       if (response.message === "Cambio exitoso") {
         showSuccessMessage(
           toast,
-          response.message + ". Se Redigira a Iniciar sesión."
+          response.message + ". Se redirigirá a Iniciar sesión."
         );
         setTimeout(() => {
           window.location.href = "../Login";
@@ -54,42 +62,58 @@ function Recuperar({ setActivo }) {
   };
 
   return (
-    <div>
-      <FloatLabel className="Margin">
-        <Password
-          name="newPassword"
-          placeholder="Nueva Contraseña"
-          className="Input"
-          id="newPassword"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          feedback={false}
-          tabIndex={1}
-          toggleMask
-        />
-        <label className="label" htmlFor="newPassword">
-          Nueva Contraseña
-        </label>
-      </FloatLabel>
-      <FloatLabel className="Margin">
-        <Password
-          name="confirmPassword"
-          placeholder="Confirmar Contraseña"
-          className="Input"
-          id="confirmPassword"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          feedback={false}
-          tabIndex={1}
-          toggleMask
-        />
-        <label className="label" htmlFor="confirmPassword">
-          Confirmar Contraseña
-        </label>
-      </FloatLabel>
-      <FormBtn onClick={onCambio}>Cambiar Contraseña</FormBtn>
-      <Toast ref={toast} />
-    </div>
+    <>
+      <BackgroundOverlay>
+        <Div>
+          <FormContainer className="form-container">
+            <form className="form" onSubmit={onCambio}>
+              <DivFormu>
+                <P>
+                  Por favor, ingrese su nueva contraseña para realizar el
+                  cambio.
+                  <br />
+                  Gracias.
+                </P>
+                <FloatLabel className="Margin2">
+                  <Password
+                    name="newPassword"
+                    placeholder="Nueva Contraseña"
+                    className="Input"
+                    id="newPassword"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    feedback={false}
+                    tabIndex={1}
+                    toggleMask
+                  />
+                  <label className="label" htmlFor="newPassword">
+                    Nueva Contraseña
+                  </label>
+                </FloatLabel>
+                <FloatLabel className="Margin2">
+                  <Password
+                    name="confirmPassword"
+                    placeholder="Confirmar Contraseña"
+                    className="Input"
+                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    feedback={false}
+                    tabIndex={1}
+                    toggleMask
+                  />
+                  <label className="label" htmlFor="confirmPassword">
+                    Confirmar Contraseña
+                  </label>
+                </FloatLabel>
+                <FormBtn type="submit">Cambiar Contraseña</FormBtn>
+                <Toast ref={toast} />
+              </DivFormu>
+            </form>
+          </FormContainer>
+        </Div>
+      </BackgroundOverlay>
+    </>
   );
 }
 

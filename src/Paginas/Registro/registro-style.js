@@ -213,6 +213,7 @@ export const DivScroll = styled.div`
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
+  padding-top: 0.5em;
   @media (max-width: 1000px) {
     width: 80vw;
     display: flex;
