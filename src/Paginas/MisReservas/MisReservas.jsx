@@ -138,6 +138,12 @@ function MisReservas() {
       console.error("Error al obtener la reserva:", error);
     }
   };
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    }
+    return text;
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -172,7 +178,7 @@ function MisReservas() {
                   <div className="img-data">
                     <div className="data">
                       <h6 className="highlight-p">
-                        Reserva para <br/><span>{reserva.nombre_reserva}</span>
+                      Reserva para <br /><span>{truncateText(reserva.nombre_reserva, 9)}</span>
                       </h6>
                       <p className="small-text">
                         Hecha por <span>{reserva.usuarioDTO.nombre}</span>
