@@ -131,7 +131,7 @@ function MisReservas() {
       localStorage.setItem("reserva", JSON.stringify(reserva));
       localStorage.setItem("data", JSON.stringify(response));
 
-      // Abrir una nueva pestaña
+      // Abrir una nueva pestaña para el pdf
       const url = `${window.location.origin}/visualizarpdf`;
       window.open(url, "_blank");
     } catch (error) {

@@ -145,7 +145,7 @@ button.btn-primary {
   padding: 6px 12px; /* Menor padding para el botón */
   font-size: 14px; /* Tamaño de fuente del botón */
   border-radius: 5px; /* Bordes redondeados del botón */
-  margin-top: 10px; /* Margen superior para separar del último input */
+  margin-top: 10px; /* Margen superior para separar del último input que puse*/
   width: auto; /* Ancho automático */
   background-color: #ce796b;
   border: none;
