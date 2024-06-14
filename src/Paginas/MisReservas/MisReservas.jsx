@@ -131,7 +131,7 @@ function MisReservas() {
       localStorage.setItem("reserva", JSON.stringify(reserva));
       localStorage.setItem("data", JSON.stringify(response));
 
-      // Abrir una nueva pestaña
+      // Abrir una nueva pestaña para el pdf
       const url = `${window.location.origin}/visualizarpdf`;
       window.open(url, "_blank");
     } catch (error) {
@@ -172,7 +172,7 @@ function MisReservas() {
                   <div className="img-data">
                     <div className="data">
                       <h6 className="highlight-p">
-                        Reserva para <span>{reserva.nombre_reserva}</span>
+                        Reserva para <br/><span>{reserva.nombre_reserva}</span>
                       </h6>
                       <p className="small-text">
                         Hecha por <span>{reserva.usuarioDTO.nombre}</span>
@@ -187,10 +187,12 @@ function MisReservas() {
                         Hora <span>{reserva.hora}</span>
                       </h6>
                     </div>
+                    <div className="estadoReserva">
                     <div
                       className={`btn ${getButtonColor(reserva.estadoReserva)}`}
                     >
                       {reserva.estadoReserva}
+                    </div>
                     </div>
                     <div className="botoncitos">
                       {" "}
@@ -204,7 +206,7 @@ function MisReservas() {
                             className="hola"
                             onClick={() => handleCancelarReserva(reserva.id)}
                           >
-                            Cancelar reserva
+                            Cancelar 
                           </button>
                         )}
                       {reserva.estadoReserva === "PAGADO" &&
@@ -230,7 +232,7 @@ function MisReservas() {
                             className="hola"
                             onClick={() => handleEditarReserva(reserva)}
                           >
-                            Editar reserva
+                            Editar 
                           </button>
                         )}
                     </div>
