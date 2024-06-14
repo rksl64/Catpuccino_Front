@@ -44,6 +44,16 @@
       margin-top: 2rem;
       flex-direction: column;
       width: 90%;
+      .estadoReserva{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div{
+          width: 6vw;
+        }
+      }
+      
+     
       .filaFecha{
         display: flex;
         flex-direction: column;
@@ -54,6 +64,8 @@
         display: flex;
         flex-direction: column;
         margin-left: 11rem;
+        
+        width: 10vw;
         button{
           border-radius: 355px 45px 225px 75px/15px 225px 15px 255px;
           background-color: #ce796b;
@@ -63,6 +75,7 @@
           transition: background-color 1s ease;
           font-family: 'Quicksand', sans-serif !important;
           margin: 0.5rem 4rem 0.5rem 8rem ;
+          width: 8vw;
 
         }
       }
