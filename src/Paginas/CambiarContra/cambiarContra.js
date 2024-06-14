@@ -1,7 +1,7 @@
 import { FloatLabel } from "primereact/floatlabel";
 import { InputText } from "primereact/inputtext";
 import React, { useEffect, useRef, useState } from "react";
-import { FormBtn } from "./cambiarContra-style";
+import { BackgroundOverlay, Div, DivFormu, Form, FormBtn, FormContainer, P } from "./cambiarContra-style";
 import authService from "../../Servicios/auth.service";
 import { Toast } from "primereact/toast";
 import {
@@ -47,24 +47,39 @@ function CambiarContraseña({ setActivo }) {
   const toast = useRef(null);
 
   return (
-    <div>
-      <FloatLabel className="Margin">
-        <InputText
-          name="email"
-          placeholder="Email"
-          className="Input"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label className="label" htmlFor="email">
-          Email
-        </label>
-      </FloatLabel>
-      <FormBtn onClick={onCambio}>Enviar</FormBtn>
+    <>
+    <BackgroundOverlay>
+      <Div>
+        <FormContainer className="form-container">
+          <Form className="form">
+            <DivFormu>
+            <P>
+            Por favor, ingrese su correo electrónico para verificar si está registrado.
+            <br/> 
+            Le enviaremos un mensaje con más información. Gracias.
+                </P>
+              <FloatLabel className="Margin">
+                <InputText
+                  name="email"
+                  placeholder="Email"
+                  className="Input"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <label className="label" htmlFor="email">
+                  Email
+                </label>
+              </FloatLabel>
+              <FormBtn onClick={onCambio}>Enviar</FormBtn>
 
-      <Toast ref={toast} />
-    </div>
+              <Toast ref={toast} />
+            </DivFormu>
+          </Form>
+        </FormContainer>
+      </Div>
+    </BackgroundOverlay>
+    </>
   );
 }
 
