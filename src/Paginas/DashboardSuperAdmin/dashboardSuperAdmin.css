@@ -139,6 +139,7 @@
   background-color: white !important;
   width: 20vw;
   height: 6vh;
+  border: black 1px solid !important;
 }
 .MarginModal {
   margin: 1em;
@@ -150,6 +151,7 @@
   color: black;
   width: 20vw;
   height: 7vh;
+  border: black 1px solid !important;
 }
 .Margin2Modal {
   margin: 1em;
