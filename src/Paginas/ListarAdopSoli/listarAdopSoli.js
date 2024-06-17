@@ -3,7 +3,7 @@ import {
   FilterButton,
   TopBanner,
 } from "./listarAdopSoli-style";
-import pawsBanner from "../../assets/img/adopcion/pawsBanner.jpg";
+import pawsBanner from "../../assets/img/adopcion/banner.jpg";
 import { TabMenu } from "primereact/tabmenu";
 import {
   getAllSolicitudes,

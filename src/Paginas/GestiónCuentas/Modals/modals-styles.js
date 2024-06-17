@@ -15,21 +15,22 @@ export const FormBtn = styled.button`
 `;
 
 export const DivFormu = styled.div`
-  background-color: #262626;
-  height: 75vh;
-  width: 38vw;
+  background-color: #fff !important;
+  border-radius: 10px;
+  height: 72vh;
+  width: 77vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
+  overflow:hidden;
   @media (max-width: 1000px) {
     width: 90vw;
     height: auto;
   }
 `;
 export const Logito = styled.img`
-  height: 12vh;
+  height: 16vh;
   width: 8vw;
   margin-left: -1em;
   border-radius: 50%;
@@ -41,13 +42,12 @@ export const Logito = styled.img`
   }
 `;
 export const DivScroll = styled.div`
-  height: 50vh;
+  height: 30vh;
   width: 26vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow-y: scroll;
   padding-top: 0.5em;
   @media (max-width: 1000px) {
     width: 80vw;
@@ -56,4 +56,8 @@ export const DivScroll = styled.div`
     align-items: center;
     flex-direction: column;
   }
+`;
+
+export const Patata = styled.span`
+  margin-top: -10px;
 `;

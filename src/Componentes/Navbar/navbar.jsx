@@ -3,7 +3,6 @@ import { Header, Nav, MobileNavToggle, Topbar } from "./navbar-style";
 import logito from "../../assets/logito.png";
 import { deleteCookie, getToken } from "../../Servicios/Cookies/cookies";
 import { habilitarConsumicion } from "../../Servicios/user.service";
-import { id } from "date-fns/locale";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -99,34 +98,35 @@ function Navbar() {
                   Inicio
                 </a>
               </li>
-              <li>
-                <a className="nav-link scrollto" href="/#menu">
-                  Menu
-                </a>
-              </li>
+             
               {rol !== '' && rol === 'USUARIO' && (
-              <li className="dropdown">
-                <a href="/" className="nav-link scrollto">
-                  <span>Nuestros Servicios</span>{" "}
-                  <i className="bi bi-chevron-down"></i>
-                </a>
-                <ul>
-                  <li>
-                    <a href="Reserva">Hacer reserva</a>
-                  </li>
-                  {permiso && (
-                    <li>
-                      <a href="/Productos">Hacer consumición</a>
-                    </li>
-                  )}
-                  <li>
-                    <a href="/Adopcion">Hacer adopción</a>
-                  </li>
-                  <li>
-                    <a href="/MisReservas">Mis gestiones</a>
-                  </li>
-                </ul>
-              </li>)}
+               <><li>
+                  <a className="nav-link scrollto" href="/#menu">
+                    Menu
+                  </a>
+                </li>
+                <li className="dropdown">
+                    <a href="/" className="nav-link scrollto">
+                      <span>Nuestros Servicios</span>{" "}
+                      <i className="bi bi-chevron-down"></i>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="Reserva">Hacer reserva</a>
+                      </li>
+                      {permiso && (
+                        <li>
+                          <a href="/Productos">Hacer consumición</a>
+                        </li>
+                      )}
+                      <li>
+                        <a href="/Adopcion">Hacer adopción</a>
+                      </li>
+                      <li>
+                        <a href="/MisReservas">Mis gestiones</a>
+                      </li>
+                    </ul>
+                  </li></>)}
             </ul>
             <MobileNavToggle className="bi bi-list mobile-nav-toggle"></MobileNavToggle>
           </Nav>

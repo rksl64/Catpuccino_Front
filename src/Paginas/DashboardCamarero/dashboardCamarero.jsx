@@ -5,6 +5,8 @@ import camarero from "../../assets/img/adopcion/camareroCafeteria.jpg";
 import { Link } from "react-router-dom";
 import { Divider } from "primereact/divider";
 import { getReservasDiaHora, cancelarReservasHora } from "../../Servicios/user.service";
+import ModalAdopcion from "./Modals/modalAdopcion.js";
+import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
 import {
   showSuccessMessage,
@@ -14,6 +16,7 @@ import {
 function DashboardCamarero() {
   const [isEnabled, setIsEnabled] = useState(false);
   const [reservas, setReservas] = useState([]);
+  const [visibleReserva, setVisibleReserva] = useState(false);
 
   const toast = useRef(null);
 
@@ -74,7 +77,7 @@ function DashboardCamarero() {
 
   return (
     <>
-      <body className="dashboard-camarero pb-5">
+      <div className="dashboard-camarero pb-5">
         <section
           className="TopBanner"
           style={{ backgroundImage: `url(${coffeBanner})` }}
@@ -106,7 +109,7 @@ function DashboardCamarero() {
                 </Divider>
                 <div className="buttons">
                   <Link
-                    to="/"
+                    to="/GestionCuenta"
                     className="animated-button"
                     style={{ textDecoration: "none" }}
                   >
@@ -161,7 +164,7 @@ function DashboardCamarero() {
                   <Toast ref={toast} />
 
                   <Link
-                    to="/SolicitudesAdopcion"
+                    
                     className={`animated-button ${
                       reservas.length < 5 || isEnabled ? "" : "disabled"
                     }`}
@@ -169,7 +172,7 @@ function DashboardCamarero() {
                       textDecoration: "none",
                       pointerEvents:
                         reservas.length < 5 || isEnabled ? "auto" : "none",
-                    }}
+                    }} onClick={() => setVisibleReserva(true)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +195,7 @@ function DashboardCamarero() {
                   </Link>
 
                   <Link
-                    to="/HistorialSolicitudes"
+                    to="/HistorialCuentas"
                     className="animated-button"
                     style={{ textDecoration: "none" }}
                   >
@@ -215,12 +218,23 @@ function DashboardCamarero() {
                       <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                     </svg>
                   </Link>
+                  <Dialog
+                    header="Crear Nueva Cuenta"
+                    visible={visibleReserva}
+                    style={{ width: "40vw", height: '100vh' }}
+                    onHide={() => {
+                      if (!visibleReserva) return;
+                      setVisibleReserva(false);
+                    }}
+                  >
+                    <ModalAdopcion></ModalAdopcion>
+                  </Dialog>
                 </div>
               </div>
             </div>
           </section>
         </main>
-      </body>
+      </div>
     </>
   );
 }

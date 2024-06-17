@@ -17,9 +17,11 @@ import Navbar from "./Componentes/Navbar/navbar";
 import Footer from "./Componentes/Footer/footer";
 import GestionGatos from "./Paginas/GestionGatos/gestionGatos";
 import DashboardGestorGatos from "./Paginas/DashboardGestorGatos/dashboardGestorGatos";
+import GestionCuentas from "./Paginas/GestiónCuentas/GestionCuentas";
 import SolicitudAdopciones from "./Paginas/SolicitudesAdopcion/solicitudesAdopcion";
 import HistorialSolicitudes from "./Paginas/HistorialSolicitudes/HistorialSolicitudes";
 import HistorialAdopciones from "./Paginas/HistorialAdopciones/HistorialAdopciones"
+import HistorialCuentas from "./Paginas/HistorialCuentas/HistorialCuentas";
 import DashboardSuperAdmin from "./Paginas/DashboardSuperAdmin/dashboardSuperAdmin";
 import DashboardCamarero from "./Paginas/DashboardCamarero/dashboardCamarero";
 import SolicitudesByUsuario from "./Componentes/solicitudesByUsuario/solicitudesByUsuario";
@@ -59,6 +61,7 @@ function App() {
         <Route path="/Gatoinfo/:id" element={<GatoInfo toast={toast}/>}></Route>
         <Route path="/FormularioGatos" element={<Formulario toast={toast}/>}></Route>
         <Route path="/GestionGatos" element={<GestionGatos toast={toast}/>}></Route>
+        <Route path="/GestionCuenta" element={<GestionCuentas toast={toast}/>}></Route>
         <Route path="/MisReservas" element={<MisReservas/>}></Route>
         <Route path="/spinner" element={<Spinner />}></Route>
         <Route path="/DashboardGatos" element={<DashboardGestorGatos/>}></Route>
@@ -68,6 +71,7 @@ function App() {
         <Route path="/VisualizarPdf" element={<VisualizarPdf setActivo={setActivo} activo={activo}/>}></Route>
         <Route path="/HistorialSolicitudes" element={<HistorialSolicitudes/>}></Route>
         <Route path="/HistorialAdopciones" element={<HistorialAdopciones/>}></Route>
+        <Route path="/HistorialCuentas" element={<HistorialCuentas/>}></Route>
         <Route path="/ListarReservas" element={<ListarReservas/>}></Route>
         <Route path="/ListarAdopciones" element={<ListarAdopciones/>}></Route>
 

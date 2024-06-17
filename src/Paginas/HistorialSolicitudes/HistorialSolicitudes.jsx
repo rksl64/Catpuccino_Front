@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./HistorialSolicitudes.css";
-import pawsBanner from '../../assets/img/adopcion/pawsBanner.jpg';
+import pawsBanner from '../../assets/img/adopcion/banner.jpg';
 import { getAllSolicitudes } from '../../Servicios/user.service';
 import { Paginator } from 'primereact/paginator';
         
