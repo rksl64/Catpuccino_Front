@@ -133,17 +133,27 @@
         height: 220px;
         opacity: 1;
       }
-
-      .p-dialog-header{
-        background-color: #262626;
-      }
-      .p-dialog-content{
-        background-color: #262626;
-        overflow:hidden !important;
-        }
-        .p-dialog-title{
-          color: #FEEECA;
-        }
-
       
+}
+.MarginModal input {
+  background-color: white !important;
+  width: 20vw;
+  height: 6vh;
+}
+.MarginModal {
+  margin: 1em;
+}
+:focus-within > .labelModal {
+  color: #D07D6F;
+}
+.Margin2Modal input {
+  color: black;
+  width: 20vw;
+  height: 7vh;
+}
+.Margin2Modal {
+  margin: 1em;
+}
+.Margin2Modal label {
+  font-family: "Manrope", sans-serif;
 }

@@ -11,7 +11,8 @@ import {
 import { InputText } from "primereact/inputtext";
 import { HacerReserva } from "../../../Servicios/user.service";
 import { InputNumber } from 'primereact/inputnumber';
-        
+import "../../DashboardSuperAdmin/dashboardSuperAdmin.css"
+
 function ModalAdopcion() {
   
   const [fecha, setFecha] = useState("");
@@ -129,7 +130,7 @@ function ModalAdopcion() {
         <Logito src={gatocafe}></Logito>
       </a>
       <DivScroll className="scroll">
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputText
             value={registro.nombre_reserva}
             name="nombre_reserva"
@@ -144,7 +145,7 @@ function ModalAdopcion() {
           </label>
         </FloatLabel>
 
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputNumber
             value={registro.numeroPersonas}
             name="numeroPersonas"
