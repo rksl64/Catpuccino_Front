@@ -13,6 +13,8 @@ import { getToken } from "../../Servicios/Cookies/cookies";
 import DashboardGestorGatos from "../../Paginas/DashboardGestorGatos/dashboardGestorGatos";
 import DashboardCamarero from "../../Paginas/DashboardCamarero/dashboardCamarero";
 import DashboardSuperAdmin from "../../Paginas/DashboardSuperAdmin/dashboardSuperAdmin";
+import { PDFDownloadLink} from "@react-pdf/renderer";
+import { MenuPDF} from "../../Utils/pdfProductos";
 
 function Inicio() {
   const [productos, setProductos] = useState([]);
@@ -28,6 +30,7 @@ function Inicio() {
     listarproductos()
       .then((data) => {
         setProductos(data);
+        console.log(data)
       })
       .catch((error) => {
         console.error("Error al obtener los productos:", error);
@@ -231,7 +234,13 @@ function Inicio() {
                   })}
                 </div>
               </div>
-            </section></>
+            </section>
+    {/* <PDFDownloadLink document={<MenuPDF productos={productos}/>} fileName="carta.pdf">
+      {({ blob, url, loading, error }) =>
+        loading ? 'Loading document...' : 'Download now!'
+      }
+    </PDFDownloadLink> */}
+    </>
         )}{rol !== '' && rol === 'ADOPCION' && (
           <>
           <DashboardGestorGatos/>
