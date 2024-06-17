@@ -15,9 +15,8 @@ export const FormBtn = styled.button`
 `;
 
 export const DivFormu = styled.div`
-  background-color: #262626;
-  height: 75vh;
-  width: 38vw;
+   height: 72vh;
+   width: 36vw;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -11,6 +11,7 @@ import {
   import { Toast } from "primereact/toast";
 import authService from "../../../Servicios/auth.service";
 import { InputText } from "primereact/inputtext";
+import "../dashboardSuperAdmin.css"
 
 function ModalAdopcion() {
   const [registro, setRegistro] = useState({
@@ -125,114 +126,106 @@ function ModalAdopcion() {
         <Logito src={gatocafe}></Logito>
       </a>
       <DivScroll className="scroll">
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputText
             name="nombre"
             placeholder="Nombre"
-            className="Input"
             id="nombre"
             onChange={handleInputChange}
             maxLength={50}
           />
-          <label className="label" htmlFor="nombre">
+          <label className="labelModal" htmlFor="nombre">
             Nombre
           </label>
         </FloatLabel>
 
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputText
             name="apellidos"
             placeholder="Apellidos"
-            className="Input"
             id="username"
             onChange={handleInputChange}
             maxLength={60}
           />
-          <label className="label" htmlFor="apellidos">
+          <label className="labelModal" htmlFor="apellidos">
             Apellidos
           </label>
         </FloatLabel>
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputText
             name="telefono"
             placeholder="Telefono"
-            className="Input"
             id="telefono"
             onChange={handleInputChange}
           />
-          <label className="label" htmlFor="telefono">
+          <label className="labelModal"  htmlFor="telefono">
             Teléfono
           </label>
         </FloatLabel>
 
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputText
             name="email"
             placeholder="Email"
-            className="Input"
             id="email"
             onChange={handleInputChange}
             maxLength={50}
           />
-          <label className="label" htmlFor="email">
+          <label className="labelModal"  htmlFor="email">
             Email
           </label>
         </FloatLabel>
 
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputText
             name="dni"
             placeholder="DNI"
-            className="Input"
             id="dni"
             onChange={handleInputChange}
             maxLength={9}
           />
-          <label className="label" htmlFor="dni">
+          <label className="labelModal" htmlFor="dni">
           DNI
           </label>
         </FloatLabel>
-        <FloatLabel className="Margin">
+        <FloatLabel className="MarginModal">
           <InputText
             name="nombreUsuario"
             placeholder="Nombre de Usuario"
-            className="Input"
             id="nombreUsuario"
             onChange={handleInputChange}
             maxLength={50}
           />
-          <label className="label" htmlFor="nombreUsuario">
+          <label className="labelModal" htmlFor="nombreUsuario">
             Nombre de Usuario
           </label>
         </FloatLabel>
-        <FloatLabel className="Margin2">
+        <FloatLabel className="Margin2Modal">
           <Password
             name="password"
             placeholder="Contraseña"
             onChange={handleInputChange}
             feedback={false}
             tabIndex={1}
-            className="Input"
             toggleMask
             maxLength={100}
           />
-          <label className="label" htmlFor="password">
+          <label className="labelModal" htmlFor="password">
             Contraseña
           </label>
         </FloatLabel>
 
-        <FloatLabel className="Margin2">
+        <FloatLabel className="Margin2Modal">
           <Password
             name="password2"
             placeholder="Repetir Contraseña"
             onChange={handleInputChange}
             feedback={false}
             tabIndex={1}
-            className="Input"
             toggleMask
             maxLength={100}
           />
-          <label className="label" htmlFor="password">
+          <label className="labelModal" htmlFor="password">
             Repetir Contraseña
           </label>
         </FloatLabel>
