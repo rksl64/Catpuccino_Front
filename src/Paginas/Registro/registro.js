@@ -116,10 +116,10 @@ function Registro({ setActivo }) {
       );
 
       console.log(response);
-      if (response.username == "error 1") {
+      if (response.username === "error 1") {
         showErrorMessage(toast, response.message);
       }
-      if (response.username == "error 2") {
+      if (response.username === "error 2") {
         showErrorMessage(toast, response.message);
       }
       if (response.token) {

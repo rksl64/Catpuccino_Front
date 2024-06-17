@@ -18,7 +18,7 @@ function Producto() {
   const [products, setProducts] = useState([]);
   const [layout, setLayout] = useState('grid');
   const [idUsuario, setId] = useState(0);
-  const [contador, setcontador] = useState(1);
+  const [contador] = useState(1);
   const [carrito, setCarrito] = useState([]);
   const toast = useRef(null);
   const navigate = useNavigate(); 

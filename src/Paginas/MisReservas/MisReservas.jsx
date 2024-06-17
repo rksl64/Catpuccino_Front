@@ -28,9 +28,9 @@ import { format } from 'date-fns';
 function MisReservas() {
   const [activeIndex, setActiveIndex] = useState(0);
   const items = [
-    { label: "Mis reservas" },
-    { label: "Mis adopciones" },
-    { label: "Mis solicitudes" },
+    { label: "Mis reservas", icon: 'pi pi-book', },
+    { label: "Mis adopciones", icon: 'pi pi-book', },
+    { label: "Mis solicitudes", icon: 'pi pi-list-check', },
   ];
   const [reservas, setReservas] = useState([]);
   const [adopciones, setAdopciones] = useState([]);
@@ -43,7 +43,7 @@ function MisReservas() {
   const [confirmationModalShow, setConfirmationModalShow] = useState(false);
   const [reservaIdToCancel, setReservaIdToCancel] = useState(null);
   const [reservaSeleccionada, setReservaSeleccionada] = useState(null);
-  const [setData] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const id = getToken("ID");
@@ -173,7 +173,7 @@ function MisReservas() {
           <div className="contenedor">
           <div className="reservas-container">
             {reservas.map((reserva) => (
-              <section className="solicitudes-container">
+              <section key={reserva.id} className="solicitudes-container">
                 <div className="tarjeta">
                   <div className="img-data">
                     <div className="data">

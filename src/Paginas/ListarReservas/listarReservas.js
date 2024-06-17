@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FilterButton, TopBanner } from "./listarReserva-style";
-import pawsBanner from "../../assets/img/adopcion/pawsBanner.jpg";
+import pawsBanner from "../../assets/img/adopcion/banner.jpg";
 import { obtenerReservas } from "../../Servicios/user.service";
 import "./listarReserva.css";
 

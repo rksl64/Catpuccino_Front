@@ -5,7 +5,9 @@
   display: flex;
   justify-content: center; 
   align-items: center; 
-  background: #E2C7BE;
+  background: url(/src/assets/img/adopcion/banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   flex-direction: column;
   overflow-x: hidden;
 }

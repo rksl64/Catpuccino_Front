@@ -12,6 +12,7 @@ import { listarproductos } from "../../Servicios/user.service";
 import { getToken } from "../../Servicios/Cookies/cookies";
 import DashboardGestorGatos from "../../Paginas/DashboardGestorGatos/dashboardGestorGatos";
 import DashboardCamarero from "../../Paginas/DashboardCamarero/dashboardCamarero";
+import DashboardSuperAdmin from "../../Paginas/DashboardSuperAdmin/dashboardSuperAdmin";
 
 function Inicio() {
   const [productos, setProductos] = useState([]);
@@ -239,6 +240,11 @@ function Inicio() {
           {rol !== '' && rol === 'CAMARERO' && (
           <>
           <DashboardCamarero/>
+          </>
+          )} 
+          {rol !== '' && rol === 'SUPERUSER' && (
+          <>
+          <DashboardSuperAdmin/>
           </>
           )}
       

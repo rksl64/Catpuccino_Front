@@ -507,6 +507,32 @@ export async function getReservasDiaHora(){
 
 }
 
+export async function obtenerReservasPagadas() {
+  try {
+    const response = await axios.get(`${BASE_HOST}/reserva/pagadasdia`, {
+      headers: authHeader(),
+    });
+    console.log("Reservas del usuario:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener reservas del usuario:", error);
+    throw error;
+  }
+}
+
+export async function PagarCuenta(id) {
+  try {
+    const response = await axios.get(`${BASE_HOST}/consumiciones/consumicionCamarero/${id}`, {
+      headers: authHeader(),
+    });
+    console.log("Reservas del usuario:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener reservas del usuario:", error);
+    throw error;
+  }
+}
+
 export async function reservasDiaPagadas(){
   try{
     const response = await axios.get(`${BASE_HOST}/reserva/pagadasdia`)
