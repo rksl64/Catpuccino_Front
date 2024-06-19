@@ -82,7 +82,7 @@ function Formulario(){
             });
             showSuccess();
             setTimeout(() => {
-                navigate("/DashboardGatos");
+                setVisible(false);
             }, 3000);
         } catch (error) {
             showError();
