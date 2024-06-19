@@ -30,7 +30,7 @@ const Topbar = styled.div`
 `;
 
 const Header = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
   top: 50px;
   height: 70px;
@@ -56,7 +56,7 @@ const Header = styled.div`
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    font-family: 'Satisfy', sans-serif;
+    font-family: "Satisfy", sans-serif;
   }
 
   .logo h1 a,
@@ -100,7 +100,9 @@ const Nav = styled.nav`
     transition: 0.3s;
   }
 
-  a:hover, a:active, a.nav-link.active {
+  a:hover,
+  a:active,
+  a.nav-link.active {
     color: #ffb03b;
   }
 
@@ -114,7 +116,7 @@ const Nav = styled.nav`
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    background: #1a1816;
+    background: white;
     transition: 0.3s;
 
     li {
@@ -127,7 +129,8 @@ const Nav = styled.nav`
       text-transform: none;
     }
 
-    a:hover, a:active {
+    a:hover,
+    a:active {
       color: #ffb03b;
     }
   }
