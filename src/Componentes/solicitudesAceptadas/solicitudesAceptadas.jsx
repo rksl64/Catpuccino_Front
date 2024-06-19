@@ -31,7 +31,7 @@ function SolicitudAceptadas(){
     <>
         {listaSolicitudes.length === 0 ? (
             <div style={{ textAlign: "center" }} className="no-solicitudes mb-5">
-                <p>No hay solicitudes aún.</p>
+                <h3>No hay solicitudes aceptadas aún.</h3>
             </div>
         ) : (
         paginatedSolicitudes.map(solicitud => (

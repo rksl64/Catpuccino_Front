@@ -46,7 +46,7 @@ function ModalEstadoSolicitud({ isVisible, solicitudId, onClose }){
                 console.log('Solicitud aceptada', response);
                 showSuccess();
                 setTimeout(() => {
-                    navigate("/SolicitudesAdopcion");
+                    navigate("/DashboardGatos");
                 }, 3000);
             })
             .catch(error => {
@@ -60,7 +60,7 @@ function ModalEstadoSolicitud({ isVisible, solicitudId, onClose }){
                 console.log('Solicitud rechazada', response);
                 showInfo();
                 setTimeout(() => {
-                    navigate("/SolicitudesAdopcion");
+                    navigate("/DashboardGatos");
                 }, 3000);
             })
             .catch(error => {

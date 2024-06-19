@@ -23,6 +23,9 @@ function ModalAdopcion({ gatoId }){
     const showWarn = () => {
         toast.current.show({severity:'warn', summary: 'Aviso', detail:'Faltan campos por rellenar', life: 3000});
     }
+    const showWarnLogin = () => {
+        toast.current.show({severity:'warn', summary: 'Aviso', detail:'Debes estar logueado para adoptar', life: 3000});
+    }
     /*--------------------------------------------*/ 
 
 
@@ -31,6 +34,18 @@ function ModalAdopcion({ gatoId }){
     const [mensaje, setMensaje] = useState('');
     const [estadoSolicitud] = useState('PENDIENTE');
     const usuarioID = getID('ID');
+
+    //Si el usuario no esta logueado, me devuelve a la pantalla de login
+    const handleButtonClick = () => {
+        if (usuarioID) {
+            setVisible(true);
+        } else {
+            showWarnLogin();
+            setTimeout(() => {
+                navigate("/Login");
+            }, 3000);
+        }
+    };
 
     const newSolicitud = async (event) => {
         event.preventDefault();
@@ -74,7 +89,8 @@ function ModalAdopcion({ gatoId }){
         <>
         <div className="card flex justify-content-center">
         <Toast ref={toast} />
-            <button class="like-button" icon="pi pi-external-link" onClick={() => setVisible(true)}><p>¡Quiero adoptar!</p></button>
+            {/* <button class="like-button" icon="pi pi-external-link" onClick={() => setVisible(true)}><p>¡Quiero adoptar!</p></button> */}
+            <button class="like-button" icon="pi pi-external-link" onClick={handleButtonClick}><p>¡Quiero adoptar!</p></button>
             <Dialog visible={visible} modal header={headerElement} style={{ width: '50rem' }} onHide={() => setVisible(false)}>
                 <p className="mb-4"> ¡Cuentanos por qué te gustaría añadir un nuevo miembro felino a tu familia! </p>
                 <form onSubmit={newSolicitud}>

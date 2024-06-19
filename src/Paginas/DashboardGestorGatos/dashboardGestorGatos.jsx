@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./dashboardGestorGatos.css";
 import pawsBanner from '../../assets/img/adopcion/pawsBanner.jpg';
+// import paaws from '../../assets/img/adopcion/paaws.jpg';
 import cats from '../../assets/img/adopcion/twocats.jpg';
 import { Link } from 'react-router-dom';
 import Formulario from "../../Componentes/Formulario/formulario";

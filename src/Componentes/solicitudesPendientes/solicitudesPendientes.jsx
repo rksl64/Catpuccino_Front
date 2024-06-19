@@ -44,7 +44,7 @@ function SolicitudPendientes(){
     <>
         {listaSolicitudes.length === 0 ? (
             <div style={{ textAlign: "center" }} className="no-solicitudes mb-5">
-                <h3>No hay solicitudes pendientes.</h3>
+                <h3>No hay solicitudes pendientes aún.</h3>
             </div>
         ) : (
         paginatedSolicitudes.map((solicitud, index) => (

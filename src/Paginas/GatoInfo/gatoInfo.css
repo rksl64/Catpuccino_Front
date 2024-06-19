@@ -82,7 +82,8 @@
     
         .about-cat{
           color: #808080;
-          margin-top: 6rem;
+          margin-top: 2rem;
+          padding: 0;
     
           h3{
             font-size: 2.3rem;
