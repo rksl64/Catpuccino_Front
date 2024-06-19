@@ -72,74 +72,109 @@ const Header = styled.div`
 `;
 
 const Nav = styled.nav`
+  
   ul {
     margin: 0;
     padding: 0;
-    list-style: none;
     display: flex;
-
-    @media (max-width: 991px) {
-      display: none;
-    }
+    list-style: none;
+    align-items: center;
   }
 
   li {
     position: relative;
-    white-space: nowrap;
   }
 
-  a {
+  a,
+  a:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 8px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
+    padding: 10px 0 10px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
     white-space: nowrap;
     transition: 0.3s;
   }
 
+  a i,
+  a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+  }
+
   a:hover,
-  a:active,
-  a.nav-link.active {
-    color: #ffb03b;
+  .active,
+  .active:focus,
+  li:hover > a {
+    color: #CE796B;
+    
   }
 
   .dropdown ul {
     display: block;
     position: absolute;
-    left: 10px;
+    left: 24px;
     top: calc(100% + 30px);
     margin: 0;
     padding: 10px 0;
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    background: white;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
-
-    li {
-      min-width: 200px;
-    }
-
-    a {
-      padding: 10px 20px;
-      font-size: 14px;
-      text-transform: none;
-    }
-
-    a:hover,
-    a:active {
-      color: #ffb03b;
-    }
+    border-radius: 4px;
+    text-decoration: none;
   }
 
-  .dropdown > .dropdown-active {
-    display: block;
-    top: 100%;
+  .dropdown ul li {
+    min-width: 200px;
+    text-decoration: none;
+  }
+
+  .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #433f39;
+    text-decoration: none;
+  }
+
+  .dropdown ul a i {
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  .dropdown ul a:hover,
+  .dropdown ul .active:hover,
+  .dropdown ul li:hover > a {
+    color: #CE796B;
+    text-decoration: none;
+  }
+
+  .dropdown:hover > ul {
     opacity: 1;
+    top: 100%;
     visibility: visible;
+    text-decoration: none;
+  }
+
+  .dropdown .dropdown ul {
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
+    text-decoration: none;
+  }
+
+  .dropdown .dropdown:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
+    text-decoration: none;
   }
 
   /* @media (max-width: 1366px) {
